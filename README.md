@@ -52,6 +52,12 @@ also requires game-resource files installed outside that folder. Do not combine
 files from different RainbowFlame releases. The installer is framework-dependent
 and does not access the network or download the required .NET runtime.
 
+The release-candidate installer is currently unsigned. Windows SmartScreen may
+therefore identify it as coming from an unknown publisher. Download RainbowFlame
+only from this repository's official Releases page and verify the included
+`RainbowFlame.zip.sha256` value before running it. Do not disable antivirus
+protection to install the mod.
+
 The repository versions the installer payload together with the Lua mod. The
 `payload/` directory contains a manifest and compact authenticated delta data,
 not complete extracted Darktide bundles. Every release must update and validate
