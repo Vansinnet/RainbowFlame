@@ -28,11 +28,23 @@ Lua mod still loads.
 
 ## Installation
 
-1. Close Darktide completely.
-2. Install DML and DMF if they are not already installed.
-3. Download the official, unmodified RainbowFlame release.
-4. Run `RainbowFlame.Installer.exe` and follow its prompts.
-5. Start Darktide and configure RainbowFlame under DMF's Mod Options.
+1. Install DML and DMF and confirm that DMF loads successfully in Darktide.
+2. Install the Microsoft .NET 6 Desktop Runtime for Windows x64 if it is not
+   already present.
+3. Download the official, unmodified `RainbowFlame.zip` release and extract the
+   entire archive to one folder. Keep the installer DLLs and `payload/` directory
+   beside `RainbowFlame.Installer.exe`.
+4. Close Darktide completely. The installer refuses to continue while the game
+   is running.
+5. Run `RainbowFlame.Installer.exe`. Select the
+   `Warhammer 40,000 DARKTIDE` game folder if it is not detected automatically,
+   then choose **Install**.
+6. Wait for the installer to verify the game build, original resource hashes,
+   generated files and backups. An unknown game build or conflicting resource
+   replacement is rejected rather than overwritten.
+7. Start Darktide and open **Mod Options > RainbowFlame**. A changed enemy
+   Soulblaze preset applies to newly created burns; existing burns retain their
+   previous color.
 
 The installer is the primary installation method. Copying the `RainbowFlame`
 folder into Darktide's `/mods` directory alone is insufficient because the mod
@@ -44,6 +56,29 @@ The repository versions the installer payload together with the Lua mod. The
 `payload/` directory contains a manifest and compact authenticated delta data,
 not complete extracted Darktide bundles. Every release must update and validate
 the mod files and payload as one matching set.
+
+### Update Or Repair
+
+Close Darktide and run the installer from the new release. Choose **Install** to
+install a supported update, or **Repair** to reconstruct missing files from the
+same installed release. Repair requires an ownership receipt created by the
+installer. Never combine the installer, DLLs or payload from different releases.
+
+### Uninstall
+
+Close Darktide, run the same release's installer and choose **Uninstall**. The
+installer verifies the installed files, restores its same-build backups, removes
+only files it owns and removes RainbowFlame from `mod_load_order.txt`. Do not
+delete replaced files manually. If Darktide has updated since installation, use a
+RainbowFlame release that explicitly supports the new build; the installer will
+not restore obsolete game files over a newer build.
+
+### Vortex And Manual Installation
+
+Vortex installation is not currently supported. Copying only the included
+`RainbowFlame/` folder into `/mods` installs the Lua files but not the required
+compiled resources, so the complete feature set will not work. Use the bundled
+installer for installation, repair and removal.
 
 ## Compatibility
 

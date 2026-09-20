@@ -41502,17 +41502,17 @@
       "base": null,
       "baseSize": 0,
       "baseSha256": null,
-      "outputSize": 3497,
-      "outputSha256": "2406abaf78a0557c9127286c2d72df3f40fbcf3b400bb9c3d2d2ce55a45eefb8",
+      "outputSize": 4150,
+      "outputSha256": "e723fc9b765151ff541ec8f384b76cfcab4c90f595167b5f2fddcbbea2aa1e96",
       "payload": "inserts/mod-RainbowFlame_localization-lua.bin",
-      "payloadSize": 3497,
-      "payloadSha256": "2406abaf78a0557c9127286c2d72df3f40fbcf3b400bb9c3d2d2ce55a45eefb8",
+      "payloadSize": 4150,
+      "payloadSha256": "e723fc9b765151ff541ec8f384b76cfcab4c90f595167b5f2fddcbbea2aa1e96",
       "addition": true,
       "operations": [
         {
           "kind": "Insert",
           "offset": 0,
-          "count": 3497
+          "count": 4150
         }
       ]
     },
