@@ -4,7 +4,7 @@ All notable release-facing changes to RainbowFlame are documented here.
 
 ## [Unreleased]
 
-## [1.0.0-rc7] - 2026-09-20
+## [1.0.0] - 2026-09-20
 
 ### Added
 
@@ -14,9 +14,8 @@ All notable release-facing changes to RainbowFlame are documented here.
   preflight.
 - Public installation, compatibility, troubleshooting, privacy, and runtime
   coverage documentation.
-- Proprietary source-visible license, third-party notice, security policy, and
-  contribution policy.
-- Repository hygiene, issue forms, release metadata template, and CI checks.
+- Proprietary source-visible license, third-party notice, release metadata, and
+  CI checks.
 
 ### Changed
 

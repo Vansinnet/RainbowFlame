@@ -6,7 +6,7 @@ public sealed class PayloadManifest
 {
     public int Format { get; set; } = 1;
     public string Product { get; set; } = "RainbowFlame";
-    public string Version { get; set; } = "1.0.0-rc7";
+    public string Version { get; set; } = "1.0.0";
     public string SteamAppId { get; set; } = "1361210";
     public string SteamBuild { get; set; } = "24735202";
     public string ExeVersion { get; set; } = "1.3.770.210";
