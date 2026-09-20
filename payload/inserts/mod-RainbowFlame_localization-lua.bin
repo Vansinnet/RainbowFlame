@@ -1,0 +1,40 @@
+return {
+    mod_name = {
+        en = "RainbowFlame",
+        sv = "RainbowFlame",
+    },
+    mod_description = {
+        en = "Customize the Inferno staff and choose a fixed color preset for persistent enemy Soulblaze.",
+        sv = "Anpassa Infernostaven och välj en fast färg för ihållande Själsbrand på fiender.",
+    },
+    enemy_color = { en = "Enemy Soulblaze color", sv = "Färg på fienders Själsbrand" },
+    enemy_color_description = {
+        en = "Applies the selected baked color to newly created persistent Soulblaze effects. Existing flames keep their current color. This does not affect the staff.",
+        sv = "Använder den valda fasta färgen för nya ihållande Själsbrandseffekter. Befintliga lågor behåller sin nuvarande färg. Staven påverkas inte.",
+    },
+    enemy_color_original = { en = "Original", sv = "Original" },
+    enemy_color_red = { en = "Red", sv = "Röd" },
+    enemy_color_orange = { en = "Orange", sv = "Orange" },
+    enemy_color_yellow = { en = "Yellow", sv = "Gul" },
+    enemy_color_green = { en = "Green", sv = "Grön" },
+    enemy_color_cyan = { en = "Cyan", sv = "Cyan" },
+    enemy_color_blue = { en = "Blue", sv = "Blå" },
+    enemy_color_violet = { en = "Violet", sv = "Violett" },
+    enemy_color_pink = { en = "Pink", sv = "Rosa" },
+    original_color = { en = "Original color", sv = "Originalfärg" },
+    original_color_description = {
+        en = "Use Inferno's original multi-color flame instead of the hue slider. Rainbow takes priority while on; turning it off returns here. Original ignores brightness.",
+        sv = "Använd Infernos ursprungliga flerfärgade låga i stället för nyansreglaget. Regnbåge har företräde när den är på; av återgår hit. Original ignorerar ljusstyrkan.",
+    },
+    rainbow = { en = "Rainbow", sv = "Regnbåge" },
+    rainbow_description = {
+        en = "On: overrides Original color and cycles automatically through the full color wheel. Off: return to Original color or your saved hue.",
+        sv = "På: åsidosätter Originalfärg och växlar automatiskt genom hela färghjulet. Av: återgå till Originalfärg eller din sparade nyans.",
+    },
+    hue = { en = "Color", sv = "Färg" },
+    hue_description = { en = "Used when Original color and Rainbow are both off. Full color wheel: 0 red, 30 orange, 120 green, 180 cyan, 240 blue, 270 violet, 360 red. Intermediate values give intermediate shades. Blue is not the original multi-color ramp.", sv = "Används när både Originalfärg och Regnbåge är av. Hela färghjulet: 0 rött, 30 orange, 120 grönt, 180 cyan, 240 blått, 270 violett, 360 rött. Mellanvärden ger mellanliggande nyanser. Blått är inte originalets flerfärgade ramp." },
+    brightness = { en = "Brightness", sv = "Ljusstyrka" },
+    brightness_description = { en = "Lower values darken the flame; higher values brighten it. 1 is normal. High brightness can make colors look washed out. Also applies to rainbow colors.", sv = "Lägre värden gör lågan mörkare; högre värden gör den ljusare. 1 är normalt. Hög ljusstyrka kan få färgerna att se urtvättade ut. Gäller även regnbågsfärger." },
+    speed = { en = "Speed", sv = "Hastighet" },
+    speed_description = { en = "How quickly Rainbow changes color. 0.125 is the normal speed; 0.25 is twice as fast. Only used when Rainbow is on.", sv = "Hur snabbt Regnbåge växlar färg. 0.125 är normal hastighet; 0.25 är dubbelt så snabbt. Används bara när Regnbåge är på." },
+}

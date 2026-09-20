@@ -40,6 +40,11 @@ also requires game-resource files installed outside that folder. Do not combine
 files from different RainbowFlame releases. The installer is framework-dependent
 and does not access the network or download the required .NET runtime.
 
+The repository versions the installer payload together with the Lua mod. The
+`payload/` directory contains a manifest and compact authenticated delta data,
+not complete extracted Darktide bundles. Every release must update and validate
+the mod files and payload as one matching set.
+
 ## Compatibility
 
 RainbowFlame can conflict with mods or manual asset replacements that alter the
