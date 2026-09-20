@@ -36,7 +36,10 @@ jobs:
               }
           }
 
-      - name: Set up Lua 5.1
+      - name: Set up MSVC
+        uses: ilammy/msvc-dev-cmd@v1
+
+      - name: Install Lua 5.1
         uses: leafo/gh-actions-lua@v11
         with:
           luaVersion: "5.1.5"
