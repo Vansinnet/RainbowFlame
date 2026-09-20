@@ -17,11 +17,23 @@ local enemy_presets = {
     violet = "content/fx/particles/rainbow_flame/buff_warpfire_violet",
     pink = "content/fx/particles/rainbow_flame/buff_warpfire_pink",
 }
+local impact_effect = "content/fx/particles/weapons/flame_staff/psyker_flame_staff_impact_delay"
+local impact_presets = {
+    { hue = 0, effect = "content/fx/particles/rainbow_flame/psyker_flame_staff_impact_delay_red" },
+    { hue = 30, effect = "content/fx/particles/rainbow_flame/psyker_flame_staff_impact_delay_orange" },
+    { hue = 55, effect = "content/fx/particles/rainbow_flame/psyker_flame_staff_impact_delay_yellow" },
+    { hue = 120, effect = "content/fx/particles/rainbow_flame/psyker_flame_staff_impact_delay_green" },
+    { hue = 180, effect = "content/fx/particles/rainbow_flame/psyker_flame_staff_impact_delay_cyan" },
+    { hue = 240, effect = "content/fx/particles/rainbow_flame/psyker_flame_staff_impact_delay_blue" },
+    { hue = 275, effect = "content/fx/particles/rainbow_flame/psyker_flame_staff_impact_delay_violet" },
+    { hue = 325, effect = "content/fx/particles/rainbow_flame/psyker_flame_staff_impact_delay_pink" },
+}
 local hsv_parameter = "rainbow_flame_hsv_enable"
 local cycle_parameter = "rainbow_flame_cycle"
 local enabled = false
 local revision = 0
 local selected_enemy_effect = enemy_effect
+local selected_impact_effect = impact_effect
 local hsv_box
 local cycle_box
 local stock_box = QuaternionBox(0, 0, 0, 0)
@@ -38,12 +50,30 @@ local stock_box = QuaternionBox(0, 0, 0, 0)
 ---@type table<FlamerGasEffects, RainbowFlameOwnerState>
 local owners = setmetatable({}, { __mode = "k" })
 
+local function impact_effect_for_hue(hue)
+    local selected = impact_presets[1]
+    local selected_distance = math.huge
+    for i = 1, #impact_presets do
+        local preset = impact_presets[i]
+        local distance = math.abs(hue - preset.hue)
+        distance = math.min(distance, 360 - distance)
+        if distance < selected_distance then
+            selected = preset
+            selected_distance = distance
+        end
+    end
+    return selected.effect
+end
+
 local function cache_settings()
     local rainbow = mod:get("rainbow")
     local original = mod:get("original_color") and not rainbow
-    hsv_box = QuaternionBox(mod:get("hue") / 360, 1.0, mod:get("brightness"), original and 0 or 1)
+    local hue = mod:get("hue")
+    local enemy_color = mod:get("enemy_color")
+    hsv_box = QuaternionBox(hue / 360, 1.0, mod:get("brightness"), original and 0 or 1)
     cycle_box = Vector3Box(rainbow and 1 or 0, mod:get("speed"), 0)
-    selected_enemy_effect = enemy_presets[mod:get("enemy_color")] or enemy_effect
+    selected_enemy_effect = enemy_presets[enemy_color] or enemy_effect
+    selected_impact_effect = not original and not rainbow and impact_effect_for_hue(hue) or impact_effect
     revision = revision + 1
 end
 
@@ -141,8 +171,12 @@ mod:hook("FlamerGasEffects", "destroy", function(func, self)
 end)
 
 mod:hook("World", "create_particles", function(func, world, effect_name, position, rotation, scale, particle_group)
-    if not DEDICATED_SERVER and effect_name == enemy_effect then
-        effect_name = selected_enemy_effect
+    if not DEDICATED_SERVER then
+        if effect_name == enemy_effect then
+            effect_name = selected_enemy_effect
+        elseif effect_name == impact_effect then
+            effect_name = selected_impact_effect
+        end
     end
     return func(world, effect_name, position, rotation, scale, particle_group)
 end)

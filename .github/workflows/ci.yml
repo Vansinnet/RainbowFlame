@@ -1,0 +1,104 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: windows-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Verify repository payload manifest
+        shell: pwsh
+        run: |
+          $manifest = Get-Content -LiteralPath "release-manifest.template.json" -Raw | ConvertFrom-Json
+          if ($manifest.schemaVersion -ne 1) {
+              throw "Unsupported release manifest schema."
+          }
+          if (-not $manifest.releaseVersion) {
+              throw "Release version metadata is missing."
+          }
+          foreach ($relativePath in $manifest.payload) {
+              if ([IO.Path]::IsPathRooted($relativePath) -or $relativePath -match '(^|[\\/])\.\.([\\/]|$)') {
+                  throw "Unsafe payload path: $relativePath"
+              }
+              if ($relativePath -match '^(analysis|resource)([\\/]|$)') {
+                  throw "Development evidence cannot be part of the payload: $relativePath"
+              }
+              if (-not (Test-Path -LiteralPath $relativePath -PathType Leaf)) {
+                  throw "Manifest payload file is missing: $relativePath"
+              }
+          }
+
+      - name: Set up Lua 5.1
+        uses: leafo/gh-actions-lua@v11
+        with:
+          luaVersion: "5.1.5"
+
+      - name: Check Lua syntax
+        shell: pwsh
+        run: |
+          $files = @("RainbowFlame.mod") + @(Get-ChildItem -LiteralPath "scripts" -Recurse -File -Filter "*.lua" | ForEach-Object FullName)
+          foreach ($file in $files) {
+              & luac -p -- $file
+              if ($LASTEXITCODE -ne 0) {
+                  throw "Lua syntax check failed: $file"
+              }
+          }
+
+      - name: Discover .NET projects
+        id: dotnet
+        shell: pwsh
+        run: |
+          $solutions = @(Get-ChildItem -Path . -Recurse -File -Filter "*.sln" | Where-Object FullName -NotMatch '[\\/](bin|obj)[\\/]')
+          $projects = @(Get-ChildItem -Path . -Recurse -File -Filter "*.csproj" | Where-Object FullName -NotMatch '[\\/](bin|obj)[\\/]')
+          $hasDotnet = ($solutions.Count + $projects.Count) -gt 0
+          "has_dotnet=$($hasDotnet.ToString().ToLowerInvariant())" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
+
+      - name: Set up .NET
+        if: steps.dotnet.outputs.has_dotnet == 'true'
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            10.0.x
+
+      - name: Restore and build .NET projects
+        if: steps.dotnet.outputs.has_dotnet == 'true'
+        shell: pwsh
+        run: |
+          $solutions = @(Get-ChildItem -Path . -Recurse -File -Filter "*.sln" | Where-Object FullName -NotMatch '[\\/](bin|obj)[\\/]')
+          if ($solutions.Count -gt 0) {
+              $targets = $solutions
+          } else {
+              $targets = @(Get-ChildItem -Path . -Recurse -File -Filter "*.csproj" | Where-Object FullName -NotMatch '[\\/](bin|obj)[\\/]')
+          }
+          foreach ($target in $targets) {
+              dotnet restore $target.FullName
+              if ($LASTEXITCODE -ne 0) { throw "dotnet restore failed: $($target.FullName)" }
+              dotnet build $target.FullName --configuration Release --no-restore
+              if ($LASTEXITCODE -ne 0) { throw "dotnet build failed: $($target.FullName)" }
+          }
+
+      - name: Test .NET projects when present
+        if: steps.dotnet.outputs.has_dotnet == 'true'
+        shell: pwsh
+        run: |
+          $testProjects = @(Get-ChildItem -Path . -Recurse -File -Filter "*.csproj" |
+              Where-Object FullName -NotMatch '[\\/](bin|obj)[\\/]' |
+              Where-Object {
+                  $_.Name -match '(?i)(\.tests?|test)\.csproj$' -or
+                  (Select-String -LiteralPath $_.FullName -Pattern '<IsTestProject>\s*true\s*</IsTestProject>' -Quiet)
+              })
+          if ($testProjects.Count -eq 0) {
+              "No .NET test projects found."
+          }
+          foreach ($project in $testProjects) {
+              dotnet test $project.FullName --configuration Release --no-build
+              if ($LASTEXITCODE -ne 0) { throw "dotnet test failed: $($project.FullName)" }
+          }

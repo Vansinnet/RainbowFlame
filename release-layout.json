@@ -1,0 +1,312 @@
+{
+  "schemaVersion": 1,
+  "profile": "installer",
+  "package": {
+    "payload": [
+      {
+        "source": "RainbowFlame.mod",
+        "destination": "RainbowFlame/RainbowFlame.mod"
+      },
+      {
+        "source": "scripts/mods/RainbowFlame/RainbowFlame.lua",
+        "destination": "RainbowFlame/scripts/mods/RainbowFlame/RainbowFlame.lua"
+      },
+      {
+        "source": "scripts/mods/RainbowFlame/RainbowFlame_data.lua",
+        "destination": "RainbowFlame/scripts/mods/RainbowFlame/RainbowFlame_data.lua"
+      },
+      {
+        "source": "scripts/mods/RainbowFlame/RainbowFlame_localization.lua",
+        "destination": "RainbowFlame/scripts/mods/RainbowFlame/RainbowFlame_localization.lua"
+      },
+      {
+        "source": "payload/manifest.json",
+        "destination": "payload/manifest.json"
+      },
+      {
+        "source": "payload/inserts/enemy-global.bin",
+        "destination": "payload/inserts/enemy-global.bin"
+      },
+      {
+        "source": "payload/inserts/impact-global.bin",
+        "destination": "payload/inserts/impact-global.bin"
+      },
+      {
+        "source": "payload/inserts/mod-RainbowFlame-lua.bin",
+        "destination": "payload/inserts/mod-RainbowFlame-lua.bin"
+      },
+      {
+        "source": "payload/inserts/mod-RainbowFlame-mod.bin",
+        "destination": "payload/inserts/mod-RainbowFlame-mod.bin"
+      },
+      {
+        "source": "payload/inserts/mod-RainbowFlame_data-lua.bin",
+        "destination": "payload/inserts/mod-RainbowFlame_data-lua.bin"
+      },
+      {
+        "source": "payload/inserts/mod-RainbowFlame_localization-lua.bin",
+        "destination": "payload/inserts/mod-RainbowFlame_localization-lua.bin"
+      },
+      {
+        "source": "payload/inserts/staff-49.bin",
+        "destination": "payload/inserts/staff-49.bin"
+      },
+      {
+        "source": "payload/inserts/staff-a8.bin",
+        "destination": "payload/inserts/staff-a8.bin"
+      },
+      {
+        "source": "payload/inserts/staff-cloud.bin",
+        "destination": "payload/inserts/staff-cloud.bin"
+      },
+      {
+        "source": "payload/inserts/stream-0fb83861b4678991.bin",
+        "destination": "payload/inserts/stream-0fb83861b4678991.bin"
+      },
+      {
+        "source": "payload/inserts/stream-16f192bd60914c73.bin",
+        "destination": "payload/inserts/stream-16f192bd60914c73.bin"
+      },
+      {
+        "source": "payload/inserts/stream-466a37a1b48d4aef.bin",
+        "destination": "payload/inserts/stream-466a37a1b48d4aef.bin"
+      },
+      {
+        "source": "payload/inserts/stream-4b81288c5455597c.bin",
+        "destination": "payload/inserts/stream-4b81288c5455597c.bin"
+      },
+      {
+        "source": "payload/inserts/stream-4e1b335ebbd4f33f.bin",
+        "destination": "payload/inserts/stream-4e1b335ebbd4f33f.bin"
+      },
+      {
+        "source": "payload/inserts/stream-550feb5374742368.bin",
+        "destination": "payload/inserts/stream-550feb5374742368.bin"
+      },
+      {
+        "source": "payload/inserts/stream-5c2550b09227a9e4.bin",
+        "destination": "payload/inserts/stream-5c2550b09227a9e4.bin"
+      },
+      {
+        "source": "payload/inserts/stream-5d0509aa059fa83b.bin",
+        "destination": "payload/inserts/stream-5d0509aa059fa83b.bin"
+      },
+      {
+        "source": "payload/inserts/stream-5e046cad1e9570d7.bin",
+        "destination": "payload/inserts/stream-5e046cad1e9570d7.bin"
+      },
+      {
+        "source": "payload/inserts/stream-625c6576926fd717.bin",
+        "destination": "payload/inserts/stream-625c6576926fd717.bin"
+      },
+      {
+        "source": "payload/inserts/stream-635c81c8bc9bb9ec.bin",
+        "destination": "payload/inserts/stream-635c81c8bc9bb9ec.bin"
+      },
+      {
+        "source": "payload/inserts/stream-75d24ca153c1d946.bin",
+        "destination": "payload/inserts/stream-75d24ca153c1d946.bin"
+      },
+      {
+        "source": "payload/inserts/stream-b01f09bf94fc223f.bin",
+        "destination": "payload/inserts/stream-b01f09bf94fc223f.bin"
+      },
+      {
+        "source": "payload/inserts/stream-c3bf0df14c8747ce.bin",
+        "destination": "payload/inserts/stream-c3bf0df14c8747ce.bin"
+      },
+      {
+        "source": "payload/inserts/stream-d1fee88b85bacdd3.bin",
+        "destination": "payload/inserts/stream-d1fee88b85bacdd3.bin"
+      },
+      {
+        "source": "payload/inserts/stream-04e95479823ac0f9.bin",
+        "destination": "payload/inserts/stream-04e95479823ac0f9.bin"
+      },
+      {
+        "source": "payload/inserts/stream-05428f144c632e24.bin",
+        "destination": "payload/inserts/stream-05428f144c632e24.bin"
+      },
+      {
+        "source": "payload/inserts/stream-0c5878077477373e.bin",
+        "destination": "payload/inserts/stream-0c5878077477373e.bin"
+      },
+      {
+        "source": "payload/inserts/stream-0d370a35935e3506.bin",
+        "destination": "payload/inserts/stream-0d370a35935e3506.bin"
+      },
+      {
+        "source": "payload/inserts/stream-24c175517d77e118.bin",
+        "destination": "payload/inserts/stream-24c175517d77e118.bin"
+      },
+      {
+        "source": "payload/inserts/stream-265c1392df7b0472.bin",
+        "destination": "payload/inserts/stream-265c1392df7b0472.bin"
+      },
+      {
+        "source": "payload/inserts/stream-2948d23cc301dd63.bin",
+        "destination": "payload/inserts/stream-2948d23cc301dd63.bin"
+      },
+      {
+        "source": "payload/inserts/stream-37d59d6bfeb92421.bin",
+        "destination": "payload/inserts/stream-37d59d6bfeb92421.bin"
+      },
+      {
+        "source": "payload/inserts/stream-423a188c11c14450.bin",
+        "destination": "payload/inserts/stream-423a188c11c14450.bin"
+      },
+      {
+        "source": "payload/inserts/stream-44832df977e2f051.bin",
+        "destination": "payload/inserts/stream-44832df977e2f051.bin"
+      },
+      {
+        "source": "payload/inserts/stream-44af2559b1a4e6be.bin",
+        "destination": "payload/inserts/stream-44af2559b1a4e6be.bin"
+      },
+      {
+        "source": "payload/inserts/stream-48af1564db005c69.bin",
+        "destination": "payload/inserts/stream-48af1564db005c69.bin"
+      },
+      {
+        "source": "payload/inserts/stream-4adbe0c3da4010ea.bin",
+        "destination": "payload/inserts/stream-4adbe0c3da4010ea.bin"
+      },
+      {
+        "source": "payload/inserts/stream-5039a4e14df73763.bin",
+        "destination": "payload/inserts/stream-5039a4e14df73763.bin"
+      },
+      {
+        "source": "payload/inserts/stream-711b575363326128.bin",
+        "destination": "payload/inserts/stream-711b575363326128.bin"
+      },
+      {
+        "source": "payload/inserts/stream-82c88f66574d6e04.bin",
+        "destination": "payload/inserts/stream-82c88f66574d6e04.bin"
+      },
+      {
+        "source": "payload/inserts/stream-959d99bc0ea69d3e.bin",
+        "destination": "payload/inserts/stream-959d99bc0ea69d3e.bin"
+      },
+      {
+        "source": "payload/inserts/stream-967c273c45dae258.bin",
+        "destination": "payload/inserts/stream-967c273c45dae258.bin"
+      },
+      {
+        "source": "payload/inserts/stream-9bf2021b9e459c76.bin",
+        "destination": "payload/inserts/stream-9bf2021b9e459c76.bin"
+      },
+      {
+        "source": "payload/inserts/stream-9fcc61980548fb93.bin",
+        "destination": "payload/inserts/stream-9fcc61980548fb93.bin"
+      },
+      {
+        "source": "payload/inserts/stream-a4143e74c781ffed.bin",
+        "destination": "payload/inserts/stream-a4143e74c781ffed.bin"
+      },
+      {
+        "source": "payload/inserts/stream-bb115a95c59906eb.bin",
+        "destination": "payload/inserts/stream-bb115a95c59906eb.bin"
+      },
+      {
+        "source": "payload/inserts/stream-bb23bd1f080c951f.bin",
+        "destination": "payload/inserts/stream-bb23bd1f080c951f.bin"
+      },
+      {
+        "source": "payload/inserts/stream-bb7149c81b265669.bin",
+        "destination": "payload/inserts/stream-bb7149c81b265669.bin"
+      },
+      {
+        "source": "payload/inserts/stream-c6a756d4baa41606.bin",
+        "destination": "payload/inserts/stream-c6a756d4baa41606.bin"
+      },
+      {
+        "source": "payload/inserts/stream-c6d45135afea7b26.bin",
+        "destination": "payload/inserts/stream-c6d45135afea7b26.bin"
+      },
+      {
+        "source": "payload/inserts/stream-c6df9b56bf43a86e.bin",
+        "destination": "payload/inserts/stream-c6df9b56bf43a86e.bin"
+      },
+      {
+        "source": "payload/inserts/stream-d194f7e48540be15.bin",
+        "destination": "payload/inserts/stream-d194f7e48540be15.bin"
+      },
+      {
+        "source": "payload/inserts/stream-e9db71adf077d8e3.bin",
+        "destination": "payload/inserts/stream-e9db71adf077d8e3.bin"
+      },
+      {
+        "source": "payload/inserts/stream-eb22e9e523c6bd4b.bin",
+        "destination": "payload/inserts/stream-eb22e9e523c6bd4b.bin"
+      },
+      {
+        "source": "payload/inserts/stream-eb8b192632de716f.bin",
+        "destination": "payload/inserts/stream-eb8b192632de716f.bin"
+      },
+      {
+        "source": "payload/inserts/stream-f493e7d98ae95981.bin",
+        "destination": "payload/inserts/stream-f493e7d98ae95981.bin"
+      },
+      {
+        "source": "payload/inserts/stream-fb32077a4c21f759.bin",
+        "destination": "payload/inserts/stream-fb32077a4c21f759.bin"
+      }
+    ],
+    "documentation": [
+      {
+        "source": "README.md",
+        "destination": "README.md"
+      }
+    ],
+    "licenses": [
+      {
+        "source": "LICENSE",
+        "destination": "LICENSE"
+      },
+      {
+        "source": "NOTICE",
+        "destination": "NOTICE"
+      }
+    ]
+  },
+  "installer": {
+    "project": "installer/RainbowFlame.Installer/RainbowFlame.Installer.csproj",
+    "buildInputs": [
+      "installer/Directory.Build.props",
+      "installer/RainbowFlame.Installer/RainbowFlame.Installer.csproj",
+      "installer/RainbowFlame.Installer/Program.cs",
+      "installer/RainbowFlame.Installer/MainForm.cs",
+      "installer/RainbowFlame.Installer/app.manifest",
+      "installer/RainbowFlame.Installer.Core/RainbowFlame.Installer.Core.csproj",
+      "installer/RainbowFlame.Installer.Core/Delta.cs",
+      "installer/RainbowFlame.Installer.Core/Discovery.cs",
+      "installer/RainbowFlame.Installer.Core/InstallerEngine.cs",
+      "installer/RainbowFlame.Installer.Core/LoadOrder.cs",
+      "installer/RainbowFlame.Installer.Core/Model.cs",
+      "installer/RainbowFlame.Installer.Core/Safety.cs"
+    ],
+    "configuration": "Release",
+    "outputFiles": [
+      {
+        "source": "RainbowFlame.Installer.exe",
+        "destination": "RainbowFlame.Installer.exe"
+      },
+      {
+        "source": "RainbowFlame.Installer.dll",
+        "destination": "RainbowFlame.Installer.dll"
+      },
+      {
+        "source": "RainbowFlame.Installer.Core.dll",
+        "destination": "RainbowFlame.Installer.Core.dll"
+      },
+      {
+        "source": "RainbowFlame.Installer.deps.json",
+        "destination": "RainbowFlame.Installer.deps.json"
+      },
+      {
+        "source": "RainbowFlame.Installer.runtimeconfig.json",
+        "destination": "RainbowFlame.Installer.runtimeconfig.json"
+      }
+    ]
+  }
+}

@@ -1,7 +1,7 @@
 {
   "format": 1,
   "product": "RainbowFlame",
-  "version": "1.0.0",
+  "version": "1.0.0-rc7",
   "steamAppId": "1361210",
   "steamBuild": "24735202",
   "exeVersion": "1.3.770.210",
@@ -41437,22 +41437,272 @@
       ]
     },
     {
+      "id": "impact-global",
+      "target": "bundle/97498862fb42b0d6",
+      "base": "bundle/97498862fb42b0d6",
+      "baseSize": 230018,
+      "baseSha256": "7d48b146e33c023586c37e427c3e941063f86801ce8b0047f962f193bd746dad",
+      "outputSize": 525984,
+      "outputSha256": "6554b503d9965c33bf8c711c880e8d1c5c399d555948a17f28a4e7efefa8cdef",
+      "payload": "inserts/impact-global.bin",
+      "payloadSize": 301697,
+      "payloadSha256": "d4b42163802c6719393f22baae707d1c77be6fd55fe87d46a325216fa48c3e19",
+      "addition": false,
+      "operations": [
+        {
+          "kind": "Insert",
+          "offset": 0,
+          "count": 16
+        },
+        {
+          "kind": "Copy",
+          "offset": 16,
+          "count": 852
+        },
+        {
+          "kind": "Insert",
+          "offset": 16,
+          "count": 10884
+        },
+        {
+          "kind": "Copy",
+          "offset": 1600,
+          "count": 14798
+        },
+        {
+          "kind": "Insert",
+          "offset": 10900,
+          "count": 1013
+        },
+        {
+          "kind": "Copy",
+          "offset": 17040,
+          "count": 10766
+        },
+        {
+          "kind": "Insert",
+          "offset": 11913,
+          "count": 8
+        },
+        {
+          "kind": "Copy",
+          "offset": 27808,
+          "count": 4329
+        },
+        {
+          "kind": "Insert",
+          "offset": 11921,
+          "count": 325
+        },
+        {
+          "kind": "Copy",
+          "offset": 32224,
+          "count": 31022
+        },
+        {
+          "kind": "Insert",
+          "offset": 12246,
+          "count": 14
+        },
+        {
+          "kind": "Copy",
+          "offset": 63248,
+          "count": 1293
+        },
+        {
+          "kind": "Insert",
+          "offset": 12260,
+          "count": 339
+        },
+        {
+          "kind": "Copy",
+          "offset": 64624,
+          "count": 15862
+        },
+        {
+          "kind": "Insert",
+          "offset": 12599,
+          "count": 15
+        },
+        {
+          "kind": "Copy",
+          "offset": 80496,
+          "count": 2269
+        },
+        {
+          "kind": "Insert",
+          "offset": 12614,
+          "count": 8
+        },
+        {
+          "kind": "Copy",
+          "offset": 82768,
+          "count": 18821
+        },
+        {
+          "kind": "Insert",
+          "offset": 12622,
+          "count": 16
+        },
+        {
+          "kind": "Copy",
+          "offset": 101600,
+          "count": 554
+        },
+        {
+          "kind": "Insert",
+          "offset": 12638,
+          "count": 34
+        },
+        {
+          "kind": "Copy",
+          "offset": 102176,
+          "count": 1430
+        },
+        {
+          "kind": "Insert",
+          "offset": 12672,
+          "count": 374
+        },
+        {
+          "kind": "Copy",
+          "offset": 103696,
+          "count": 17726
+        },
+        {
+          "kind": "Insert",
+          "offset": 13046,
+          "count": 9
+        },
+        {
+          "kind": "Copy",
+          "offset": 122544,
+          "count": 3589
+        },
+        {
+          "kind": "Insert",
+          "offset": 13055,
+          "count": 1010
+        },
+        {
+          "kind": "Copy",
+          "offset": 126768,
+          "count": 10487
+        },
+        {
+          "kind": "Insert",
+          "offset": 14065,
+          "count": 18
+        },
+        {
+          "kind": "Copy",
+          "offset": 137264,
+          "count": 1617
+        },
+        {
+          "kind": "Insert",
+          "offset": 14083,
+          "count": 100
+        },
+        {
+          "kind": "Copy",
+          "offset": 138960,
+          "count": 2686
+        },
+        {
+          "kind": "Insert",
+          "offset": 14183,
+          "count": 316
+        },
+        {
+          "kind": "Copy",
+          "offset": 141728,
+          "count": 17216
+        },
+        {
+          "kind": "Insert",
+          "offset": 14499,
+          "count": 972
+        },
+        {
+          "kind": "Copy",
+          "offset": 159472,
+          "count": 27828
+        },
+        {
+          "kind": "Insert",
+          "offset": 15471,
+          "count": 334
+        },
+        {
+          "kind": "Copy",
+          "offset": 187376,
+          "count": 12102
+        },
+        {
+          "kind": "Insert",
+          "offset": 15805,
+          "count": 15
+        },
+        {
+          "kind": "Copy",
+          "offset": 199488,
+          "count": 6637
+        },
+        {
+          "kind": "Insert",
+          "offset": 15820,
+          "count": 8
+        },
+        {
+          "kind": "Copy",
+          "offset": 206128,
+          "count": 8582
+        },
+        {
+          "kind": "Insert",
+          "offset": 15828,
+          "count": 15
+        },
+        {
+          "kind": "Copy",
+          "offset": 214720,
+          "count": 1597
+        },
+        {
+          "kind": "Insert",
+          "offset": 15843,
+          "count": 341
+        },
+        {
+          "kind": "Copy",
+          "offset": 216416,
+          "count": 12224
+        },
+        {
+          "kind": "Insert",
+          "offset": 16184,
+          "count": 285513
+        }
+      ]
+    },
+    {
       "id": "mod-RainbowFlame-lua",
       "target": "mods/RainbowFlame/scripts/mods/RainbowFlame/RainbowFlame.lua",
       "base": null,
       "baseSize": 0,
       "baseSha256": null,
-      "outputSize": 6002,
-      "outputSha256": "99c36e211bbcff7eb8e08c04e24b1821ad9b6c17b769fcfc8acb1d7b0aa3e732",
+      "outputSize": 7755,
+      "outputSha256": "d98641c06e975e6e557a2f049a4be1ea082e018f05b07c9150a1cd14d80ceb78",
       "payload": "inserts/mod-RainbowFlame-lua.bin",
-      "payloadSize": 6002,
-      "payloadSha256": "99c36e211bbcff7eb8e08c04e24b1821ad9b6c17b769fcfc8acb1d7b0aa3e732",
+      "payloadSize": 7755,
+      "payloadSha256": "d98641c06e975e6e557a2f049a4be1ea082e018f05b07c9150a1cd14d80ceb78",
       "addition": true,
       "operations": [
         {
           "kind": "Insert",
           "offset": 0,
-          "count": 6002
+          "count": 7755
         }
       ]
     },
@@ -41502,17 +41752,17 @@
       "base": null,
       "baseSize": 0,
       "baseSha256": null,
-      "outputSize": 4150,
-      "outputSha256": "e723fc9b765151ff541ec8f384b76cfcab4c90f595167b5f2fddcbbea2aa1e96",
+      "outputSize": 2386,
+      "outputSha256": "8e619e43f448dc2b6f36c7234557b4637a4c572c02304249d783405fc26f3cf2",
       "payload": "inserts/mod-RainbowFlame_localization-lua.bin",
-      "payloadSize": 4150,
-      "payloadSha256": "e723fc9b765151ff541ec8f384b76cfcab4c90f595167b5f2fddcbbea2aa1e96",
+      "payloadSize": 2386,
+      "payloadSha256": "8e619e43f448dc2b6f36c7234557b4637a4c572c02304249d783405fc26f3cf2",
       "addition": true,
       "operations": [
         {
           "kind": "Insert",
           "offset": 0,
-          "count": 4150
+          "count": 2386
         }
       ]
     },
@@ -42152,6 +42402,346 @@
       ]
     },
     {
+      "id": "stream-04e95479823ac0f9",
+      "target": "bundle/data/rf/04e95479823ac0f9",
+      "base": "bundle/data/bb/bb79ba7a5b92d132",
+      "baseSize": 337248,
+      "baseSha256": "7e072a559e0c2d77f762c12bde0214521e925d235e2ae17c75ff7605f9a6b35c",
+      "outputSize": 392368,
+      "outputSha256": "312e7e365f6559ddb845565ccaef5713045f45d6982ce161326e98cdaa4a78d0",
+      "payload": "inserts/stream-04e95479823ac0f9.bin",
+      "payloadSize": 126260,
+      "payloadSha256": "ec75cf1c152cf50f7404e0a391ea757a4f27d88259d87b324a7b9ff93d31608c",
+      "addition": true,
+      "operations": [
+        {
+          "kind": "Insert",
+          "offset": 0,
+          "count": 32
+        },
+        {
+          "kind": "Copy",
+          "offset": 32,
+          "count": 384
+        },
+        {
+          "kind": "Insert",
+          "offset": 32,
+          "count": 32
+        },
+        {
+          "kind": "Copy",
+          "offset": 448,
+          "count": 40323
+        },
+        {
+          "kind": "Insert",
+          "offset": 64,
+          "count": 4409
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 4473,
+          "count": 11357
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 15830,
+          "count": 12
+        },
+        {
+          "kind": "Copy",
+          "offset": 51088,
+          "count": 29427
+        },
+        {
+          "kind": "Insert",
+          "offset": 15842,
+          "count": 4409
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 20251,
+          "count": 11357
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 31608,
+          "count": 12
+        },
+        {
+          "kind": "Copy",
+          "offset": 90832,
+          "count": 29156
+        },
+        {
+          "kind": "Insert",
+          "offset": 31620,
+          "count": 4409
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 36029,
+          "count": 11357
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 47386,
+          "count": 11
+        },
+        {
+          "kind": "Copy",
+          "offset": 130304,
+          "count": 29089
+        },
+        {
+          "kind": "Insert",
+          "offset": 47397,
+          "count": 4409
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 51806,
+          "count": 11357
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 63163,
+          "count": 14
+        },
+        {
+          "kind": "Copy",
+          "offset": 169712,
+          "count": 28967
+        },
+        {
+          "kind": "Insert",
+          "offset": 63177,
+          "count": 4409
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 67586,
+          "count": 11357
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 30204
+        },
+        {
+          "kind": "Insert",
+          "offset": 78943,
+          "count": 4409
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 83352,
+          "count": 11357
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 94709,
+          "count": 3
+        },
+        {
+          "kind": "Copy",
+          "offset": 248352,
+          "count": 26190
+        },
+        {
+          "kind": "Insert",
+          "offset": 94712,
+          "count": 4409
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 99121,
+          "count": 11357
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 110478,
+          "count": 1
+        },
+        {
+          "kind": "Copy",
+          "offset": 284848,
+          "count": 28688
+        },
+        {
+          "kind": "Insert",
+          "offset": 110479,
+          "count": 4409
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 114888,
+          "count": 11357
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 126245,
+          "count": 15
+        },
+        {
+          "kind": "Copy",
+          "offset": 323856,
+          "count": 13392
+        }
+      ]
+    },
+    {
+      "id": "stream-05428f144c632e24",
+      "target": "bundle/data/rf/05428f144c632e24",
+      "base": "bundle/data/d5/d54eeb584a215210",
+      "baseSize": 324,
+      "baseSha256": "66100d4107564ba2f97c75998488480994ef2ffecc76869e8cbec74c07be0561",
+      "outputSize": 324,
+      "outputSha256": "7948b96c70bb379f252e42ae44431315d92de4d65e15b2670eb67580278066f9",
+      "payload": "inserts/stream-05428f144c632e24.bin",
+      "payloadSize": 48,
+      "payloadSha256": "e819ad7294236e7114e72c909037fc96c14023b3c941ffb30a6565c6e39152e9",
+      "addition": true,
+      "operations": [
+        {
+          "kind": "Insert",
+          "offset": 0,
+          "count": 48
+        },
+        {
+          "kind": "Copy",
+          "offset": 48,
+          "count": 276
+        }
+      ]
+    },
+    {
+      "id": "stream-0c5878077477373e",
+      "target": "bundle/data/rf/0c5878077477373e",
+      "base": "bundle/data/4c/4c2838a126b34a02",
+      "baseSize": 328,
+      "baseSha256": "45cecdf4f460ce4a3d9f8ed909fe50fd19fb0f1e984f0b9825af857b1a3c35a9",
+      "outputSize": 328,
+      "outputSha256": "168ab602b4a28d4cd2c3d7663008800278a768e567de4d6b2ae75ab2a6935ed5",
+      "payload": "inserts/stream-0c5878077477373e.bin",
+      "payloadSize": 48,
+      "payloadSha256": "88796f72d96a9bcbafb135fadb35bd4073280f9e065ea4d51c49f3760d119fc8",
+      "addition": true,
+      "operations": [
+        {
+          "kind": "Insert",
+          "offset": 0,
+          "count": 48
+        },
+        {
+          "kind": "Copy",
+          "offset": 48,
+          "count": 280
+        }
+      ]
+    },
+    {
+      "id": "stream-0d370a35935e3506",
+      "target": "bundle/data/rf/0d370a35935e3506",
+      "base": "bundle/data/d5/d54eeb584a215210",
+      "baseSize": 324,
+      "baseSha256": "66100d4107564ba2f97c75998488480994ef2ffecc76869e8cbec74c07be0561",
+      "outputSize": 324,
+      "outputSha256": "8bfc9c92dcbf15be5f316c3296426134a7746f6c6c22266aadbbdfce98301cd0",
+      "payload": "inserts/stream-0d370a35935e3506.bin",
+      "payloadSize": 48,
+      "payloadSha256": "2f99b2948e51ddae3460489b53a362af1507bf8ff5177b9918fae2f6e1c3f983",
+      "addition": true,
+      "operations": [
+        {
+          "kind": "Insert",
+          "offset": 0,
+          "count": 48
+        },
+        {
+          "kind": "Copy",
+          "offset": 48,
+          "count": 276
+        }
+      ]
+    },
+    {
       "id": "stream-0fb83861b4678991",
       "target": "bundle/data/rf/0fb83861b4678991",
       "base": "bundle/data/a4/a40299ecf616514c",
@@ -42612,6 +43202,821 @@
       ]
     },
     {
+      "id": "stream-24c175517d77e118",
+      "target": "bundle/data/rf/24c175517d77e118",
+      "base": "bundle/data/3b/3b36696951142a11",
+      "baseSize": 324,
+      "baseSha256": "844a8628c340c4cfc0c8263bab9a97af230832ca20043f5be4d6d40e822c62f0",
+      "outputSize": 324,
+      "outputSha256": "17e582af779e72aa498f22fbf9402d89cfe6fc604aa77bc7cfc220f673b5cabb",
+      "payload": "inserts/stream-24c175517d77e118.bin",
+      "payloadSize": 48,
+      "payloadSha256": "edbd146c7d45be9c08c94ec8480cf77fb57dd54110730cebe95d19e9f1cd4d7d",
+      "addition": true,
+      "operations": [
+        {
+          "kind": "Insert",
+          "offset": 0,
+          "count": 48
+        },
+        {
+          "kind": "Copy",
+          "offset": 48,
+          "count": 276
+        }
+      ]
+    },
+    {
+      "id": "stream-265c1392df7b0472",
+      "target": "bundle/data/rf/265c1392df7b0472",
+      "base": "bundle/data/d5/d54eeb584a215210",
+      "baseSize": 324,
+      "baseSha256": "66100d4107564ba2f97c75998488480994ef2ffecc76869e8cbec74c07be0561",
+      "outputSize": 324,
+      "outputSha256": "e2c31abe01009b000035446b2a413a024b6c57421650d570eb525ed45d02a82f",
+      "payload": "inserts/stream-265c1392df7b0472.bin",
+      "payloadSize": 48,
+      "payloadSha256": "362d8db4b8c6e93c53d8627704b1bc314c9a2c211ecc799f31de7c03f582f8ed",
+      "addition": true,
+      "operations": [
+        {
+          "kind": "Insert",
+          "offset": 0,
+          "count": 48
+        },
+        {
+          "kind": "Copy",
+          "offset": 48,
+          "count": 276
+        }
+      ]
+    },
+    {
+      "id": "stream-2948d23cc301dd63",
+      "target": "bundle/data/rf/2948d23cc301dd63",
+      "base": "bundle/data/d5/d54eeb584a215210",
+      "baseSize": 324,
+      "baseSha256": "66100d4107564ba2f97c75998488480994ef2ffecc76869e8cbec74c07be0561",
+      "outputSize": 324,
+      "outputSha256": "4cb378da9108dfda054f3e26e97bd50e7caee2122403127761fec44100b33d12",
+      "payload": "inserts/stream-2948d23cc301dd63.bin",
+      "payloadSize": 48,
+      "payloadSha256": "581d3afe2e775defa79078fff3c9f4b56caa3bb1341d1c55feeb5d2b11e8f73c",
+      "addition": true,
+      "operations": [
+        {
+          "kind": "Insert",
+          "offset": 0,
+          "count": 48
+        },
+        {
+          "kind": "Copy",
+          "offset": 48,
+          "count": 276
+        }
+      ]
+    },
+    {
+      "id": "stream-37d59d6bfeb92421",
+      "target": "bundle/data/rf/37d59d6bfeb92421",
+      "base": "bundle/data/4c/4c2838a126b34a02",
+      "baseSize": 328,
+      "baseSha256": "45cecdf4f460ce4a3d9f8ed909fe50fd19fb0f1e984f0b9825af857b1a3c35a9",
+      "outputSize": 328,
+      "outputSha256": "31588e76d4e85801a63679ae10f26bfac51cb3b10f5786143df8e165033e2f5b",
+      "payload": "inserts/stream-37d59d6bfeb92421.bin",
+      "payloadSize": 48,
+      "payloadSha256": "1ad53084074132c1fdf9ff6430d6c65cf12fe3dd87e01c348ac59cd09b4b60b5",
+      "addition": true,
+      "operations": [
+        {
+          "kind": "Insert",
+          "offset": 0,
+          "count": 48
+        },
+        {
+          "kind": "Copy",
+          "offset": 48,
+          "count": 280
+        }
+      ]
+    },
+    {
+      "id": "stream-423a188c11c14450",
+      "target": "bundle/data/rf/423a188c11c14450",
+      "base": "bundle/data/bb/bb79ba7a5b92d132",
+      "baseSize": 337248,
+      "baseSha256": "7e072a559e0c2d77f762c12bde0214521e925d235e2ae17c75ff7605f9a6b35c",
+      "outputSize": 392208,
+      "outputSha256": "f579c77994221e760154c63fddb91878826e07d390bd9c8f1a2cb54c7f344c49",
+      "payload": "inserts/stream-423a188c11c14450.bin",
+      "payloadSize": 126100,
+      "payloadSha256": "a4393a41b3e077ba79139fb7c14c88af8a55ec7f9a8c4892c2b19b56da713d56",
+      "addition": true,
+      "operations": [
+        {
+          "kind": "Insert",
+          "offset": 0,
+          "count": 32
+        },
+        {
+          "kind": "Copy",
+          "offset": 32,
+          "count": 384
+        },
+        {
+          "kind": "Insert",
+          "offset": 32,
+          "count": 32
+        },
+        {
+          "kind": "Copy",
+          "offset": 448,
+          "count": 40323
+        },
+        {
+          "kind": "Insert",
+          "offset": 64,
+          "count": 4409
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 4473,
+          "count": 11337
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 15810,
+          "count": 12
+        },
+        {
+          "kind": "Copy",
+          "offset": 51088,
+          "count": 29427
+        },
+        {
+          "kind": "Insert",
+          "offset": 15822,
+          "count": 4409
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 20231,
+          "count": 11337
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 31568,
+          "count": 12
+        },
+        {
+          "kind": "Copy",
+          "offset": 90832,
+          "count": 29156
+        },
+        {
+          "kind": "Insert",
+          "offset": 31580,
+          "count": 4409
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 35989,
+          "count": 11337
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 47326,
+          "count": 11
+        },
+        {
+          "kind": "Copy",
+          "offset": 130304,
+          "count": 29089
+        },
+        {
+          "kind": "Insert",
+          "offset": 47337,
+          "count": 4409
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 51746,
+          "count": 11337
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 63083,
+          "count": 14
+        },
+        {
+          "kind": "Copy",
+          "offset": 169712,
+          "count": 28967
+        },
+        {
+          "kind": "Insert",
+          "offset": 63097,
+          "count": 4409
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 67506,
+          "count": 11337
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 30204
+        },
+        {
+          "kind": "Insert",
+          "offset": 78843,
+          "count": 4409
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 83252,
+          "count": 11337
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 94589,
+          "count": 3
+        },
+        {
+          "kind": "Copy",
+          "offset": 248352,
+          "count": 26190
+        },
+        {
+          "kind": "Insert",
+          "offset": 94592,
+          "count": 4409
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 99001,
+          "count": 11337
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 110338,
+          "count": 1
+        },
+        {
+          "kind": "Copy",
+          "offset": 284848,
+          "count": 28688
+        },
+        {
+          "kind": "Insert",
+          "offset": 110339,
+          "count": 4409
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 114748,
+          "count": 11337
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 126085,
+          "count": 15
+        },
+        {
+          "kind": "Copy",
+          "offset": 323856,
+          "count": 13392
+        }
+      ]
+    },
+    {
+      "id": "stream-44832df977e2f051",
+      "target": "bundle/data/rf/44832df977e2f051",
+      "base": "bundle/data/3b/3b36696951142a11",
+      "baseSize": 324,
+      "baseSha256": "844a8628c340c4cfc0c8263bab9a97af230832ca20043f5be4d6d40e822c62f0",
+      "outputSize": 324,
+      "outputSha256": "a0a9e62752218417968ecae41dcbe82ec5da04d95889ceec0cd9f71c7ad98479",
+      "payload": "inserts/stream-44832df977e2f051.bin",
+      "payloadSize": 48,
+      "payloadSha256": "581d3afe2e775defa79078fff3c9f4b56caa3bb1341d1c55feeb5d2b11e8f73c",
+      "addition": true,
+      "operations": [
+        {
+          "kind": "Insert",
+          "offset": 0,
+          "count": 48
+        },
+        {
+          "kind": "Copy",
+          "offset": 48,
+          "count": 276
+        }
+      ]
+    },
+    {
+      "id": "stream-44af2559b1a4e6be",
+      "target": "bundle/data/rf/44af2559b1a4e6be",
+      "base": "bundle/data/bb/bb79ba7a5b92d132",
+      "baseSize": 337248,
+      "baseSha256": "7e072a559e0c2d77f762c12bde0214521e925d235e2ae17c75ff7605f9a6b35c",
+      "outputSize": 391856,
+      "outputSha256": "c6e6aba558536340fbf6f0a5a696296f67eb1bb974555fc1aad4f8fd7765ecdf",
+      "payload": "inserts/stream-44af2559b1a4e6be.bin",
+      "payloadSize": 115660,
+      "payloadSha256": "f87cfa7b0c65862574bf90afdf4e9f2bff585219673d5d282dc4c887ae7345be",
+      "addition": true,
+      "operations": [
+        {
+          "kind": "Insert",
+          "offset": 0,
+          "count": 32
+        },
+        {
+          "kind": "Copy",
+          "offset": 32,
+          "count": 384
+        },
+        {
+          "kind": "Insert",
+          "offset": 32,
+          "count": 32
+        },
+        {
+          "kind": "Copy",
+          "offset": 448,
+          "count": 40323
+        },
+        {
+          "kind": "Insert",
+          "offset": 64,
+          "count": 2172
+        },
+        {
+          "kind": "Copy",
+          "offset": 121008,
+          "count": 903
+        },
+        {
+          "kind": "Insert",
+          "offset": 2236,
+          "count": 1334
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 3570,
+          "count": 1673
+        },
+        {
+          "kind": "Copy",
+          "offset": 203296,
+          "count": 358
+        },
+        {
+          "kind": "Insert",
+          "offset": 5243,
+          "count": 9262
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 14505,
+          "count": 12
+        },
+        {
+          "kind": "Copy",
+          "offset": 51088,
+          "count": 29427
+        },
+        {
+          "kind": "Insert",
+          "offset": 14517,
+          "count": 2172
+        },
+        {
+          "kind": "Copy",
+          "offset": 121008,
+          "count": 903
+        },
+        {
+          "kind": "Insert",
+          "offset": 16689,
+          "count": 1334
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 18023,
+          "count": 1673
+        },
+        {
+          "kind": "Copy",
+          "offset": 203296,
+          "count": 358
+        },
+        {
+          "kind": "Insert",
+          "offset": 19696,
+          "count": 9262
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 28958,
+          "count": 12
+        },
+        {
+          "kind": "Copy",
+          "offset": 90832,
+          "count": 29156
+        },
+        {
+          "kind": "Insert",
+          "offset": 28970,
+          "count": 2172
+        },
+        {
+          "kind": "Copy",
+          "offset": 121008,
+          "count": 903
+        },
+        {
+          "kind": "Insert",
+          "offset": 31142,
+          "count": 1334
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 32476,
+          "count": 1673
+        },
+        {
+          "kind": "Copy",
+          "offset": 203296,
+          "count": 358
+        },
+        {
+          "kind": "Insert",
+          "offset": 34149,
+          "count": 9262
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 43411,
+          "count": 11
+        },
+        {
+          "kind": "Copy",
+          "offset": 130304,
+          "count": 29089
+        },
+        {
+          "kind": "Insert",
+          "offset": 43422,
+          "count": 2172
+        },
+        {
+          "kind": "Copy",
+          "offset": 121008,
+          "count": 903
+        },
+        {
+          "kind": "Insert",
+          "offset": 45594,
+          "count": 1334
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 46928,
+          "count": 1673
+        },
+        {
+          "kind": "Copy",
+          "offset": 203296,
+          "count": 358
+        },
+        {
+          "kind": "Insert",
+          "offset": 48601,
+          "count": 9262
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 57863,
+          "count": 14
+        },
+        {
+          "kind": "Copy",
+          "offset": 169712,
+          "count": 28967
+        },
+        {
+          "kind": "Insert",
+          "offset": 57877,
+          "count": 2172
+        },
+        {
+          "kind": "Copy",
+          "offset": 121008,
+          "count": 903
+        },
+        {
+          "kind": "Insert",
+          "offset": 60049,
+          "count": 1334
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 61383,
+          "count": 1673
+        },
+        {
+          "kind": "Copy",
+          "offset": 203296,
+          "count": 358
+        },
+        {
+          "kind": "Insert",
+          "offset": 63056,
+          "count": 9262
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 30204
+        },
+        {
+          "kind": "Insert",
+          "offset": 72318,
+          "count": 2172
+        },
+        {
+          "kind": "Copy",
+          "offset": 121008,
+          "count": 903
+        },
+        {
+          "kind": "Insert",
+          "offset": 74490,
+          "count": 1334
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 75824,
+          "count": 1673
+        },
+        {
+          "kind": "Copy",
+          "offset": 203296,
+          "count": 358
+        },
+        {
+          "kind": "Insert",
+          "offset": 77497,
+          "count": 9262
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 86759,
+          "count": 3
+        },
+        {
+          "kind": "Copy",
+          "offset": 248352,
+          "count": 26190
+        },
+        {
+          "kind": "Insert",
+          "offset": 86762,
+          "count": 2172
+        },
+        {
+          "kind": "Copy",
+          "offset": 121008,
+          "count": 903
+        },
+        {
+          "kind": "Insert",
+          "offset": 88934,
+          "count": 1334
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 90268,
+          "count": 1673
+        },
+        {
+          "kind": "Copy",
+          "offset": 203296,
+          "count": 358
+        },
+        {
+          "kind": "Insert",
+          "offset": 91941,
+          "count": 9262
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 101203,
+          "count": 1
+        },
+        {
+          "kind": "Copy",
+          "offset": 284848,
+          "count": 28688
+        },
+        {
+          "kind": "Insert",
+          "offset": 101204,
+          "count": 2172
+        },
+        {
+          "kind": "Copy",
+          "offset": 121008,
+          "count": 903
+        },
+        {
+          "kind": "Insert",
+          "offset": 103376,
+          "count": 1334
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 104710,
+          "count": 1673
+        },
+        {
+          "kind": "Copy",
+          "offset": 203296,
+          "count": 358
+        },
+        {
+          "kind": "Insert",
+          "offset": 106383,
+          "count": 9262
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 115645,
+          "count": 15
+        },
+        {
+          "kind": "Copy",
+          "offset": 323856,
+          "count": 13392
+        }
+      ]
+    },
+    {
       "id": "stream-466a37a1b48d4aef",
       "target": "bundle/data/rf/466a37a1b48d4aef",
       "base": "bundle/data/e7/e75d420a2056a602",
@@ -42628,6 +44033,56 @@
           "kind": "Insert",
           "offset": 0,
           "count": 308
+        }
+      ]
+    },
+    {
+      "id": "stream-48af1564db005c69",
+      "target": "bundle/data/rf/48af1564db005c69",
+      "base": "bundle/data/4c/4c2838a126b34a02",
+      "baseSize": 328,
+      "baseSha256": "45cecdf4f460ce4a3d9f8ed909fe50fd19fb0f1e984f0b9825af857b1a3c35a9",
+      "outputSize": 328,
+      "outputSha256": "7a17613443c83d0219b5cc443e3b7b630f59d0e401d4ccb875997e25f70c07cd",
+      "payload": "inserts/stream-48af1564db005c69.bin",
+      "payloadSize": 48,
+      "payloadSha256": "b731a580642986004a2e3ad43bc740f7a2ede3b13e71cf2d9c21833a5818a30e",
+      "addition": true,
+      "operations": [
+        {
+          "kind": "Insert",
+          "offset": 0,
+          "count": 48
+        },
+        {
+          "kind": "Copy",
+          "offset": 48,
+          "count": 280
+        }
+      ]
+    },
+    {
+      "id": "stream-4adbe0c3da4010ea",
+      "target": "bundle/data/rf/4adbe0c3da4010ea",
+      "base": "bundle/data/3b/3b36696951142a11",
+      "baseSize": 324,
+      "baseSha256": "844a8628c340c4cfc0c8263bab9a97af230832ca20043f5be4d6d40e822c62f0",
+      "outputSize": 324,
+      "outputSha256": "aa499abf3a49356b3ae2b1efe35bf48bdf44cea6bd4c936a0738384da8f703e8",
+      "payload": "inserts/stream-4adbe0c3da4010ea.bin",
+      "payloadSize": 48,
+      "payloadSha256": "2f99b2948e51ddae3460489b53a362af1507bf8ff5177b9918fae2f6e1c3f983",
+      "addition": true,
+      "operations": [
+        {
+          "kind": "Insert",
+          "offset": 0,
+          "count": 48
+        },
+        {
+          "kind": "Copy",
+          "offset": 48,
+          "count": 276
         }
       ]
     },
@@ -42668,6 +44123,31 @@
           "kind": "Insert",
           "offset": 0,
           "count": 308
+        }
+      ]
+    },
+    {
+      "id": "stream-5039a4e14df73763",
+      "target": "bundle/data/rf/5039a4e14df73763",
+      "base": "bundle/data/d5/d54eeb584a215210",
+      "baseSize": 324,
+      "baseSha256": "66100d4107564ba2f97c75998488480994ef2ffecc76869e8cbec74c07be0561",
+      "outputSize": 324,
+      "outputSha256": "11254a37a5f0a56fee778b79b1457da5cfa44ad283eefb21b5541738a7736b89",
+      "payload": "inserts/stream-5039a4e14df73763.bin",
+      "payloadSize": 48,
+      "payloadSha256": "edbd146c7d45be9c08c94ec8480cf77fb57dd54110730cebe95d19e9f1cd4d7d",
+      "addition": true,
+      "operations": [
+        {
+          "kind": "Insert",
+          "offset": 0,
+          "count": 48
+        },
+        {
+          "kind": "Copy",
+          "offset": 48,
+          "count": 276
         }
       ]
     },
@@ -44888,6 +46368,2136 @@
           "kind": "Copy",
           "offset": 378784,
           "count": 14445
+        }
+      ]
+    },
+    {
+      "id": "stream-711b575363326128",
+      "target": "bundle/data/rf/711b575363326128",
+      "base": "bundle/data/3b/3b36696951142a11",
+      "baseSize": 324,
+      "baseSha256": "844a8628c340c4cfc0c8263bab9a97af230832ca20043f5be4d6d40e822c62f0",
+      "outputSize": 324,
+      "outputSha256": "93d4b047e4ba5f760e8bfe79128ac8ff7db204a3e002cb49f130f47ac8016ab8",
+      "payload": "inserts/stream-711b575363326128.bin",
+      "payloadSize": 48,
+      "payloadSha256": "7268990861095f3a1446412b648fbbc9c643512d9db58d8a43415afa3d7bdb0e",
+      "addition": true,
+      "operations": [
+        {
+          "kind": "Insert",
+          "offset": 0,
+          "count": 48
+        },
+        {
+          "kind": "Copy",
+          "offset": 48,
+          "count": 276
+        }
+      ]
+    },
+    {
+      "id": "stream-75d24ca153c1d946",
+      "target": "bundle/data/rf/75d24ca153c1d946",
+      "base": "bundle/data/4c/4c2838a126b34a02",
+      "baseSize": 328,
+      "baseSha256": "45cecdf4f460ce4a3d9f8ed909fe50fd19fb0f1e984f0b9825af857b1a3c35a9",
+      "outputSize": 328,
+      "outputSha256": "7ffa69a607b57b92bc265067ee7d54a9423238d46cbcfa92e1616f64254d8f48",
+      "payload": "inserts/stream-75d24ca153c1d946.bin",
+      "payloadSize": 48,
+      "payloadSha256": "2064d257618347e8e7143edd01e693f678cb6ef7d4ec66d162b80913223cbb9d",
+      "addition": true,
+      "operations": [
+        {
+          "kind": "Insert",
+          "offset": 0,
+          "count": 48
+        },
+        {
+          "kind": "Copy",
+          "offset": 48,
+          "count": 280
+        }
+      ]
+    },
+    {
+      "id": "stream-82c88f66574d6e04",
+      "target": "bundle/data/rf/82c88f66574d6e04",
+      "base": "bundle/data/4c/4c2838a126b34a02",
+      "baseSize": 328,
+      "baseSha256": "45cecdf4f460ce4a3d9f8ed909fe50fd19fb0f1e984f0b9825af857b1a3c35a9",
+      "outputSize": 328,
+      "outputSha256": "ba1364b1084074182c8d19ae3524104a638b9b14364134b2b368741896a29ec8",
+      "payload": "inserts/stream-82c88f66574d6e04.bin",
+      "payloadSize": 48,
+      "payloadSha256": "33058756bba9ad41e79cdc122f431fdca8e8db77254a852b31ca0a9c82a78af7",
+      "addition": true,
+      "operations": [
+        {
+          "kind": "Insert",
+          "offset": 0,
+          "count": 48
+        },
+        {
+          "kind": "Copy",
+          "offset": 48,
+          "count": 280
+        }
+      ]
+    },
+    {
+      "id": "stream-959d99bc0ea69d3e",
+      "target": "bundle/data/rf/959d99bc0ea69d3e",
+      "base": "bundle/data/bb/bb79ba7a5b92d132",
+      "baseSize": 337248,
+      "baseSha256": "7e072a559e0c2d77f762c12bde0214521e925d235e2ae17c75ff7605f9a6b35c",
+      "outputSize": 391856,
+      "outputSha256": "1204f641dc036307051c4051b8a8df899b473ed8c1834220e1c9409a3c5cf632",
+      "payload": "inserts/stream-959d99bc0ea69d3e.bin",
+      "payloadSize": 115660,
+      "payloadSha256": "1725e39a7a01d5270aed40d9e9184298e2c4b917f2723aa6a0d52b4971fc3e84",
+      "addition": true,
+      "operations": [
+        {
+          "kind": "Insert",
+          "offset": 0,
+          "count": 32
+        },
+        {
+          "kind": "Copy",
+          "offset": 32,
+          "count": 384
+        },
+        {
+          "kind": "Insert",
+          "offset": 32,
+          "count": 32
+        },
+        {
+          "kind": "Copy",
+          "offset": 448,
+          "count": 40323
+        },
+        {
+          "kind": "Insert",
+          "offset": 64,
+          "count": 2172
+        },
+        {
+          "kind": "Copy",
+          "offset": 121008,
+          "count": 903
+        },
+        {
+          "kind": "Insert",
+          "offset": 2236,
+          "count": 1334
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 3570,
+          "count": 1673
+        },
+        {
+          "kind": "Copy",
+          "offset": 203296,
+          "count": 358
+        },
+        {
+          "kind": "Insert",
+          "offset": 5243,
+          "count": 9262
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 14505,
+          "count": 12
+        },
+        {
+          "kind": "Copy",
+          "offset": 51088,
+          "count": 29427
+        },
+        {
+          "kind": "Insert",
+          "offset": 14517,
+          "count": 2172
+        },
+        {
+          "kind": "Copy",
+          "offset": 121008,
+          "count": 903
+        },
+        {
+          "kind": "Insert",
+          "offset": 16689,
+          "count": 1334
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 18023,
+          "count": 1673
+        },
+        {
+          "kind": "Copy",
+          "offset": 203296,
+          "count": 358
+        },
+        {
+          "kind": "Insert",
+          "offset": 19696,
+          "count": 9262
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 28958,
+          "count": 12
+        },
+        {
+          "kind": "Copy",
+          "offset": 90832,
+          "count": 29156
+        },
+        {
+          "kind": "Insert",
+          "offset": 28970,
+          "count": 2172
+        },
+        {
+          "kind": "Copy",
+          "offset": 121008,
+          "count": 903
+        },
+        {
+          "kind": "Insert",
+          "offset": 31142,
+          "count": 1334
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 32476,
+          "count": 1673
+        },
+        {
+          "kind": "Copy",
+          "offset": 203296,
+          "count": 358
+        },
+        {
+          "kind": "Insert",
+          "offset": 34149,
+          "count": 9262
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 43411,
+          "count": 11
+        },
+        {
+          "kind": "Copy",
+          "offset": 130304,
+          "count": 29089
+        },
+        {
+          "kind": "Insert",
+          "offset": 43422,
+          "count": 2172
+        },
+        {
+          "kind": "Copy",
+          "offset": 121008,
+          "count": 903
+        },
+        {
+          "kind": "Insert",
+          "offset": 45594,
+          "count": 1334
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 46928,
+          "count": 1673
+        },
+        {
+          "kind": "Copy",
+          "offset": 203296,
+          "count": 358
+        },
+        {
+          "kind": "Insert",
+          "offset": 48601,
+          "count": 9262
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 57863,
+          "count": 14
+        },
+        {
+          "kind": "Copy",
+          "offset": 169712,
+          "count": 28967
+        },
+        {
+          "kind": "Insert",
+          "offset": 57877,
+          "count": 2172
+        },
+        {
+          "kind": "Copy",
+          "offset": 121008,
+          "count": 903
+        },
+        {
+          "kind": "Insert",
+          "offset": 60049,
+          "count": 1334
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 61383,
+          "count": 1673
+        },
+        {
+          "kind": "Copy",
+          "offset": 203296,
+          "count": 358
+        },
+        {
+          "kind": "Insert",
+          "offset": 63056,
+          "count": 9262
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 30204
+        },
+        {
+          "kind": "Insert",
+          "offset": 72318,
+          "count": 2172
+        },
+        {
+          "kind": "Copy",
+          "offset": 121008,
+          "count": 903
+        },
+        {
+          "kind": "Insert",
+          "offset": 74490,
+          "count": 1334
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 75824,
+          "count": 1673
+        },
+        {
+          "kind": "Copy",
+          "offset": 203296,
+          "count": 358
+        },
+        {
+          "kind": "Insert",
+          "offset": 77497,
+          "count": 9262
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 86759,
+          "count": 3
+        },
+        {
+          "kind": "Copy",
+          "offset": 248352,
+          "count": 26190
+        },
+        {
+          "kind": "Insert",
+          "offset": 86762,
+          "count": 2172
+        },
+        {
+          "kind": "Copy",
+          "offset": 121008,
+          "count": 903
+        },
+        {
+          "kind": "Insert",
+          "offset": 88934,
+          "count": 1334
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 90268,
+          "count": 1673
+        },
+        {
+          "kind": "Copy",
+          "offset": 203296,
+          "count": 358
+        },
+        {
+          "kind": "Insert",
+          "offset": 91941,
+          "count": 9262
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 101203,
+          "count": 1
+        },
+        {
+          "kind": "Copy",
+          "offset": 284848,
+          "count": 28688
+        },
+        {
+          "kind": "Insert",
+          "offset": 101204,
+          "count": 2172
+        },
+        {
+          "kind": "Copy",
+          "offset": 121008,
+          "count": 903
+        },
+        {
+          "kind": "Insert",
+          "offset": 103376,
+          "count": 1334
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 104710,
+          "count": 1673
+        },
+        {
+          "kind": "Copy",
+          "offset": 203296,
+          "count": 358
+        },
+        {
+          "kind": "Insert",
+          "offset": 106383,
+          "count": 9262
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 115645,
+          "count": 15
+        },
+        {
+          "kind": "Copy",
+          "offset": 323856,
+          "count": 13392
+        }
+      ]
+    },
+    {
+      "id": "stream-967c273c45dae258",
+      "target": "bundle/data/rf/967c273c45dae258",
+      "base": "bundle/data/bb/bb79ba7a5b92d132",
+      "baseSize": 337248,
+      "baseSha256": "7e072a559e0c2d77f762c12bde0214521e925d235e2ae17c75ff7605f9a6b35c",
+      "outputSize": 391856,
+      "outputSha256": "65f99d586579651b171c2555ebadfccff7bb6c46a723d49f9573ef10c7a0d5b1",
+      "payload": "inserts/stream-967c273c45dae258.bin",
+      "payloadSize": 115660,
+      "payloadSha256": "a25b1d52160a4b8b2cbed9b73ed573a730707db6e56b56b31ab86019f2ecaf86",
+      "addition": true,
+      "operations": [
+        {
+          "kind": "Insert",
+          "offset": 0,
+          "count": 32
+        },
+        {
+          "kind": "Copy",
+          "offset": 32,
+          "count": 384
+        },
+        {
+          "kind": "Insert",
+          "offset": 32,
+          "count": 32
+        },
+        {
+          "kind": "Copy",
+          "offset": 448,
+          "count": 40323
+        },
+        {
+          "kind": "Insert",
+          "offset": 64,
+          "count": 2172
+        },
+        {
+          "kind": "Copy",
+          "offset": 121008,
+          "count": 903
+        },
+        {
+          "kind": "Insert",
+          "offset": 2236,
+          "count": 1334
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 3570,
+          "count": 1673
+        },
+        {
+          "kind": "Copy",
+          "offset": 203296,
+          "count": 358
+        },
+        {
+          "kind": "Insert",
+          "offset": 5243,
+          "count": 9262
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 14505,
+          "count": 12
+        },
+        {
+          "kind": "Copy",
+          "offset": 51088,
+          "count": 29427
+        },
+        {
+          "kind": "Insert",
+          "offset": 14517,
+          "count": 2172
+        },
+        {
+          "kind": "Copy",
+          "offset": 121008,
+          "count": 903
+        },
+        {
+          "kind": "Insert",
+          "offset": 16689,
+          "count": 1334
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 18023,
+          "count": 1673
+        },
+        {
+          "kind": "Copy",
+          "offset": 203296,
+          "count": 358
+        },
+        {
+          "kind": "Insert",
+          "offset": 19696,
+          "count": 9262
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 28958,
+          "count": 12
+        },
+        {
+          "kind": "Copy",
+          "offset": 90832,
+          "count": 29156
+        },
+        {
+          "kind": "Insert",
+          "offset": 28970,
+          "count": 2172
+        },
+        {
+          "kind": "Copy",
+          "offset": 121008,
+          "count": 903
+        },
+        {
+          "kind": "Insert",
+          "offset": 31142,
+          "count": 1334
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 32476,
+          "count": 1673
+        },
+        {
+          "kind": "Copy",
+          "offset": 203296,
+          "count": 358
+        },
+        {
+          "kind": "Insert",
+          "offset": 34149,
+          "count": 9262
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 43411,
+          "count": 11
+        },
+        {
+          "kind": "Copy",
+          "offset": 130304,
+          "count": 29089
+        },
+        {
+          "kind": "Insert",
+          "offset": 43422,
+          "count": 2172
+        },
+        {
+          "kind": "Copy",
+          "offset": 121008,
+          "count": 903
+        },
+        {
+          "kind": "Insert",
+          "offset": 45594,
+          "count": 1334
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 46928,
+          "count": 1673
+        },
+        {
+          "kind": "Copy",
+          "offset": 203296,
+          "count": 358
+        },
+        {
+          "kind": "Insert",
+          "offset": 48601,
+          "count": 9262
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 57863,
+          "count": 14
+        },
+        {
+          "kind": "Copy",
+          "offset": 169712,
+          "count": 28967
+        },
+        {
+          "kind": "Insert",
+          "offset": 57877,
+          "count": 2172
+        },
+        {
+          "kind": "Copy",
+          "offset": 121008,
+          "count": 903
+        },
+        {
+          "kind": "Insert",
+          "offset": 60049,
+          "count": 1334
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 61383,
+          "count": 1673
+        },
+        {
+          "kind": "Copy",
+          "offset": 203296,
+          "count": 358
+        },
+        {
+          "kind": "Insert",
+          "offset": 63056,
+          "count": 9262
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 30204
+        },
+        {
+          "kind": "Insert",
+          "offset": 72318,
+          "count": 2172
+        },
+        {
+          "kind": "Copy",
+          "offset": 121008,
+          "count": 903
+        },
+        {
+          "kind": "Insert",
+          "offset": 74490,
+          "count": 1334
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 75824,
+          "count": 1673
+        },
+        {
+          "kind": "Copy",
+          "offset": 203296,
+          "count": 358
+        },
+        {
+          "kind": "Insert",
+          "offset": 77497,
+          "count": 9262
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 86759,
+          "count": 3
+        },
+        {
+          "kind": "Copy",
+          "offset": 248352,
+          "count": 26190
+        },
+        {
+          "kind": "Insert",
+          "offset": 86762,
+          "count": 2172
+        },
+        {
+          "kind": "Copy",
+          "offset": 121008,
+          "count": 903
+        },
+        {
+          "kind": "Insert",
+          "offset": 88934,
+          "count": 1334
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 90268,
+          "count": 1673
+        },
+        {
+          "kind": "Copy",
+          "offset": 203296,
+          "count": 358
+        },
+        {
+          "kind": "Insert",
+          "offset": 91941,
+          "count": 9262
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 101203,
+          "count": 1
+        },
+        {
+          "kind": "Copy",
+          "offset": 284848,
+          "count": 28688
+        },
+        {
+          "kind": "Insert",
+          "offset": 101204,
+          "count": 2172
+        },
+        {
+          "kind": "Copy",
+          "offset": 121008,
+          "count": 903
+        },
+        {
+          "kind": "Insert",
+          "offset": 103376,
+          "count": 1334
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 104710,
+          "count": 1673
+        },
+        {
+          "kind": "Copy",
+          "offset": 203296,
+          "count": 358
+        },
+        {
+          "kind": "Insert",
+          "offset": 106383,
+          "count": 9262
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 115645,
+          "count": 15
+        },
+        {
+          "kind": "Copy",
+          "offset": 323856,
+          "count": 13392
+        }
+      ]
+    },
+    {
+      "id": "stream-9bf2021b9e459c76",
+      "target": "bundle/data/rf/9bf2021b9e459c76",
+      "base": "bundle/data/d5/d54eeb584a215210",
+      "baseSize": 324,
+      "baseSha256": "66100d4107564ba2f97c75998488480994ef2ffecc76869e8cbec74c07be0561",
+      "outputSize": 324,
+      "outputSha256": "979229ce71762eca7e2ed2e22c93ac7fbaf6195508bcb8a36eaecff4efafea9c",
+      "payload": "inserts/stream-9bf2021b9e459c76.bin",
+      "payloadSize": 48,
+      "payloadSha256": "ac96b066fdd865abc55553c3d4307ed317a3afe4130479747d6f39436e63f59f",
+      "addition": true,
+      "operations": [
+        {
+          "kind": "Insert",
+          "offset": 0,
+          "count": 48
+        },
+        {
+          "kind": "Copy",
+          "offset": 48,
+          "count": 276
+        }
+      ]
+    },
+    {
+      "id": "stream-9fcc61980548fb93",
+      "target": "bundle/data/rf/9fcc61980548fb93",
+      "base": "bundle/data/4c/4c2838a126b34a02",
+      "baseSize": 328,
+      "baseSha256": "45cecdf4f460ce4a3d9f8ed909fe50fd19fb0f1e984f0b9825af857b1a3c35a9",
+      "outputSize": 328,
+      "outputSha256": "ecfeaff9c462d27f93750e409fd02825e715c2a0cbcb9eb5ca0c74e9e4843615",
+      "payload": "inserts/stream-9fcc61980548fb93.bin",
+      "payloadSize": 48,
+      "payloadSha256": "fba5fd0c7a4a8dba714594c48ad339a0188a8bdc14b5d16a396b638516d54376",
+      "addition": true,
+      "operations": [
+        {
+          "kind": "Insert",
+          "offset": 0,
+          "count": 48
+        },
+        {
+          "kind": "Copy",
+          "offset": 48,
+          "count": 280
+        }
+      ]
+    },
+    {
+      "id": "stream-a4143e74c781ffed",
+      "target": "bundle/data/rf/a4143e74c781ffed",
+      "base": "bundle/data/bb/bb79ba7a5b92d132",
+      "baseSize": 337248,
+      "baseSha256": "7e072a559e0c2d77f762c12bde0214521e925d235e2ae17c75ff7605f9a6b35c",
+      "outputSize": 392208,
+      "outputSha256": "d4406f8e8e4e5b7e51ebfd5c01de156d673f0670fcbc3633b25e2c28b9e36daa",
+      "payload": "inserts/stream-a4143e74c781ffed.bin",
+      "payloadSize": 126100,
+      "payloadSha256": "dfb5265af25f5683f3a84ee25d068bf078d0942a4dc501708451772818d3a03a",
+      "addition": true,
+      "operations": [
+        {
+          "kind": "Insert",
+          "offset": 0,
+          "count": 32
+        },
+        {
+          "kind": "Copy",
+          "offset": 32,
+          "count": 384
+        },
+        {
+          "kind": "Insert",
+          "offset": 32,
+          "count": 32
+        },
+        {
+          "kind": "Copy",
+          "offset": 448,
+          "count": 40323
+        },
+        {
+          "kind": "Insert",
+          "offset": 64,
+          "count": 4409
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 4473,
+          "count": 11337
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 15810,
+          "count": 12
+        },
+        {
+          "kind": "Copy",
+          "offset": 51088,
+          "count": 29427
+        },
+        {
+          "kind": "Insert",
+          "offset": 15822,
+          "count": 4409
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 20231,
+          "count": 11337
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 31568,
+          "count": 12
+        },
+        {
+          "kind": "Copy",
+          "offset": 90832,
+          "count": 29156
+        },
+        {
+          "kind": "Insert",
+          "offset": 31580,
+          "count": 4409
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 35989,
+          "count": 11337
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 47326,
+          "count": 11
+        },
+        {
+          "kind": "Copy",
+          "offset": 130304,
+          "count": 29089
+        },
+        {
+          "kind": "Insert",
+          "offset": 47337,
+          "count": 4409
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 51746,
+          "count": 11337
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 63083,
+          "count": 14
+        },
+        {
+          "kind": "Copy",
+          "offset": 169712,
+          "count": 28967
+        },
+        {
+          "kind": "Insert",
+          "offset": 63097,
+          "count": 4409
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 67506,
+          "count": 11337
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 30204
+        },
+        {
+          "kind": "Insert",
+          "offset": 78843,
+          "count": 4409
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 83252,
+          "count": 11337
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 94589,
+          "count": 3
+        },
+        {
+          "kind": "Copy",
+          "offset": 248352,
+          "count": 26190
+        },
+        {
+          "kind": "Insert",
+          "offset": 94592,
+          "count": 4409
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 99001,
+          "count": 11337
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 110338,
+          "count": 1
+        },
+        {
+          "kind": "Copy",
+          "offset": 284848,
+          "count": 28688
+        },
+        {
+          "kind": "Insert",
+          "offset": 110339,
+          "count": 4409
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 114748,
+          "count": 11337
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 126085,
+          "count": 15
+        },
+        {
+          "kind": "Copy",
+          "offset": 323856,
+          "count": 13392
+        }
+      ]
+    },
+    {
+      "id": "stream-b01f09bf94fc223f",
+      "target": "bundle/data/rf/b01f09bf94fc223f",
+      "base": "bundle/data/3b/3b36696951142a11",
+      "baseSize": 324,
+      "baseSha256": "844a8628c340c4cfc0c8263bab9a97af230832ca20043f5be4d6d40e822c62f0",
+      "outputSize": 324,
+      "outputSha256": "ed06bedb7fc7ab9f4e4de7873c16999d6bb0d41891ba057fdc7a61af49bea7a5",
+      "payload": "inserts/stream-b01f09bf94fc223f.bin",
+      "payloadSize": 48,
+      "payloadSha256": "ff734df02a717d919a83fa5ca909acf512f97c5d84299f1739528aec8180229d",
+      "addition": true,
+      "operations": [
+        {
+          "kind": "Insert",
+          "offset": 0,
+          "count": 48
+        },
+        {
+          "kind": "Copy",
+          "offset": 48,
+          "count": 276
+        }
+      ]
+    },
+    {
+      "id": "stream-bb115a95c59906eb",
+      "target": "bundle/data/rf/bb115a95c59906eb",
+      "base": "bundle/data/4c/4c2838a126b34a02",
+      "baseSize": 328,
+      "baseSha256": "45cecdf4f460ce4a3d9f8ed909fe50fd19fb0f1e984f0b9825af857b1a3c35a9",
+      "outputSize": 328,
+      "outputSha256": "0ae4f0471e9b7ba179301f20d9a35610d1e05186c403dafeee371e255d730414",
+      "payload": "inserts/stream-bb115a95c59906eb.bin",
+      "payloadSize": 48,
+      "payloadSha256": "ad915ef3c78a58255a9600c5467c6c3e5ad6ac3cf7fec92fe9097a1a396d9335",
+      "addition": true,
+      "operations": [
+        {
+          "kind": "Insert",
+          "offset": 0,
+          "count": 48
+        },
+        {
+          "kind": "Copy",
+          "offset": 48,
+          "count": 280
+        }
+      ]
+    },
+    {
+      "id": "stream-bb23bd1f080c951f",
+      "target": "bundle/data/rf/bb23bd1f080c951f",
+      "base": "bundle/data/bb/bb79ba7a5b92d132",
+      "baseSize": 337248,
+      "baseSha256": "7e072a559e0c2d77f762c12bde0214521e925d235e2ae17c75ff7605f9a6b35c",
+      "outputSize": 392208,
+      "outputSha256": "6b6265dd1455101ecce0fb67ddc7313ec4c7081d2ba3743c651a9ece92b3a4ae",
+      "payload": "inserts/stream-bb23bd1f080c951f.bin",
+      "payloadSize": 126100,
+      "payloadSha256": "62f0605bef89d81b4cfe3d8705da759942c252e3ea0cf11eb5938f12f817acdf",
+      "addition": true,
+      "operations": [
+        {
+          "kind": "Insert",
+          "offset": 0,
+          "count": 32
+        },
+        {
+          "kind": "Copy",
+          "offset": 32,
+          "count": 384
+        },
+        {
+          "kind": "Insert",
+          "offset": 32,
+          "count": 32
+        },
+        {
+          "kind": "Copy",
+          "offset": 448,
+          "count": 40323
+        },
+        {
+          "kind": "Insert",
+          "offset": 64,
+          "count": 4409
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 4473,
+          "count": 11337
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 15810,
+          "count": 12
+        },
+        {
+          "kind": "Copy",
+          "offset": 51088,
+          "count": 29427
+        },
+        {
+          "kind": "Insert",
+          "offset": 15822,
+          "count": 4409
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 20231,
+          "count": 11337
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 31568,
+          "count": 12
+        },
+        {
+          "kind": "Copy",
+          "offset": 90832,
+          "count": 29156
+        },
+        {
+          "kind": "Insert",
+          "offset": 31580,
+          "count": 4409
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 35989,
+          "count": 11337
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 47326,
+          "count": 11
+        },
+        {
+          "kind": "Copy",
+          "offset": 130304,
+          "count": 29089
+        },
+        {
+          "kind": "Insert",
+          "offset": 47337,
+          "count": 4409
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 51746,
+          "count": 11337
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 63083,
+          "count": 14
+        },
+        {
+          "kind": "Copy",
+          "offset": 169712,
+          "count": 28967
+        },
+        {
+          "kind": "Insert",
+          "offset": 63097,
+          "count": 4409
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 67506,
+          "count": 11337
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 30204
+        },
+        {
+          "kind": "Insert",
+          "offset": 78843,
+          "count": 4409
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 83252,
+          "count": 11337
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 94589,
+          "count": 3
+        },
+        {
+          "kind": "Copy",
+          "offset": 248352,
+          "count": 26190
+        },
+        {
+          "kind": "Insert",
+          "offset": 94592,
+          "count": 4409
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 99001,
+          "count": 11337
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 110338,
+          "count": 1
+        },
+        {
+          "kind": "Copy",
+          "offset": 284848,
+          "count": 28688
+        },
+        {
+          "kind": "Insert",
+          "offset": 110339,
+          "count": 4409
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 114748,
+          "count": 11337
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 126085,
+          "count": 15
+        },
+        {
+          "kind": "Copy",
+          "offset": 323856,
+          "count": 13392
+        }
+      ]
+    },
+    {
+      "id": "stream-bb7149c81b265669",
+      "target": "bundle/data/rf/bb7149c81b265669",
+      "base": "bundle/data/4c/4c2838a126b34a02",
+      "baseSize": 328,
+      "baseSha256": "45cecdf4f460ce4a3d9f8ed909fe50fd19fb0f1e984f0b9825af857b1a3c35a9",
+      "outputSize": 328,
+      "outputSha256": "e17bfc1f42ffd7d122cb32df4aacf690f028f0beca41f2ca3a650ff0a3982238",
+      "payload": "inserts/stream-bb7149c81b265669.bin",
+      "payloadSize": 48,
+      "payloadSha256": "5f9a83dd5be56730edc519f4acd83e0879adf3f13fc7951214dc66398a2d5158",
+      "addition": true,
+      "operations": [
+        {
+          "kind": "Insert",
+          "offset": 0,
+          "count": 48
+        },
+        {
+          "kind": "Copy",
+          "offset": 48,
+          "count": 280
+        }
+      ]
+    },
+    {
+      "id": "stream-c3bf0df14c8747ce",
+      "target": "bundle/data/rf/c3bf0df14c8747ce",
+      "base": "bundle/data/d5/d54eeb584a215210",
+      "baseSize": 324,
+      "baseSha256": "66100d4107564ba2f97c75998488480994ef2ffecc76869e8cbec74c07be0561",
+      "outputSize": 324,
+      "outputSha256": "93e5848b9694efc675e391237d798974d985548fa6b45c17c7134da1c9d7b4dc",
+      "payload": "inserts/stream-c3bf0df14c8747ce.bin",
+      "payloadSize": 48,
+      "payloadSha256": "ff734df02a717d919a83fa5ca909acf512f97c5d84299f1739528aec8180229d",
+      "addition": true,
+      "operations": [
+        {
+          "kind": "Insert",
+          "offset": 0,
+          "count": 48
+        },
+        {
+          "kind": "Copy",
+          "offset": 48,
+          "count": 276
+        }
+      ]
+    },
+    {
+      "id": "stream-c6a756d4baa41606",
+      "target": "bundle/data/rf/c6a756d4baa41606",
+      "base": "bundle/data/3b/3b36696951142a11",
+      "baseSize": 324,
+      "baseSha256": "844a8628c340c4cfc0c8263bab9a97af230832ca20043f5be4d6d40e822c62f0",
+      "outputSize": 324,
+      "outputSha256": "41eaa7a2c67b3e7fd5b94a07cfe7d385fe0d99ca61b627cddf73811afc1e41b9",
+      "payload": "inserts/stream-c6a756d4baa41606.bin",
+      "payloadSize": 48,
+      "payloadSha256": "ac96b066fdd865abc55553c3d4307ed317a3afe4130479747d6f39436e63f59f",
+      "addition": true,
+      "operations": [
+        {
+          "kind": "Insert",
+          "offset": 0,
+          "count": 48
+        },
+        {
+          "kind": "Copy",
+          "offset": 48,
+          "count": 276
+        }
+      ]
+    },
+    {
+      "id": "stream-c6d45135afea7b26",
+      "target": "bundle/data/rf/c6d45135afea7b26",
+      "base": "bundle/data/d5/d54eeb584a215210",
+      "baseSize": 324,
+      "baseSha256": "66100d4107564ba2f97c75998488480994ef2ffecc76869e8cbec74c07be0561",
+      "outputSize": 324,
+      "outputSha256": "871194d225ced2636c55da7d897a60b9592422d077b2fd7454a123518f02f56d",
+      "payload": "inserts/stream-c6d45135afea7b26.bin",
+      "payloadSize": 48,
+      "payloadSha256": "7268990861095f3a1446412b648fbbc9c643512d9db58d8a43415afa3d7bdb0e",
+      "addition": true,
+      "operations": [
+        {
+          "kind": "Insert",
+          "offset": 0,
+          "count": 48
+        },
+        {
+          "kind": "Copy",
+          "offset": 48,
+          "count": 276
+        }
+      ]
+    },
+    {
+      "id": "stream-c6df9b56bf43a86e",
+      "target": "bundle/data/rf/c6df9b56bf43a86e",
+      "base": "bundle/data/3b/3b36696951142a11",
+      "baseSize": 324,
+      "baseSha256": "844a8628c340c4cfc0c8263bab9a97af230832ca20043f5be4d6d40e822c62f0",
+      "outputSize": 324,
+      "outputSha256": "0888009c18b75a0c419881c365771a9e8b6d90abf8ba37b519538decb5083ad2",
+      "payload": "inserts/stream-c6df9b56bf43a86e.bin",
+      "payloadSize": 48,
+      "payloadSha256": "362d8db4b8c6e93c53d8627704b1bc314c9a2c211ecc799f31de7c03f582f8ed",
+      "addition": true,
+      "operations": [
+        {
+          "kind": "Insert",
+          "offset": 0,
+          "count": 48
+        },
+        {
+          "kind": "Copy",
+          "offset": 48,
+          "count": 276
+        }
+      ]
+    },
+    {
+      "id": "stream-d194f7e48540be15",
+      "target": "bundle/data/rf/d194f7e48540be15",
+      "base": "bundle/data/3b/3b36696951142a11",
+      "baseSize": 324,
+      "baseSha256": "844a8628c340c4cfc0c8263bab9a97af230832ca20043f5be4d6d40e822c62f0",
+      "outputSize": 324,
+      "outputSha256": "6c81c10ec45c49daee107b7cba7a8ac3fadc4550d4e193bc88b4fe1710be7b16",
+      "payload": "inserts/stream-d194f7e48540be15.bin",
+      "payloadSize": 48,
+      "payloadSha256": "e819ad7294236e7114e72c909037fc96c14023b3c941ffb30a6565c6e39152e9",
+      "addition": true,
+      "operations": [
+        {
+          "kind": "Insert",
+          "offset": 0,
+          "count": 48
+        },
+        {
+          "kind": "Copy",
+          "offset": 48,
+          "count": 276
+        }
+      ]
+    },
+    {
+      "id": "stream-d1fee88b85bacdd3",
+      "target": "bundle/data/rf/d1fee88b85bacdd3",
+      "base": "bundle/data/bb/bb79ba7a5b92d132",
+      "baseSize": 337248,
+      "baseSha256": "7e072a559e0c2d77f762c12bde0214521e925d235e2ae17c75ff7605f9a6b35c",
+      "outputSize": 391856,
+      "outputSha256": "c0840bb7ec2b91c7ebc6f566bda1dcb7cc9d2d1c50a714a5e17e32220b78ade7",
+      "payload": "inserts/stream-d1fee88b85bacdd3.bin",
+      "payloadSize": 115660,
+      "payloadSha256": "92489935ac3fe5ab6dd468afd9ca909871ab2900ca4bd1772a096c6317d89705",
+      "addition": true,
+      "operations": [
+        {
+          "kind": "Insert",
+          "offset": 0,
+          "count": 32
+        },
+        {
+          "kind": "Copy",
+          "offset": 32,
+          "count": 384
+        },
+        {
+          "kind": "Insert",
+          "offset": 32,
+          "count": 32
+        },
+        {
+          "kind": "Copy",
+          "offset": 448,
+          "count": 40323
+        },
+        {
+          "kind": "Insert",
+          "offset": 64,
+          "count": 2172
+        },
+        {
+          "kind": "Copy",
+          "offset": 121008,
+          "count": 903
+        },
+        {
+          "kind": "Insert",
+          "offset": 2236,
+          "count": 1334
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 3570,
+          "count": 1673
+        },
+        {
+          "kind": "Copy",
+          "offset": 203296,
+          "count": 358
+        },
+        {
+          "kind": "Insert",
+          "offset": 5243,
+          "count": 9262
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 14505,
+          "count": 12
+        },
+        {
+          "kind": "Copy",
+          "offset": 51088,
+          "count": 29427
+        },
+        {
+          "kind": "Insert",
+          "offset": 14517,
+          "count": 2172
+        },
+        {
+          "kind": "Copy",
+          "offset": 121008,
+          "count": 903
+        },
+        {
+          "kind": "Insert",
+          "offset": 16689,
+          "count": 1334
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 18023,
+          "count": 1673
+        },
+        {
+          "kind": "Copy",
+          "offset": 203296,
+          "count": 358
+        },
+        {
+          "kind": "Insert",
+          "offset": 19696,
+          "count": 9262
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 28958,
+          "count": 12
+        },
+        {
+          "kind": "Copy",
+          "offset": 90832,
+          "count": 29156
+        },
+        {
+          "kind": "Insert",
+          "offset": 28970,
+          "count": 2172
+        },
+        {
+          "kind": "Copy",
+          "offset": 121008,
+          "count": 903
+        },
+        {
+          "kind": "Insert",
+          "offset": 31142,
+          "count": 1334
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 32476,
+          "count": 1673
+        },
+        {
+          "kind": "Copy",
+          "offset": 203296,
+          "count": 358
+        },
+        {
+          "kind": "Insert",
+          "offset": 34149,
+          "count": 9262
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 43411,
+          "count": 11
+        },
+        {
+          "kind": "Copy",
+          "offset": 130304,
+          "count": 29089
+        },
+        {
+          "kind": "Insert",
+          "offset": 43422,
+          "count": 2172
+        },
+        {
+          "kind": "Copy",
+          "offset": 121008,
+          "count": 903
+        },
+        {
+          "kind": "Insert",
+          "offset": 45594,
+          "count": 1334
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 46928,
+          "count": 1673
+        },
+        {
+          "kind": "Copy",
+          "offset": 203296,
+          "count": 358
+        },
+        {
+          "kind": "Insert",
+          "offset": 48601,
+          "count": 9262
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 57863,
+          "count": 14
+        },
+        {
+          "kind": "Copy",
+          "offset": 169712,
+          "count": 28967
+        },
+        {
+          "kind": "Insert",
+          "offset": 57877,
+          "count": 2172
+        },
+        {
+          "kind": "Copy",
+          "offset": 121008,
+          "count": 903
+        },
+        {
+          "kind": "Insert",
+          "offset": 60049,
+          "count": 1334
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 61383,
+          "count": 1673
+        },
+        {
+          "kind": "Copy",
+          "offset": 203296,
+          "count": 358
+        },
+        {
+          "kind": "Insert",
+          "offset": 63056,
+          "count": 9262
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 30204
+        },
+        {
+          "kind": "Insert",
+          "offset": 72318,
+          "count": 2172
+        },
+        {
+          "kind": "Copy",
+          "offset": 121008,
+          "count": 903
+        },
+        {
+          "kind": "Insert",
+          "offset": 74490,
+          "count": 1334
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 75824,
+          "count": 1673
+        },
+        {
+          "kind": "Copy",
+          "offset": 203296,
+          "count": 358
+        },
+        {
+          "kind": "Insert",
+          "offset": 77497,
+          "count": 9262
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 86759,
+          "count": 3
+        },
+        {
+          "kind": "Copy",
+          "offset": 248352,
+          "count": 26190
+        },
+        {
+          "kind": "Insert",
+          "offset": 86762,
+          "count": 2172
+        },
+        {
+          "kind": "Copy",
+          "offset": 121008,
+          "count": 903
+        },
+        {
+          "kind": "Insert",
+          "offset": 88934,
+          "count": 1334
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 90268,
+          "count": 1673
+        },
+        {
+          "kind": "Copy",
+          "offset": 203296,
+          "count": 358
+        },
+        {
+          "kind": "Insert",
+          "offset": 91941,
+          "count": 9262
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 101203,
+          "count": 1
+        },
+        {
+          "kind": "Copy",
+          "offset": 284848,
+          "count": 28688
+        },
+        {
+          "kind": "Insert",
+          "offset": 101204,
+          "count": 2172
+        },
+        {
+          "kind": "Copy",
+          "offset": 121008,
+          "count": 903
+        },
+        {
+          "kind": "Insert",
+          "offset": 103376,
+          "count": 1334
+        },
+        {
+          "kind": "Copy",
+          "offset": 201728,
+          "count": 285
+        },
+        {
+          "kind": "Insert",
+          "offset": 104710,
+          "count": 1673
+        },
+        {
+          "kind": "Copy",
+          "offset": 203296,
+          "count": 358
+        },
+        {
+          "kind": "Insert",
+          "offset": 106383,
+          "count": 9262
+        },
+        {
+          "kind": "Copy",
+          "offset": 207840,
+          "count": 1144
+        },
+        {
+          "kind": "Insert",
+          "offset": 115645,
+          "count": 15
+        },
+        {
+          "kind": "Copy",
+          "offset": 323856,
+          "count": 13392
         }
       ]
     },

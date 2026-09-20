@@ -1,0 +1,26 @@
+# Local research and resource-generation evidence (preserved outside Git/release)
+/analysis/
+/resource/
+
+# Build and release outputs
+**/bin/
+**/obj/
+/artifacts/
+/releases/
+*.zip
+*.7z
+*.luac
+*.log
+*.tmp
+*.bak
+
+# Local configuration and tooling
+.source-path.local
+.vs/
+.idea/
+.vscode/
+
+# Operating-system files
+.DS_Store
+Thumbs.db
+Desktop.ini

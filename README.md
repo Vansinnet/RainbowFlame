@@ -17,7 +17,7 @@ effects in Warhammer 40,000: Darktide.
 
 - Darktide Mod Loader (DML)
 - Darktide Mod Framework (DMF)
-- Microsoft [.NET 6 Desktop Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/6.0/runtime),
+- Microsoft [.NET 10 Desktop Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/10.0),
   Windows x64
 - Supported Darktide build: build ID `24735202`, executable
   `1.3.770.210`
@@ -29,7 +29,7 @@ Lua mod still loads.
 ## Installation
 
 1. Install DML and DMF and confirm that DMF loads successfully in Darktide.
-2. Install the Microsoft .NET 6 Desktop Runtime for Windows x64 if it is not
+2. Install the Microsoft .NET 10 Desktop Runtime for Windows x64 if it is not
    already present.
 3. Download the official, unmodified `RainbowFlame.zip` release and extract the
    entire archive to one folder. Keep the installer DLLs and `payload/` directory
@@ -69,6 +69,15 @@ Close Darktide and run the installer from the new release. Choose **Install** to
 install a supported update, or **Repair** to reconstruct missing files from the
 same installed release. Repair requires an ownership receipt created by the
 installer. Never combine the installer, DLLs or payload from different releases.
+
+If a Darktide update overwrites RainbowFlame, run the same installed release and
+choose **Repair after update**. This action permits a changed Steam build and
+executable version only after every managed file passes a complete hash preflight.
+It restores files when all replacements still match their known stock inputs and
+all additions are absent or exact. If Fatshark changed a required resource, it
+stops before writing anything; wait for a RainbowFlame release that supports the
+new build. Passing this repair verifies file compatibility, not general game or
+mod-framework compatibility on the new build.
 
 ### Uninstall
 
