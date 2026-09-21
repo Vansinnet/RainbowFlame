@@ -3,9 +3,12 @@ return {
     mod_description = {
         en = "Customize the Inferno staff and its wall impact, and choose a fixed color preset for persistent enemy Soulblaze.",
     },
+    soulblaze_group = { en = "Soulblaze" },
+    flame_group = { en = "Flame" },
+    rainbow_group = { en = "Rainbow" },
     enemy_color = { en = "Enemy Soulblaze color" },
     enemy_color_description = {
-        en = "Selects the color of new persistent Soulblaze flames on enemies. Existing burns keep their current color, so apply Soulblaze again after changing this option. Original uses the game's normal color. This does not affect the staff.",
+        en = "Selects the color of new persistent Soulblaze flames on enemies. Existing burns keep their current appearance, so apply Soulblaze again after changing this option. Original uses the game's normal color. This does not affect the staff.",
     },
     enemy_color_original = { en = "Original" },
     enemy_color_red = { en = "Red" },
@@ -16,6 +19,15 @@ return {
     enemy_color_blue = { en = "Blue" },
     enemy_color_violet = { en = "Violet" },
     enemy_color_pink = { en = "Pink" },
+    enemy_opacity = { en = "Enemy Soulblaze opacity" },
+    enemy_opacity_description = {
+        en = "Selects the visibility of new persistent Soulblaze flames on enemies. Existing burns keep their current appearance. This does not affect the staff or wall impacts.",
+    },
+    enemy_opacity_0 = { en = "0%%" },
+    enemy_opacity_25 = { en = "25%%" },
+    enemy_opacity_50 = { en = "50%%" },
+    enemy_opacity_75 = { en = "75%%" },
+    enemy_opacity_100 = { en = "100%%" },
     original_color = { en = "Original color" },
     original_color_description = {
         en = "Uses the Inferno staff's original multi-color flame and wall impact. This overrides Color, and the original appearance ignores Brightness. Rainbow takes priority while enabled. This does not affect enemy Soulblaze.",
@@ -31,6 +43,10 @@ return {
     brightness = { en = "Brightness" },
     brightness_description = {
         en = "Adjusts brightness for the staff's custom Color and Rainbow modes. Wall impacts, Original color, and enemy Soulblaze presets ignore this option.",
+    },
+    opacity = { en = "Opacity" },
+    opacity_description = {
+        en = "Adjusts the visibility of the staff flame in Original color, custom Color, and Rainbow modes. 0 is invisible and 1 is fully visible. Wall impacts and enemy Soulblaze presets ignore this option.",
     },
     speed = { en = "Speed" },
     speed_description = {

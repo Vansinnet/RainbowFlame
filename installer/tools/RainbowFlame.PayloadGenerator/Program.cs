@@ -145,52 +145,64 @@ static string FindWorkspace(string start)
 static IEnumerable<SourceSpec> Sources(string root, string mod)
 {
     string P(string relative) => Path.Combine(root, relative.Replace('/', Path.DirectorySeparatorChar));
-    yield return new("staff-a8", "bundle/data/85/85d24accc98ef272", P("docs/analysis-flame-huecycle-deployment-20260918-q1/a8dc696a363ec3d3.original.rollback.material"), 41732, "1cf95fd9e9ac6afa6370849696d67a4cc602f369e0c6c8310409f18479c46ece", P("docs/analysis-rainbow-live-controls-20260919-e1/a8dc696a363ec3d3.material"), 71604, "f14191c3fa372d10089fac9d8e042d9363e33929aa551b57e02b79ffe51585fb", false, "bundle/data/85/85d24accc98ef272");
-    yield return new("staff-49", "bundle/data/80/809f0435f2b74af3", P("docs/analysis-flame-huecycle-deployment-20260918-q1/49697971309d8a04.original.rollback.material"), 42128, "6c281be550d37d8ba3cb765199619bbaf81eb0d0365251a21dd9835e1621dfaf", P("docs/analysis-rainbow-live-controls-20260919-e1/49697971309d8a04.material"), 71952, "5634cbbc75b5953260b03727c0ad09b045ce32e1ba553d9e14256c8b4275f9a8", false, "bundle/data/80/809f0435f2b74af3");
+    yield return new("staff-a8", "bundle/data/85/85d24accc98ef272", P("docs/analysis-flame-huecycle-deployment-20260918-q1/a8dc696a363ec3d3.original.rollback.material"), 41732, "1cf95fd9e9ac6afa6370849696d67a4cc602f369e0c6c8310409f18479c46ece", P("docs/analysis-rainbow-live-controls-20260921-opacity1/a8dc696a363ec3d3.material"), 71700, "57f513ec81c1b98bc562ff5fcdb4688ac321c4b12103e220375536199f9f3bcb", false, "bundle/data/85/85d24accc98ef272");
+    yield return new("staff-49", "bundle/data/80/809f0435f2b74af3", P("docs/analysis-flame-huecycle-deployment-20260918-q1/49697971309d8a04.original.rollback.material"), 42128, "6c281be550d37d8ba3cb765199619bbaf81eb0d0365251a21dd9835e1621dfaf", P("docs/analysis-rainbow-live-controls-20260921-opacity1/49697971309d8a04.material"), 72048, "460f671ed1ba7107e98827e922908a06b2a02012d0df4322d6186ee30dc9b032", false, "bundle/data/80/809f0435f2b74af3");
     yield return new("staff-cloud", "bundle/4e6163c275b96d00", P("docs/analysis-flame-noop-deployment-20260917-f1/original.rollback.bundle"), 83256, "1bdf1a5b90e324da137b98a9d971902ad206cd7d55b59b5d218ba6edd67b6d51", P("docs/analysis-rainbow-live-controls-20260919-e1/cloud-rename-NOOP-OFFLINE-UNTESTED.bundle"), 524960, "a5d76ad745cb65bc29f628a11f90c4891d60ee88e4938a0bb3b8f62b0fcd0911", false, "bundle/4e6163c275b96d00");
-    yield return new("enemy-global", "bundle/30ebeee18093c079", P("docs/analysis-rainbow-enemy-material-routing-20260919-l1/30ebeee18093c079.stock.rollback"), 11598878, "53fd3e19870d70e18377151233f3aa3a141ead0339c55ad4dd83b4625fa5e531", P("docs/analysis-rainbow-enemy-presets-20260920-u2/30ebeee18093c079"), 14171296, "572f42ec0c7639a6616f0fffd9b44f12d153004acbd53e05e8191f8596763799", false, "bundle/30ebeee18093c079");
+    yield return new("staff-cloud-3p", "bundle/bf83ff6f40d45fc8", P("docs/analysis-rainbow-staff-3p-20260921-a1/original.bundle"), 65413, "65fcde9a26dd0eb18c5d1dcab9e910908bb6d32b3802bea5bb7286c47849e153", P("docs/analysis-rainbow-staff-3p-20260921-a1/staff-cloud-3p-full.bundle"), 524944, "e0430cc09cb8dab3b2dce9160c037e4744ba943cc5549a4ac2eba3c8cc6b1e50", false, "bundle/bf83ff6f40d45fc8");
+    yield return new("staff-3p-20", "bundle/data/03/03f68803faf03b51", P("docs/analysis-rainbow-staff-3p-20260921-a1/layers/20b91c9f8a8cc4aa.material"), 167796, "73943bfb02628b95f6e822cddfea241e87feaa7849080f157952a012cb7efce3", P("docs/analysis-rainbow-staff-3p-20260921-a1/live20-offline-20260921-b1/20b91c9f8a8cc4aa.material"), 199556, "2c1d9f9d98817dee9cd9fea444213f5ad537eaf207ebe1b444bfd4073798d2a9", false, "bundle/data/03/03f68803faf03b51");
+    yield return new("staff-3p-84", "bundle/data/a1/a124af34da8f38d4", P("docs/analysis-flame-ramp-20260918-k1/materials/84dce57f22a9d409.material"), 316004, "c4d900493a29f564ebb8d844cc0dac4f759288d254612c4aba84ace6ef37d08f", P("docs/analysis-rainbow-staff-3p-20260921-a1/live84-offline/84dce57f22a9d409.material"), 380036, "25915d4277c864aac462c1b2f13e45dc91534f8129039a64668fad34f364e73a", false, "bundle/data/a1/a124af34da8f38d4");
+    yield return new("staff-3p-2d", "bundle/data/b3/b30657a1a41cf556", P("docs/analysis-flame-target-20260917-a1/materials-4e6163c275b96d00-v8-stream/hash-only/2d0708b33f17b5e4.material"), 300, "e1b7c9e8a483009c090f31641261471d3a60d2c25cc7879e201e079ecb18139c", P("docs/analysis-rainbow-staff-3p-20260921-a1/live84-offline/2d0708b33f17b5e4.material"), 364, "527d3bfb8a20ab1d327477d584172df8fe386e5ba0a5017abbf6440bed98d5af", false, "bundle/data/b3/b30657a1a41cf556");
+    foreach (var spec in EnemySources(root)) yield return spec;
     foreach (var spec in ImpactSources(root)) yield return spec;
-    var parent = P("docs/analysis-rainbow-enemy-deployment-20260919-h1/enemy-parent.previous.rollback");
-    var child = P("docs/analysis-rainbow-enemy-deployment-20260919-h1/enemy-child.previous.rollback");
-    var streamRoot = P("docs/analysis-rainbow-enemy-presets-20260920-u2/bundle/data/rf");
-    var parents = new Dictionary<string, (long Size, string Hash)>
-    {
-        ["0fb83861b4678991"] = (427181, "b41264fd22101500af879b30fecd8c2128969e48e2a35c55d7207a5c508585a4"),
-        ["5c2550b09227a9e4"] = (427181, "7e23f890fa3da3f4408ca9b8cb6d0108699b39b9c2a7e3867a1d8c197e2609a0"),
-        ["5d0509aa059fa83b"] = (427229, "2f67a15410d286457ed79a24d50c50ddd528b84b0dec000d888d2c12b9dbfe9b"),
-        ["5e046cad1e9570d7"] = (427181, "16e9373192add0c856398ae2afb27c66f2f2344b71e01b73780a8296ec6791ee"),
-        ["625c6576926fd717"] = (427181, "430026d2ba232aa1ba06d951176686444bbb2abea25114a12567076cb11a7c11"),
-        ["635c81c8bc9bb9ec"] = (427261, "cb5de42a387de4f4787dc1ae202376eba04ac3927dfd474b85c399f25738d8a9"),
-        ["f493e7d98ae95981"] = (427181, "60351439b055486d355b04c0e0e6b30c598e834c03202a0ea029ebd0d5db5d06"),
-        ["fb32077a4c21f759"] = (427229, "3e6355c5a8d6335f2eb6e292d974b193009783884267019bd7ac51cd50111114")
-    };
-    foreach (var (name, identity) in parents)
-    {
-        var path = Path.Combine(streamRoot, name);
-        yield return new("stream-" + name, "bundle/data/rf/" + name, parent, 393229, "a5c007c5b0af581b834d62b5053237a56888da2d575666461fefc77ab9665e32", path, identity.Size, identity.Hash, true, "bundle/data/a4/a40299ecf616514c");
-    }
-    var children = new Dictionary<string, string>
-    {
-        ["16f192bd60914c73"] = "8564d685e7962c96b4cc45bcea634399ddf1d6ac7b9560092c293d18bc849e04",
-        ["466a37a1b48d4aef"] = "da98a786c51de8df6b9745b8645983abe6ba9d7bf85ed484892922fac7c574f1",
-        ["4b81288c5455597c"] = "37a53bf8734895dd96406d19ef8f2e508706893d020de9ab772608a6e715ae21",
-        ["4e1b335ebbd4f33f"] = "5b83240f0d51a1d72303a3efd67524314f66ef949539a89199a707854c6feab8",
-        ["550feb5374742368"] = "97ba93058f53861789967abc05a93fc63a215866846e55a05d3eae1c9a2035f2",
-        ["e9db71adf077d8e3"] = "b89634cc682e07e6e39413c707263cc2a5f991ba3eedbd6323213b2c281dfad6",
-        ["eb22e9e523c6bd4b"] = "e5a186be8bbf04f0e9cc255334e8dc7e7db5f3ce224fbc74c180d78f38d2c1dd",
-        ["eb8b192632de716f"] = "7073cc3950fd3a594545b6867e98ca22fb41f2335aa1c62251d4481e57f5b49d"
-    };
-    foreach (var (name, hash) in children)
-    {
-        var path = Path.Combine(streamRoot, name);
-        yield return new("stream-" + name, "bundle/data/rf/" + name, child, 244, "b55f7d9c5d7577bf46c625ae4a776872a6592944f8db93057736ef8fd217019b", path, 308, hash, true, "bundle/data/e7/e75d420a2056a602");
-    }
     foreach (var relative in new[] { "RainbowFlame.mod", "scripts/mods/RainbowFlame/RainbowFlame.lua", "scripts/mods/RainbowFlame/RainbowFlame_data.lua", "scripts/mods/RainbowFlame/RainbowFlame_localization.lua" })
     {
         var path = Path.Combine(mod, relative.Replace('/', Path.DirectorySeparatorChar));
         yield return new("mod-" + Path.GetFileName(relative).Replace('.', '-'), "mods/RainbowFlame/" + relative,
             null, 0, null, path, new FileInfo(path).Length, Safety.Hash(path), true, null);
     }
+}
+
+static IEnumerable<SourceSpec> EnemySources(string root)
+{
+    string P(string relative) => Path.Combine(root, relative.Replace('/', Path.DirectorySeparatorChar));
+    var presetRoot = P("docs/analysis-rainbow-enemy-presets-20260921-opacity1");
+    var manifestPath = Path.Combine(presetRoot, "candidate.json");
+    Safety.RequireFile(manifestPath, 25206, "8a52825a4492069d153032beae6d2e941bb0bbf6e4d376bf92068d27fbef20de", "sealed enemy preset manifest");
+    using var document = JsonDocument.Parse(File.ReadAllText(manifestPath));
+    var candidate = document.RootElement;
+    var levels = candidate.GetProperty("opacity_levels").EnumerateArray().Select(value => value.GetInt32()).ToArray();
+    if (candidate.GetProperty("preserved_stock_records").GetInt32() != 711 ||
+        candidate.GetProperty("added_records").GetInt32() != 108 ||
+        !levels.SequenceEqual(new[] { 0, 25, 50, 75, 100 }))
+        throw new InvalidDataException("Unexpected enemy preset candidate shape.");
+    var bundle = candidate.GetProperty("bundle");
+    yield return new("enemy-global", "bundle/30ebeee18093c079",
+        P("docs/analysis-rainbow-enemy-material-routing-20260919-l1/30ebeee18093c079.stock.rollback"),
+        11598878, "53fd3e19870d70e18377151233f3aa3a141ead0339c55ad4dd83b4625fa5e531",
+        Path.Combine(presetRoot, bundle.GetProperty("path").GetString()!), bundle.GetProperty("size").GetInt64(),
+        bundle.GetProperty("sha256").GetString()!, false, "bundle/30ebeee18093c079");
+
+    var parent = P("docs/analysis-rainbow-enemy-deployment-20260919-h1/enemy-parent.previous.rollback");
+    var child = P("docs/analysis-rainbow-enemy-deployment-20260919-h1/enemy-child.previous.rollback");
+    var streamRoot = Path.Combine(presetRoot, "bundle", "data", "rf");
+    var emitted = new HashSet<string>(StringComparer.Ordinal);
+    foreach (var property in candidate.GetProperty("variants").EnumerateObject().OrderBy(property => property.Name, StringComparer.Ordinal))
+    {
+        var variant = property.Value;
+        var parentHash = variant.GetProperty("parent_hash").GetString()!;
+        var childHash = variant.GetProperty("child_hash").GetString()!;
+        if (parentHash.Length != 16 || childHash.Length != 16 || !emitted.Add(parentHash) || !emitted.Add(childHash))
+            throw new InvalidDataException("Invalid or duplicate enemy stream identity.");
+        yield return new("stream-" + parentHash, "bundle/data/rf/" + parentHash,
+            parent, 393229, "a5c007c5b0af581b834d62b5053237a56888da2d575666461fefc77ab9665e32",
+            Path.Combine(streamRoot, parentHash), variant.GetProperty("parent_size").GetInt64(),
+            variant.GetProperty("parent_sha256").GetString()!, true, "bundle/data/a4/a40299ecf616514c");
+        yield return new("stream-" + childHash, "bundle/data/rf/" + childHash,
+            child, 244, "b55f7d9c5d7577bf46c625ae4a776872a6592944f8db93057736ef8fd217019b",
+            Path.Combine(streamRoot, childHash), variant.GetProperty("child_size").GetInt64(),
+            variant.GetProperty("child_sha256").GetString()!, true, "bundle/data/e7/e75d420a2056a602");
+    }
+    if (emitted.Count != 72) throw new InvalidDataException("Unexpected enemy stream count.");
 }
 
 static IEnumerable<SourceSpec> ImpactSources(string root)

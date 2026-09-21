@@ -8,11 +8,17 @@ effects in Warhammer 40,000: Darktide.
 - Staff modes: Original, a custom hue and brightness, or an animated Rainbow,
   applied to locally rendered Inferno streams from you and your teammates.
 - Adjustable Rainbow speed.
+- Adjustable staff-flame opacity in Original, custom Color, and Rainbow modes.
 - Enemy Soulblaze presets: Original, Red, Orange, Yellow, Green, Cyan, Blue,
   Violet, and Pink.
+- Enemy Soulblaze opacity presets: 0%, 25%, 50%, 75%, and 100%.
 - Enemy presets affect newly created, locally rendered persistent Soulblaze only.
   Existing effects keep their current appearance, and gameplay damage, buffs,
   impacts, and network state are unchanged.
+
+The staff flame uses additive rendering, so Opacity scales its final visible
+intensity rather than conventional alpha blending. `0` hides the stream and `1`
+keeps its full visibility. Wall impacts and enemy Soulblaze are unaffected.
 
 ## Requirements
 

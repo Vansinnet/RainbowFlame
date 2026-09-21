@@ -6,6 +6,12 @@ local clouds = {
     "RainbowFlame_stream_b",
     "RainbowFlame_stream_c",
 }
+local husk_clouds = {
+    "RainbowFlame_stream_a",
+    "RainbowFlame_stream_3p_b",
+    "RainbowFlame_stream_3p_c",
+    "RainbowFlame_stream_3p_d",
+}
 local enemy_effect = "content/fx/particles/enemies/buff_warpfire"
 local enemy_presets = {
     red = "content/fx/particles/rainbow_flame/buff_warpfire_red",
@@ -50,6 +56,21 @@ local stock_box = QuaternionBox(0, 0, 0, 0)
 ---@type table<FlamerGasEffects, RainbowFlameOwnerState>
 local owners = setmetatable({}, { __mode = "k" })
 
+local function enemy_effect_for_settings(color, opacity)
+    local preset = enemy_presets[color]
+    if opacity == 0 then
+        return "content/fx/particles/rainbow_flame/buff_warpfire_hidden"
+    elseif not preset then
+        if opacity == 100 then
+            return enemy_effect
+        end
+        return "content/fx/particles/rainbow_flame/buff_warpfire_original_opacity_" .. opacity
+    elseif opacity == 100 then
+        return preset
+    end
+    return preset .. "_opacity_" .. opacity
+end
+
 local function impact_effect_for_hue(hue)
     local selected = impact_presets[1]
     local selected_distance = math.huge
@@ -70,9 +91,10 @@ local function cache_settings()
     local original = mod:get("original_color") and not rainbow
     local hue = mod:get("hue")
     local enemy_color = mod:get("enemy_color")
-    hsv_box = QuaternionBox(hue / 360, 1.0, mod:get("brightness"), original and 0 or 1)
+    local enemy_opacity = mod:get("enemy_opacity")
+    hsv_box = QuaternionBox(hue / 360, mod:get("opacity"), mod:get("brightness"), original and -1 or 1)
     cycle_box = Vector3Box(rainbow and 1 or 0, mod:get("speed"), 0)
-    selected_enemy_effect = enemy_presets[enemy_color] or enemy_effect
+    selected_enemy_effect = enemy_effect_for_settings(enemy_color, enemy_opacity)
     selected_impact_effect = not original and not rainbow and impact_effect_for_hue(hue) or impact_effect
     revision = revision + 1
 end
@@ -83,9 +105,10 @@ end
 local function apply(owner, particle_id, state)
     if state.matches and state.revision ~= revision then
         state.revision = revision
-        for i = 1, #clouds do
-            World.set_particles_material_vector2(owner._world, particle_id, clouds[i], cycle_parameter, cycle_box:unbox())
-            World.set_particles_material_vector4(owner._world, particle_id, clouds[i], hsv_parameter, hsv_box:unbox())
+        local owner_clouds = owner._is_husk and husk_clouds or clouds
+        for i = 1, #owner_clouds do
+            World.set_particles_material_vector2(owner._world, particle_id, owner_clouds[i], cycle_parameter, cycle_box:unbox())
+            World.set_particles_material_vector4(owner._world, particle_id, owner_clouds[i], hsv_parameter, hsv_box:unbox())
         end
     end
 end
@@ -99,9 +122,10 @@ local function visit(owner, state, particle_id)
     end
     local particle = state.particles[particle_id]
     if not particle then
+        local owner_clouds = owner._is_husk and husk_clouds or clouds
         local matches = true
-        for i = 1, #clouds do
-            if not World.has_particles_material(owner._world, particle_id, clouds[i]) then
+        for i = 1, #owner_clouds do
+            if not World.has_particles_material(owner._world, particle_id, owner_clouds[i]) then
                 matches = false
                 break
             end
@@ -140,10 +164,11 @@ local function restore_owner(owner)
     local state = owners[owner]
     owners[owner] = nil
     if state and not rawget(owner, "__deleted") then
+        local owner_clouds = owner._is_husk and husk_clouds or clouds
         for id, particle in pairs(state.particles) do
             if particle.matches and World.are_particles_playing(owner._world, id) then
-                for i = 1, #clouds do
-                    World.set_particles_material_vector4(owner._world, id, clouds[i], hsv_parameter, stock_box:unbox())
+                for i = 1, #owner_clouds do
+                    World.set_particles_material_vector4(owner._world, id, owner_clouds[i], hsv_parameter, stock_box:unbox())
                 end
             end
         end
