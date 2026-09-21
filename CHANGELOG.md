@@ -4,6 +4,15 @@ All notable release-facing changes to RainbowFlame are documented here.
 
 ## [Unreleased]
 
+## [1.0.1] - 2026-09-21
+
+### Fixed
+
+- Applied the selected Inferno staff color to other players' locally rendered
+  third-person flame streams in missions.
+- Allowed a new installer release to replace files that exactly match its
+  ownership receipt while preserving rollback and unknown-file refusal.
+
 ## [1.0.0] - 2026-09-20
 
 ### Added

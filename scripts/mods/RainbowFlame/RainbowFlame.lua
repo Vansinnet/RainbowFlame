@@ -115,7 +115,7 @@ end
 
 ---@param owner FlamerGasEffects
 local function update_owner(owner)
-    if not enabled or not owner._is_local_unit or owner._is_husk then
+    if not enabled or DEDICATED_SERVER then
         return
     end
     local state = owners[owner]

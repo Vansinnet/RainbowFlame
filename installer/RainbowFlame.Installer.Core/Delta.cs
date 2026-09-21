@@ -2,11 +2,12 @@ namespace RainbowFlame.Installer.Core;
 
 public static class Delta
 {
-    public static void Reconstruct(FileRecipe recipe, string payloadRoot, string gameRoot, string destination)
+    public static void Reconstruct(FileRecipe recipe, string payloadRoot, string gameRoot, string destination,
+        string? authenticatedBase = null)
     {
         var payload = Safety.SafePath(payloadRoot, recipe.Payload);
         Safety.RequireFile(payload, recipe.PayloadSize, recipe.PayloadSha256, $"payload for {recipe.Id}");
-        var basePath = recipe.Base is null ? null : Safety.SafePath(gameRoot, recipe.Base);
+        var basePath = recipe.Base is null ? null : authenticatedBase ?? Safety.SafePath(gameRoot, recipe.Base);
         if (basePath is not null)
             Safety.RequireFile(basePath, recipe.BaseSize, recipe.BaseSha256!, $"authenticated base for {recipe.Id}");
 

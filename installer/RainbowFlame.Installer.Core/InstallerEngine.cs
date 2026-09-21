@@ -78,7 +78,7 @@ public sealed class InstallerEngine
              oldReceipt.ExeVersion != manifest.ExeVersion))
             throw new InstallerException("The ownership receipt belongs to a different RainbowFlame release.");
 
-        ValidateManagedModDirectory(gameRoot, manifest);
+        ValidateManagedModDirectory(gameRoot, manifest, oldReceipt);
         if (action == InstallerAction.RepairAfterUpdate)
             PreflightUpdateRepair(gameRoot, manifest, oldReceipt!);
         var session = DateTime.UtcNow.ToString("yyyyMMddTHHmmssfffZ") + "-" + Guid.NewGuid().ToString("N");
@@ -110,15 +110,16 @@ public sealed class InstallerEngine
                 var existingKnownOutput = File.Exists(target) && IsExact(target, recipe.OutputSize, recipe.OutputSha256);
                 var prior = oldReceipt?.Files.SingleOrDefault(file => file.Target.Equals(recipe.Target,
                     StringComparison.OrdinalIgnoreCase));
+                var existingPriorOutput = prior is not null && File.Exists(target) &&
+                    IsExact(target, prior.OutputSize, prior.OutputSha256);
                 if (existingKnownOutput && prior is null)
                     throw new InstallerException($"Refusing to adopt an existing RainbowFlame output without an ownership receipt: {recipe.Target}");
-                if (recipe.Addition && File.Exists(target) && !existingKnownOutput)
+                if (recipe.Addition && File.Exists(target) && !existingKnownOutput && !existingPriorOutput)
                     throw new InstallerException($"Refusing to overwrite unknown addition: {recipe.Target}");
-                if (!recipe.Addition && !existingKnownOutput)
+                if (!recipe.Addition && !existingKnownOutput && !existingPriorOutput)
                     Safety.RequireFile(target, recipe.BaseSize, recipe.BaseSha256!, $"input for {recipe.Id}");
 
                 var staged = Path.Combine(stageRoot, recipe.Id + ".stage");
-                if (!existingKnownOutput) Delta.Reconstruct(recipe, payloadRoot, gameRoot, staged);
                 var row = new ReceiptFile
                 {
                     Id = recipe.Id, Target = recipe.Target, Addition = recipe.Addition,
@@ -146,19 +147,38 @@ public sealed class InstallerEngine
 
                 if (!existingKnownOutput)
                 {
+                    var reconstructionBase = !recipe.Addition && existingPriorOutput ? row.Backup : null;
+                    Delta.Reconstruct(recipe, payloadRoot, gameRoot, staged, reconstructionBase);
+                }
+
+                if (!existingKnownOutput)
+                {
+                    var targetExists = File.Exists(target);
+                    var beforeSize = targetExists ? new FileInfo(target).Length : 0;
+                    var beforeHash = targetExists ? Safety.Hash(target) : "absent";
+                    var rollbackBackup = row.Backup;
+                    if (targetExists && existingPriorOutput)
+                    {
+                        rollbackBackup = Path.Combine(backupRoot, recipe.Id + ".upgrade.rollback");
+                        Safety.CopyDurable(target, rollbackBackup);
+                    }
                     var entry = new JournalEntry
                     {
-                        Target = target, Before = recipe.Addition ? "absent" : Safety.Hash(target),
-                        BeforeSize = recipe.Addition ? 0 : new FileInfo(target).Length,
-                        After = recipe.OutputSha256, Backup = row.Backup
+                        Target = target, Before = beforeHash, BeforeSize = beforeSize,
+                        After = recipe.OutputSha256, Backup = rollbackBackup
                     };
                     journal.Entries.Add(entry);
                     Safety.WriteJsonDurable(journalPath, journal);
                     beforeWrite?.Invoke(++writeNumber);
                     processes.EnsureGameStopped();
-                    if (recipe.Addition && File.Exists(target))
+                    if (!targetExists && File.Exists(target))
                         throw new InstallerException($"Addition appeared during installation: {recipe.Target}");
-                    if (recipe.Addition) File.Move(staged, target);
+                    if (targetExists)
+                    {
+                        Safety.RequireFile(target, beforeSize, beforeHash, $"owned input for {recipe.Id}");
+                        Safety.OverwriteDurable(staged, target);
+                    }
+                    else if (recipe.Addition) File.Move(staged, target);
                     else Safety.OverwriteDurable(staged, target);
                     Safety.RequireFile(target, recipe.OutputSize, recipe.OutputSha256, $"installed output for {recipe.Id}");
                     entry.Complete = true;
@@ -321,7 +341,7 @@ public sealed class InstallerEngine
         }
     }
 
-    private static void ValidateManagedModDirectory(string gameRoot, PayloadManifest manifest)
+    private static void ValidateManagedModDirectory(string gameRoot, PayloadManifest manifest, InstallReceipt? receipt)
     {
         var modRoot = Path.Combine(gameRoot, "mods", "RainbowFlame");
         if (!Directory.Exists(modRoot)) return;
@@ -329,10 +349,20 @@ public sealed class InstallerEngine
         var allowed = manifest.Files.Where(file => file.Target.StartsWith("mods/RainbowFlame/", StringComparison.OrdinalIgnoreCase))
             .ToDictionary(file => Path.GetFullPath(Path.Combine(gameRoot, file.Target.Replace('/', Path.DirectorySeparatorChar))),
                 StringComparer.OrdinalIgnoreCase);
+        var previouslyOwned = receipt?.Files
+            .Where(file => file.Target.StartsWith("mods/RainbowFlame/", StringComparison.OrdinalIgnoreCase))
+            .ToDictionary(file => Path.GetFullPath(Path.Combine(gameRoot, file.Target.Replace('/', Path.DirectorySeparatorChar))),
+                StringComparer.OrdinalIgnoreCase);
         foreach (var path in Directory.EnumerateFiles(modRoot, "*", SearchOption.AllDirectories))
         {
             Safety.RejectReparseAncestors(gameRoot, path, true);
-            if (!allowed.TryGetValue(Path.GetFullPath(path), out var recipe) || !IsExact(path, recipe.OutputSize, recipe.OutputSha256))
+            var fullPath = Path.GetFullPath(path);
+            var isAllowed = allowed.TryGetValue(fullPath, out var recipe);
+            var currentOutput = isAllowed && IsExact(path, recipe!.OutputSize, recipe.OutputSha256);
+            var priorOutput = isAllowed && previouslyOwned is not null &&
+                previouslyOwned.TryGetValue(fullPath, out var prior) &&
+                IsExact(path, prior.OutputSize, prior.OutputSha256);
+            if (!isAllowed || !currentOutput && !priorOutput)
                 throw new InstallerException($"Refusing unknown file in the RainbowFlame mod directory: {path}");
         }
         foreach (var directory in Directory.EnumerateDirectories(modRoot, "*", SearchOption.AllDirectories))

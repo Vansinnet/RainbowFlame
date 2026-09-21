@@ -7,6 +7,8 @@ var tests = new (string Name, Action Run)[]
 {
     ("hash refusal", HashRefusal), ("unknown additions", UnknownAddition),
     ("unowned output refusal", UnownedOutputRefusal),
+    ("owned version upgrade", OwnedVersionUpgrade),
+    ("interrupted version upgrade rollback", InterruptedVersionUpgradeRollback),
     ("read-only non-deletable replacement", ReadOnlyNonDeletableReplacement),
     ("interrupted operation rollback", InterruptedRollback), ("partial write recovery", PartialWriteRecovery),
     ("repair", Repair),
@@ -52,6 +54,37 @@ static void UnownedOutputRefusal()
     using var fixture = new Fixture();
     File.WriteAllText(Path.Combine(fixture.Game, "base.bin"), "output");
     Throws(() => fixture.Engine().Execute(fixture.Game, InstallerAction.Install, false), "ownership receipt");
+}
+
+static void OwnedVersionUpgrade()
+{
+    using var fixture = new Fixture();
+    var engine = fixture.Engine();
+    engine.Execute(fixture.Game, InstallerAction.Install, false);
+    fixture.PrepareUpgrade();
+
+    engine.Execute(fixture.Game, InstallerAction.Install, false);
+
+    Equal("output-v2", File.ReadAllText(Path.Combine(fixture.Game, "base.bin")), "upgraded replacement");
+    Equal("new-v2", File.ReadAllText(Path.Combine(fixture.Game, "mods", "RainbowFlame", "new.bin")), "upgraded addition");
+    Equal("1.0.1", fixture.Receipt().Version, "upgraded receipt version");
+    engine.Execute(fixture.Game, InstallerAction.Uninstall, false);
+    Equal("base", File.ReadAllText(Path.Combine(fixture.Game, "base.bin")), "upgrade uninstall restore");
+    False(File.Exists(Path.Combine(fixture.Game, "mods", "RainbowFlame", "new.bin")), "upgrade uninstall addition");
+}
+
+static void InterruptedVersionUpgradeRollback()
+{
+    using var fixture = new Fixture();
+    fixture.Engine().Execute(fixture.Game, InstallerAction.Install, false);
+    fixture.PrepareUpgrade();
+
+    var engine = fixture.Engine(number => { if (number == 2) throw new IOException("injected upgrade interruption"); });
+    Throws(() => engine.Execute(fixture.Game, InstallerAction.Install, false), "injected upgrade interruption");
+
+    Equal("output", File.ReadAllText(Path.Combine(fixture.Game, "base.bin")), "upgrade replacement rollback");
+    Equal("new", File.ReadAllText(Path.Combine(fixture.Game, "mods", "RainbowFlame", "new.bin")), "upgrade addition rollback");
+    Equal("1.0.0", fixture.Receipt().Version, "rollback preserved prior receipt");
 }
 
 static void ReadOnlyNonDeletableReplacement()
@@ -323,6 +356,7 @@ sealed class Fixture : IDisposable
         File.WriteAllText(Path.Combine(Payload, "inserts", "addition.bin"), "new");
         var manifest = new PayloadManifest
         {
+            Version = "1.0.0",
             Files = new List<FileRecipe>
             {
                 Recipe("replacement", "base.bin", "base.bin", "base", "output", false, "inserts/replacement.bin"),
@@ -350,7 +384,30 @@ sealed class Fixture : IDisposable
         manifest.Files.Reverse();
         Safety.WriteJsonDurable(path, manifest);
     }
+    public void PrepareUpgrade()
+    {
+        var path = Path.Combine(Payload, "manifest.json");
+        var manifest = Safety.ReadJson<PayloadManifest>(path);
+        manifest.Version = "1.0.1";
+        SetOutput(manifest.Files.Single(file => file.Id == "replacement"), "output-v2");
+        SetOutput(manifest.Files.Single(file => file.Id == "addition"), "new-v2");
+        Safety.WriteJsonDurable(path, manifest);
+    }
     public void Dispose() { if (Directory.Exists(Root)) Directory.Delete(Root, true); }
+
+    private void SetOutput(FileRecipe recipe, string output)
+    {
+        var bytes = Encoding.UTF8.GetBytes(output);
+        File.WriteAllBytes(Path.Combine(Payload, recipe.Payload.Replace('/', Path.DirectorySeparatorChar)), bytes);
+        recipe.OutputSize = bytes.Length;
+        recipe.OutputSha256 = Hash(output);
+        recipe.PayloadSize = bytes.Length;
+        recipe.PayloadSha256 = recipe.OutputSha256;
+        recipe.Operations = new List<DeltaOperation>
+        {
+            new() { Kind = DeltaKind.Insert, Offset = 0, Count = bytes.Length }
+        };
+    }
 
     private static FileRecipe Recipe(string id, string target, string? basis, string? baseText, string output,
         bool addition, string payload)

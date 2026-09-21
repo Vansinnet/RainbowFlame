@@ -5,7 +5,8 @@ effects in Warhammer 40,000: Darktide.
 
 ## Features
 
-- Staff modes: Original, a custom hue and brightness, or an animated Rainbow.
+- Staff modes: Original, a custom hue and brightness, or an animated Rainbow,
+  applied to locally rendered Inferno streams from you and your teammates.
 - Adjustable Rainbow speed.
 - Enemy Soulblaze presets: Original, Red, Orange, Yellow, Green, Cyan, Blue,
   Violet, and Pink.
