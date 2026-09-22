@@ -3,6 +3,9 @@
 RainbowFlame customizes the Inferno staff, the Zealot flamer, and persistent
 enemy Soulblaze effects in Warhammer 40,000: Darktide.
 
+The binary formats, shader analysis, failed experiments, and validation method are
+documented in [Reverse Engineering RainbowFlame](REVERSE_ENGINEERING.md).
+
 ## Features
 
 - Staff modes: Original, a custom hue and brightness, or an animated Rainbow,
