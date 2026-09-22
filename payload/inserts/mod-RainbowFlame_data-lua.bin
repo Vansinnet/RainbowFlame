@@ -60,6 +60,24 @@ return {
                     { setting_id = "speed", type = "numeric", default_value = 0.125, range = { 0.001, 4 }, decimals_number = 3 },
                 },
             },
+            {
+                setting_id = "flamer_flame_group",
+                type = "group",
+                sub_widgets = {
+                    { setting_id = "flamer_original_color", type = "checkbox", default_value = true },
+                    { setting_id = "flamer_hue", type = "numeric", default_value = 30, range = { 0, 360 }, decimals_number = 0 },
+                    { setting_id = "flamer_brightness", type = "numeric", default_value = 1, range = { 0, 2 }, decimals_number = 2 },
+                    { setting_id = "flamer_opacity", type = "numeric", default_value = 1, range = { 0, 1 }, decimals_number = 2 },
+                },
+            },
+            {
+                setting_id = "flamer_rainbow_group",
+                type = "group",
+                sub_widgets = {
+                    { setting_id = "flamer_rainbow", type = "checkbox", default_value = false },
+                    { setting_id = "flamer_speed", type = "numeric", default_value = 0.125, range = { 0.001, 4 }, decimals_number = 3 },
+                },
+            },
         },
     },
 }

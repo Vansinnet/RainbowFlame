@@ -2,7 +2,14 @@
 
 All notable release-facing changes to RainbowFlame are documented here.
 
-## [Unreleased]
+## [1.2.0] - 2026-09-22
+
+### Added
+
+- Added independent Original, custom Color, Brightness, Opacity, Rainbow, and
+  Speed controls for the Zealot flamer's primary burst, braced stream, and
+  locally rendered teammate stream.
+- Added eight fixed Zealot flamer impact colors selected by its Color setting.
 
 ## [1.1.0] - 2026-09-21
 

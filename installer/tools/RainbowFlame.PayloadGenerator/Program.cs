@@ -7,6 +7,10 @@ var workspace = args.Length == 2 && args[0] == "--workspace"
 var mod = Path.Combine(workspace, "mods", "active", "RainbowFlame");
 var output = Path.Combine(mod, "payload");
 var specs = Sources(workspace, mod).OrderBy(spec => spec.Id, StringComparer.Ordinal).ToArray();
+var duplicateIds = specs.GroupBy(spec => spec.Id, StringComparer.Ordinal).Where(group => group.Count() != 1).Select(group => group.Key).ToArray();
+var duplicateTargets = specs.GroupBy(spec => spec.Target, StringComparer.OrdinalIgnoreCase).Where(group => group.Count() != 1).Select(group => group.Key).ToArray();
+if (duplicateIds.Length != 0 || duplicateTargets.Length != 0)
+    throw new InvalidDataException($"Duplicate payload identities. IDs: {string.Join(", ", duplicateIds)}; targets: {string.Join(", ", duplicateTargets)}");
 var blockers = new List<object>();
 foreach (var spec in specs)
 {
@@ -152,13 +156,82 @@ static IEnumerable<SourceSpec> Sources(string root, string mod)
     yield return new("staff-3p-20", "bundle/data/03/03f68803faf03b51", P("docs/analysis-rainbow-staff-3p-20260921-a1/layers/20b91c9f8a8cc4aa.material"), 167796, "73943bfb02628b95f6e822cddfea241e87feaa7849080f157952a012cb7efce3", P("docs/analysis-rainbow-staff-3p-20260921-a1/live20-offline-20260921-b1/20b91c9f8a8cc4aa.material"), 199556, "2c1d9f9d98817dee9cd9fea444213f5ad537eaf207ebe1b444bfd4073798d2a9", false, "bundle/data/03/03f68803faf03b51");
     yield return new("staff-3p-84", "bundle/data/a1/a124af34da8f38d4", P("docs/analysis-flame-ramp-20260918-k1/materials/84dce57f22a9d409.material"), 316004, "c4d900493a29f564ebb8d844cc0dac4f759288d254612c4aba84ace6ef37d08f", P("docs/analysis-rainbow-staff-3p-20260921-a1/live84-offline/84dce57f22a9d409.material"), 380036, "25915d4277c864aac462c1b2f13e45dc91534f8129039a64668fad34f364e73a", false, "bundle/data/a1/a124af34da8f38d4");
     yield return new("staff-3p-2d", "bundle/data/b3/b30657a1a41cf556", P("docs/analysis-flame-target-20260917-a1/materials-4e6163c275b96d00-v8-stream/hash-only/2d0708b33f17b5e4.material"), 300, "e1b7c9e8a483009c090f31641261471d3a60d2c25cc7879e201e079ecb18139c", P("docs/analysis-rainbow-staff-3p-20260921-a1/live84-offline/2d0708b33f17b5e4.material"), 364, "527d3bfb8a20ab1d327477d584172df8fe386e5ba0a5017abbf6440bed98d5af", false, "bundle/data/b3/b30657a1a41cf556");
+    foreach (var spec in FlamerSources(root)) yield return spec;
     foreach (var spec in EnemySources(root)) yield return spec;
-    foreach (var spec in ImpactSources(root)) yield return spec;
+    foreach (var spec in StaffImpactSources(root)) yield return spec;
+    foreach (var spec in FlamerImpactSources(root)) yield return spec;
     foreach (var relative in new[] { "RainbowFlame.mod", "scripts/mods/RainbowFlame/RainbowFlame.lua", "scripts/mods/RainbowFlame/RainbowFlame_data.lua", "scripts/mods/RainbowFlame/RainbowFlame_localization.lua" })
     {
         var path = Path.Combine(mod, relative.Replace('/', Path.DirectorySeparatorChar));
         yield return new("mod-" + Path.GetFileName(relative).Replace('.', '-'), "mods/RainbowFlame/" + relative,
             null, 0, null, path, new FileInfo(path).Length, Safety.Hash(path), true, null);
+    }
+}
+
+static IEnumerable<SourceSpec> FlamerSources(string root)
+{
+    string P(string relative) => Path.Combine(root, relative.Replace('/', Path.DirectorySeparatorChar));
+    var analysis = P("mods/active/RainbowFlame/analysis/flamer-streams-20260922-a1");
+    var authored = Path.Combine(analysis, "authored");
+    var authoredManifestPath = Path.Combine(authored, "manifest.json");
+    Safety.RequireFile(authoredManifestPath, 1689, "1ac12a3328521da4ac829e16319b4543c7bd0f6276184fd73973275fdb043e33", "sealed flamer bundle manifest");
+    using var authoredManifestDocument = JsonDocument.Parse(File.ReadAllText(authoredManifestPath));
+    var authoredOutputs = authoredManifestDocument.RootElement.GetProperty("outputs").EnumerateArray()
+        .ToDictionary(value => value.GetProperty("file").GetString()!, StringComparer.Ordinal);
+    var bundles = new[]
+    {
+        ("continuous", "e605c5550cf3088b", "RainbowFlame_flamer_continuous.json", 2792L, "7231769e61fd7d2948e3a2601986c472d92cd777788881d648532bd36c799756"),
+        ("burst", "f3952b5fba574342", "RainbowFlame_flamer_burst.json", 3184L, "d887b3b813daf56d73da0767a8b2420f28acc8cdeb98321015bb86dbaa4b21e8"),
+        ("3p", "299f23117d653583", "RainbowFlame_flamer_3p.json", 2333L, "066f6acd9ceccbe3f1854353a4fdfaafafb01d2fe94364095432eec480a39444")
+    };
+    foreach (var (kind, targetHash, reportName, reportSize, reportHash) in bundles)
+    {
+        var reportPath = Path.Combine(authored, reportName);
+        Safety.RequireFile(reportPath, reportSize, reportHash, "sealed flamer " + kind + " report");
+        using var reportDocument = JsonDocument.Parse(File.ReadAllText(reportPath));
+        var report = reportDocument.RootElement;
+        var outputName = report.GetProperty("output").GetString()!;
+        var manifestOutput = authoredOutputs[outputName];
+        if (report.GetProperty("kind").GetString() != kind ||
+            report.GetProperty("source").GetString() != "stock/bundle/" + targetHash ||
+            manifestOutput.GetProperty("size").GetInt64() != report.GetProperty("output_size").GetInt64() ||
+            manifestOutput.GetProperty("sha256").GetString() != report.GetProperty("output_sha256").GetString())
+            throw new InvalidDataException("Unexpected flamer bundle report: " + reportName);
+        yield return new("flamer-" + kind, "bundle/" + targetHash,
+            Path.Combine(analysis, "stock", "bundle", targetHash), report.GetProperty("source_size").GetInt64(),
+            report.GetProperty("source_sha256").GetString()!, Path.Combine(authored, outputName),
+            report.GetProperty("output_size").GetInt64(), report.GetProperty("output_sha256").GetString()!, false,
+            "bundle/" + targetHash);
+    }
+    if (authoredOutputs.Count != 3) throw new InvalidDataException("Unexpected flamer bundle output count.");
+
+    var profilesPath = Path.Combine(analysis, "material-profiles.json");
+    Safety.RequireFile(profilesPath, 49486, "1dce4188b64c62b323522e6b2f5b64cd9d3919106cc935d7d0cbce63f8097d34", "sealed flamer material profiles");
+    using var profilesDocument = JsonDocument.Parse(File.ReadAllText(profilesPath));
+    var profiles = profilesDocument.RootElement.GetProperty("materials").EnumerateArray()
+        .ToDictionary(value => value.GetProperty("material").GetString()!, StringComparer.Ordinal);
+    var materialsRoot = Path.Combine(analysis, "authored-materials");
+    var materialsReportPath = Path.Combine(materialsRoot, "report.json");
+    Safety.RequireFile(materialsReportPath, 33390, "422e0202aad1c7cc92e7f22f2a091b7ac5395d29e638980ac8653d41de8f0bff", "sealed authored material report");
+    using var materialsDocument = JsonDocument.Parse(File.ReadAllText(materialsReportPath));
+    var materialsReport = materialsDocument.RootElement;
+    foreach (var materialHash in new[] { "da27aa083a052838", "3bbd4f5f32613f4b", "be9333164c3ddf4a" })
+    {
+        var profile = profiles[materialHash];
+        var result = materialHash == "3bbd4f5f32613f4b"
+            ? materialsReport.GetProperty("child")
+            : materialsReport.GetProperty("parents").GetProperty(materialHash);
+        var source = result.GetProperty("source");
+        var material = result.GetProperty("material");
+        if (source.GetProperty("size").GetInt64() != profile.GetProperty("stream_size").GetInt64() ||
+            source.GetProperty("sha256").GetString() != profile.GetProperty("stream_sha256").GetString())
+            throw new InvalidDataException("Authored material source differs from sealed profile: " + materialHash);
+        var target = "bundle/" + profile.GetProperty("stream").GetString();
+        yield return new("zz-flamer-material-" + materialHash[..4], target,
+            Path.Combine(analysis, "stock", "bundle", profile.GetProperty("stream").GetString()!.Replace('/', Path.DirectorySeparatorChar)),
+            source.GetProperty("size").GetInt64(), source.GetProperty("sha256").GetString()!,
+            Path.Combine(materialsRoot, materialHash + ".material"), material.GetProperty("size").GetInt64(),
+            material.GetProperty("sha256").GetString()!, false, target);
     }
 }
 
@@ -205,7 +278,7 @@ static IEnumerable<SourceSpec> EnemySources(string root)
     if (emitted.Count != 72) throw new InvalidDataException("Unexpected enemy stream count.");
 }
 
-static IEnumerable<SourceSpec> ImpactSources(string root)
+static IEnumerable<SourceSpec> StaffImpactSources(string root)
 {
     string P(string relative) => Path.Combine(root, relative.Replace('/', Path.DirectorySeparatorChar));
     var impactRoot = P("mods/active/RainbowFlame/analysis/impact-presets-20260920-b4");
@@ -254,6 +327,90 @@ static IEnumerable<SourceSpec> ImpactSources(string root)
     }
     if (emitted.Count != 32 || streams.EnumerateObject().Count() != 32)
         throw new InvalidDataException("Unexpected impact stream count.");
+}
+
+static IEnumerable<SourceSpec> FlamerImpactSources(string root)
+{
+    string P(string relative) => Path.Combine(root, relative.Replace('/', Path.DirectorySeparatorChar));
+    var analysis = P("mods/active/RainbowFlame/analysis/flamer-streams-20260922-a1");
+    var impactRoot = Path.Combine(analysis, "authored-impact");
+    var manifestPath = Path.Combine(impactRoot, "manifest.json");
+    Safety.RequireFile(manifestPath, 7615, "4928ba3c9c2f29a6b6c6f6ed1082889964f9252c9ef1cd408771c238a14caa1c", "sealed Zealot impact manifest");
+    using var manifestDocument = JsonDocument.Parse(File.ReadAllText(manifestPath));
+    var manifest = manifestDocument.RootElement;
+    var artifacts = manifest.GetProperty("artifacts");
+    if (manifest.GetProperty("record_count").GetInt32() != 99 || manifest.GetProperty("stream_count").GetInt32() != 48 ||
+        manifest.GetProperty("preset_count").GetInt32() != 8)
+        throw new InvalidDataException("Unexpected Zealot impact manifest counts.");
+    var reportPath = Path.Combine(impactRoot, "report.json");
+    Safety.RequireFile(reportPath, 189331, "6303b90db522292996e41e81e397da5679e7b5052723e603122d397f3eb80f95", "sealed Zealot impact report");
+    using var reportDocument = JsonDocument.Parse(File.ReadAllText(reportPath));
+    var report = reportDocument.RootElement;
+    var bundleArtifact = artifacts.GetProperty("bundle/3d487cca8bd5c544");
+    var sourceBundle = report.GetProperty("source_bundle");
+    var candidateBundle = report.GetProperty("candidate_bundle");
+    if (report.GetProperty("stock_records").GetInt32() != 43 || report.GetProperty("added_records").GetInt32() != 56 ||
+        report.GetProperty("candidate_records").GetInt32() != 99 ||
+        candidateBundle.GetProperty("size").GetInt64() != bundleArtifact.GetProperty("size").GetInt64() ||
+        candidateBundle.GetProperty("sha256").GetString() != bundleArtifact.GetProperty("sha256").GetString())
+        throw new InvalidDataException("Unexpected Zealot impact report shape.");
+    yield return new("impact-zealot", "bundle/3d487cca8bd5c544", Path.Combine(analysis, "stock", "bundle", "3d487cca8bd5c544"),
+        sourceBundle.GetProperty("size").GetInt64(), sourceBundle.GetProperty("sha256").GetString()!,
+        Path.Combine(impactRoot, "bundle", "3d487cca8bd5c544"), candidateBundle.GetProperty("size").GetInt64(),
+        candidateBundle.GetProperty("sha256").GetString()!, false, "bundle/3d487cca8bd5c544");
+
+    var profilesPath = Path.Combine(analysis, "material-profiles.json");
+    Safety.RequireFile(profilesPath, 49486, "1dce4188b64c62b323522e6b2f5b64cd9d3919106cc935d7d0cbce63f8097d34", "sealed flamer material profiles");
+    using var profilesDocument = JsonDocument.Parse(File.ReadAllText(profilesPath));
+    var profiles = profilesDocument.RootElement.GetProperty("materials").EnumerateArray()
+        .ToDictionary(value => value.GetProperty("material").GetString()!, StringComparer.Ordinal);
+    var oneCcSource = P("mods/active/RainbowFlame/analysis/impact-color-20260920-a1/parents-stream/hash-only/1cc58f33452ca960.material");
+    var emitted = new HashSet<string>(StringComparer.Ordinal);
+    foreach (var presetProperty in report.GetProperty("presets").EnumerateObject())
+    {
+        var preset = presetProperty.Value;
+        var hashes = preset.GetProperty("hashes");
+        foreach (var parentRole in new[] { (Name: "parent_be93", Stock: "be9333164c3ddf4a"), (Name: "parent_1cc", Stock: "1cc58f33452ca960") })
+        {
+            var name = hashes.GetProperty(parentRole.Name).GetString()!;
+            var result = preset.GetProperty(parentRole.Name);
+            var material = result.GetProperty("material");
+            var source = result.GetProperty("source");
+            var baseTarget = parentRole.Stock == "be9333164c3ddf4a" ? "data/c5/c54a5bfcf52f138d" : "data/bb/bb79ba7a5b92d132";
+            var baseSource = parentRole.Stock == "be9333164c3ddf4a"
+                ? Path.Combine(analysis, "stock", "bundle", baseTarget.Replace('/', Path.DirectorySeparatorChar)) : oneCcSource;
+            yield return ImpactStream(name, baseTarget, baseSource, source, material);
+        }
+        foreach (var child in preset.GetProperty("children").EnumerateArray())
+        {
+            var stockChild = child.GetProperty("stock_child").GetString()!;
+            if (!profiles.TryGetValue(stockChild, out var profile))
+                throw new InvalidDataException("Missing sealed material profile for impact child " + stockChild);
+            var name = child.GetProperty("custom_child").GetString()!;
+            var stream = child.GetProperty("stream");
+            var baseTarget = profile.GetProperty("stream").GetString()!;
+            yield return ImpactStream(name, baseTarget,
+                Path.Combine(analysis, "stock", "bundle", baseTarget.Replace('/', Path.DirectorySeparatorChar)), profile, stream);
+        }
+    }
+
+    SourceSpec ImpactStream(string name, string baseTarget, string baseSource, JsonElement source, JsonElement desired)
+    {
+        if (!emitted.Add(name)) throw new InvalidDataException("Duplicate Zealot impact stream identity: " + name);
+        var target = "bundle/data/rf/" + name;
+        if (!artifacts.TryGetProperty(target, out var artifact) ||
+            artifact.GetProperty("size").GetInt64() != desired.GetProperty("size").GetInt64() ||
+            artifact.GetProperty("sha256").GetString() != desired.GetProperty("sha256").GetString())
+            throw new InvalidDataException("Zealot impact stream differs from sealed manifest: " + name);
+        var sourceSizeName = source.TryGetProperty("stream_size", out _) ? "stream_size" : "size";
+        var sourceHashName = source.TryGetProperty("stream_sha256", out _) ? "stream_sha256" : "sha256";
+        return new("stream-" + name, target, baseSource, source.GetProperty(sourceSizeName).GetInt64(),
+            source.GetProperty(sourceHashName).GetString()!, Path.Combine(impactRoot, "bundle", "data", "rf", name),
+            desired.GetProperty("size").GetInt64(), desired.GetProperty("sha256").GetString()!, true, "bundle/" + baseTarget);
+    }
+    var manifestStreams = artifacts.EnumerateObject().Count(property => property.Name.StartsWith("bundle/data/rf/", StringComparison.Ordinal));
+    if (emitted.Count != 48 || manifestStreams != 48)
+        throw new InvalidDataException("Unexpected Zealot impact stream count.");
 }
 
 internal sealed record SourceSpec(string Id, string Target, string? BaseSource, long BaseSize, string? BaseHash,

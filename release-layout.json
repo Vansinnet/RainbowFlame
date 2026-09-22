@@ -32,6 +32,10 @@
       {
         "source": "README.md",
         "destination": "README.md"
+      },
+      {
+        "source": "CHANGELOG.md",
+        "destination": "CHANGELOG.md"
       }
     ],
     "licenses": [

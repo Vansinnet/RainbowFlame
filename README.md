@@ -1,14 +1,16 @@
 # RainbowFlame
 
-RainbowFlame customizes the Inferno staff's flame and persistent enemy Soulblaze
-effects in Warhammer 40,000: Darktide.
+RainbowFlame customizes the Inferno staff, the Zealot flamer, and persistent
+enemy Soulblaze effects in Warhammer 40,000: Darktide.
 
 ## Features
 
 - Staff modes: Original, a custom hue and brightness, or an animated Rainbow,
   applied to locally rendered Inferno streams from you and your teammates.
-- Adjustable Rainbow speed.
-- Adjustable staff-flame opacity in Original, custom Color, and Rainbow modes.
+- Independent Zealot flamer modes with the same controls, applied to primary
+  bursts, braced streams, and locally rendered teammate streams.
+- Separate Rainbow speed and flame opacity controls for each weapon.
+- Eight fixed wall-impact color presets for each weapon's custom Color mode.
 - Enemy Soulblaze presets: Original, Red, Orange, Yellow, Green, Cyan, Blue,
   Violet, and Pink.
 - Enemy Soulblaze opacity presets: 0%, 25%, 50%, 75%, and 100%.
@@ -16,9 +18,9 @@ effects in Warhammer 40,000: Darktide.
   Existing effects keep their current appearance, and gameplay damage, buffs,
   impacts, and network state are unchanged.
 
-The staff flame uses additive rendering, so Opacity scales its final visible
-intensity rather than conventional alpha blending. `0` hides the stream and `1`
-keeps its full visibility. Wall impacts and enemy Soulblaze are unaffected.
+The weapon flames use additive rendering, so Opacity scales their final visible
+intensity rather than conventional alpha blending. `0` hides a stream and `1`
+keeps its full visibility. Impacts and enemy Soulblaze are unaffected.
 
 ## Requirements
 
@@ -105,9 +107,9 @@ installer for installation, repair and removal.
 ## Compatibility
 
 RainbowFlame can conflict with mods or manual asset replacements that alter the
-same Inferno staff or enemy Soulblaze resources. Remove those changes before
-installing RainbowFlame. Recheck compatibility after every Darktide update and
-wait for a release that names the new build.
+same Inferno staff, Zealot flamer, impact, or enemy Soulblaze resources. Remove
+those changes before installing RainbowFlame. Recheck compatibility after every
+Darktide update and wait for a release that names the new build.
 
 ## Troubleshooting
 
@@ -125,8 +127,11 @@ wait for a release that names the new build.
 User testing on the supported build covered the Psykanium with the staff's
 Original, Custom, and Rainbow modes and the enemy preset feature. The installed
 local build was reported working ("perfekt"). Enemy presets were confirmed
-collectively; no individual per-color test matrix has been recorded. Regular
-missions and dedicated-server behavior are not claimed as user-tested here.
+collectively; no individual per-color test matrix has been recorded. Psykanium
+testing also covered the Zealot flamer's primary burst, braced stream and
+Rainbow, fixed-color impact, Opacity, and independent staff controls. Teammate
+third-person flamer rendering, regular missions, and dedicated-server behavior
+are not claimed as user-tested here.
 
 ## Privacy
 
