@@ -63,6 +63,55 @@ Where physical encoding or shader repacking changed, unchanged-content controls
 were used before targeted visual trials. Later profiles also used exact offline
 round trips and preservation checks.
 
+## Using Helldivers 2 as a structural reference
+
+Helldivers 2 was useful because it is also built on a Stingray-derived engine and
+has public community tooling for compiled particle and material resources. That
+made it a good source of structural leads, but not a specification for Darktide.
+The compared source was pinned to exact commits and read rather than imported or
+executed.
+
+The main particle references were
+[`hd2-particle-modder`](https://github.com/RaidingForPants/hd2-particle-modder/tree/a8193322d6b6e3a50ab460500341e7bc97e657fb)
+and
+[`HD2_PM_ParticleModder`](https://github.com/USKUMMEL/HD2_PM_ParticleModder/tree/85315558f10046536bd6d7a94ebf1566d92e1316).
+Their `ParticleEffect`, `ParticleSystem`, `Visualizer`, `Graph`, and `ColorGraph`
+parsers supplied concrete comparison layouts. In particular, they suggested where
+to look for visualizer records, material identities, scalar graphs, and
+ColorGraph-shaped records containing ten times followed by ten three-component
+values.
+
+Those leads made a bounded Darktide-specific search possible. It mapped all nine
+records in the retained Inferno particle body, seven material-reference fields,
+and nine paired scalar/interleaved-three-component graph records matching the
+public `ColorGraph` layout. The public visualizer definitions also provided the
+billboard/light interpretation used for comparison. Material hashes, record
+extents, graph bounds, key counts, and full-body consumption were then validated
+independently against the Darktide bytes.
+
+The distinction mattered because the compared HD2 parsers were not compatible with
+the target. They support particle discriminators `0x6d` and later, while this
+Darktide resource uses `0x66`. Applying the compared count offset produced
+`1,106,247,680`, the 260-byte system header had no bounded match, and the older
+color trailer did not match. The retained target's ColorGraph-shaped records also
+have an empirically observed trailing key count that the compared HD2 layout does
+not decode. We therefore used the shared shapes as search hypotheses and wrote a
+restricted decoder from Darktide evidence instead of weakening an HD2 parser until
+it accepted the file.
+
+[`Filediver`](https://github.com/xypwn/filediver/tree/3e5f5e5df7e9a382194eb5f6f998b0d6adc8f9b8)
+provided a second kind of lead: HD2 GPU-material and standard DXBC container
+framing. Its `rawMaterialGPU` layout was also rejected for direct use. On the two
+Darktide shader sections it would interpret one word as 37,781 or 38,236 immediate
+88-byte entries, requiring more than 3.3 MB from sections of roughly 41 KiB.
+Filediver's framing and DXBC code helped identify questions to test, but it did not
+supply the Darktide shader43 wrapper or compression envelope.
+
+This comparison shortened the search without turning engine ancestry into a format
+claim. Each inference was checked against the target bytes using counts, bounds,
+hashes, exhaustive traversal, or independent tooling as applicable. Incompatible
+HD2 layouts remained documented negative results.
+
 ## Finding the Inferno resource chain
 
 The initial target was:
