@@ -1,6 +1,6 @@
 # Reverse Engineering RainbowFlame
 
-The intial idea was to fix the stuttering that plagues Darktide together with gir489. However, suddenly
+The intial idea was to fix the stuttering that plagues Darktide together with https://github.com/Evasion3356. However, suddenly
 finding a hint on shaders (from HD2) struck me with the idea of having AI reverse engineer the
 the findings. That is something I am not capable of doing myself. Once I got the first clues, 
 skills for the AI had to be devloped. The following text is a diary from my swedish notes, 
