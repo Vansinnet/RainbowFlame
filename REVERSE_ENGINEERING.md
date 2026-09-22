@@ -5,7 +5,7 @@ finding a hint on shaders (from HD2) struck me with the idea of having AI revers
 the findings. That is something I am not capable of doing myself. Once I got the first clues, 
 skills for the AI had to be devloped. The following text is a diary from my swedish notes, 
 but obviously technically explained by AI to make other developers/AI understand. 
-My one single hope by spending all this time, is for other, more skilled programmers, use the
+My one single hope by spending all this time, is for other, more skilled programmers, to use the
 findings to make better mods than I am able to.
 
 ## Scope
