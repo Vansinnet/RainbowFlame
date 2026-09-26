@@ -1,92 +1,26 @@
 {
   "schemaVersion": 1,
-  "profile": "installer",
+  "profile": "direct",
   "package": {
     "payload": [
-      {
-        "source": "RainbowFlame.mod",
-        "destination": "RainbowFlame/RainbowFlame.mod"
-      },
-      {
-        "source": "scripts/mods/RainbowFlame/RainbowFlame.lua",
-        "destination": "RainbowFlame/scripts/mods/RainbowFlame/RainbowFlame.lua"
-      },
-      {
-        "source": "scripts/mods/RainbowFlame/RainbowFlame_data.lua",
-        "destination": "RainbowFlame/scripts/mods/RainbowFlame/RainbowFlame_data.lua"
-      },
-      {
-        "source": "scripts/mods/RainbowFlame/RainbowFlame_localization.lua",
-        "destination": "RainbowFlame/scripts/mods/RainbowFlame/RainbowFlame_localization.lua"
-      },
-      {
-        "source": "payload/manifest.json",
-        "destination": "payload/manifest.json"
-      },
-      {
-        "source": "payload/inserts",
-        "destination": "payload/inserts"
-      }
+      { "source": "RainbowFlame.mod", "destination": "RainbowFlame/RainbowFlame.mod" },
+      { "source": "info.json", "destination": "RainbowFlame/info.json" },
+      { "source": "bin/asset-redirect.dll", "destination": "RainbowFlame/bin/asset-redirect.dll" },
+      { "source": "payload/direct", "destination": "RainbowFlame/payload/direct" },
+      { "source": "scripts/mods/RainbowFlame/asset_redirect.lua", "destination": "RainbowFlame/scripts/mods/RainbowFlame/asset_redirect.lua" },
+      { "source": "scripts/mods/RainbowFlame/redirect_files.lua", "destination": "RainbowFlame/scripts/mods/RainbowFlame/redirect_files.lua" },
+      { "source": "scripts/mods/RainbowFlame/redirects.lua", "destination": "RainbowFlame/scripts/mods/RainbowFlame/redirects.lua" },
+      { "source": "scripts/mods/RainbowFlame/RainbowFlame.lua", "destination": "RainbowFlame/scripts/mods/RainbowFlame/RainbowFlame.lua" },
+      { "source": "scripts/mods/RainbowFlame/RainbowFlame_data.lua", "destination": "RainbowFlame/scripts/mods/RainbowFlame/RainbowFlame_data.lua" },
+      { "source": "scripts/mods/RainbowFlame/RainbowFlame_localization.lua", "destination": "RainbowFlame/scripts/mods/RainbowFlame/RainbowFlame_localization.lua" }
     ],
     "documentation": [
-      {
-        "source": "README.md",
-        "destination": "README.md"
-      },
-      {
-        "source": "CHANGELOG.md",
-        "destination": "CHANGELOG.md"
-      }
+      { "source": "README.md", "destination": "RainbowFlame/README.md" },
+      { "source": "CHANGELOG.md", "destination": "RainbowFlame/CHANGELOG.md" },
+      { "source": "NOTICE", "destination": "RainbowFlame/NOTICE" }
     ],
     "licenses": [
-      {
-        "source": "LICENSE",
-        "destination": "LICENSE"
-      },
-      {
-        "source": "NOTICE",
-        "destination": "NOTICE"
-      }
-    ]
-  },
-  "installer": {
-    "project": "installer/RainbowFlame.Installer/RainbowFlame.Installer.csproj",
-    "buildInputs": [
-      "installer/Directory.Build.props",
-      "installer/RainbowFlame.Installer/RainbowFlame.Installer.csproj",
-      "installer/RainbowFlame.Installer/Program.cs",
-      "installer/RainbowFlame.Installer/MainForm.cs",
-      "installer/RainbowFlame.Installer/app.manifest",
-      "installer/RainbowFlame.Installer.Core/RainbowFlame.Installer.Core.csproj",
-      "installer/RainbowFlame.Installer.Core/Delta.cs",
-      "installer/RainbowFlame.Installer.Core/Discovery.cs",
-      "installer/RainbowFlame.Installer.Core/InstallerEngine.cs",
-      "installer/RainbowFlame.Installer.Core/LoadOrder.cs",
-      "installer/RainbowFlame.Installer.Core/Model.cs",
-      "installer/RainbowFlame.Installer.Core/Safety.cs"
-    ],
-    "configuration": "Release",
-    "outputFiles": [
-      {
-        "source": "RainbowFlame.Installer.exe",
-        "destination": "RainbowFlame.Installer.exe"
-      },
-      {
-        "source": "RainbowFlame.Installer.dll",
-        "destination": "RainbowFlame.Installer.dll"
-      },
-      {
-        "source": "RainbowFlame.Installer.Core.dll",
-        "destination": "RainbowFlame.Installer.Core.dll"
-      },
-      {
-        "source": "RainbowFlame.Installer.deps.json",
-        "destination": "RainbowFlame.Installer.deps.json"
-      },
-      {
-        "source": "RainbowFlame.Installer.runtimeconfig.json",
-        "destination": "RainbowFlame.Installer.runtimeconfig.json"
-      }
+      { "source": "LICENSE", "destination": "RainbowFlame/LICENSE" }
     ]
   }
 }

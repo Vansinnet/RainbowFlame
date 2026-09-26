@@ -1,5 +1,6 @@
 ---@class RainbowFlameMod : DMFMod
 local mod = get_mod("RainbowFlame")
+local redirects = mod:io_dofile("RainbowFlame/scripts/mods/RainbowFlame/redirects")
 
 local clouds = {
     "RainbowFlame_stream_a",
@@ -74,6 +75,7 @@ local flamer_impact_presets = {
 local hsv_parameter = "rainbow_flame_hsv_enable"
 local cycle_parameter = "rainbow_flame_cycle"
 local enabled = false
+local resources_ready = false
 local revision = 0
 local selected_enemy_effect = enemy_effect
 local selected_impact_effect = impact_effect
@@ -261,7 +263,7 @@ mod:hook("FlamerGasEffects", "destroy", function(func, self)
 end)
 
 mod:hook("World", "create_particles", function(func, world, effect_name, position, rotation, scale, particle_group)
-    if not DEDICATED_SERVER then
+    if enabled and not DEDICATED_SERVER then
         if effect_name == enemy_effect then
             effect_name = selected_enemy_effect
         elseif effect_name == impact_effect then
@@ -275,7 +277,15 @@ end)
 
 mod.on_enabled = function()
     cache_settings()
-    enabled = true
+    enabled = resources_ready
+end
+
+mod.on_all_mods_loaded = function()
+    resources_ready = redirects and redirects.commit() or false
+    if resources_ready and mod:is_enabled() then
+        cache_settings()
+        enabled = true
+    end
 end
 
 mod.on_disabled = function()
@@ -286,6 +296,9 @@ end
 mod.on_unload = function()
     enabled = false
     restore_all()
+    if redirects then
+        redirects.clear()
+    end
 end
 
 mod.on_setting_changed = function()

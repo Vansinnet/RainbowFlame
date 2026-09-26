@@ -1,150 +1,81 @@
 # RainbowFlame
 
-RainbowFlame customizes the Inferno staff, the Zealot flamer, and persistent
-enemy Soulblaze effects in Warhammer 40,000: Darktide.
-
-The binary formats, shader analysis, failed experiments, and validation method are
-documented in [Reverse Engineering RainbowFlame](REVERSE_ENGINEERING.md).
+RainbowFlame customizes Inferno staff and Zealot flamer streams, wall impacts,
+and locally rendered persistent enemy Soulblaze in Warhammer 40,000: Darktide.
 
 ## Features
 
-- Staff modes: Original, a custom hue and brightness, or an animated Rainbow,
-  applied to locally rendered Inferno streams from you and your teammates.
-- Independent Zealot flamer modes with the same controls, applied to primary
-  bursts, braced streams, and locally rendered teammate streams.
-- Separate Rainbow speed and flame opacity controls for each weapon.
-- Eight fixed wall-impact color presets for each weapon's custom Color mode.
-- Enemy Soulblaze presets: Original, Red, Orange, Yellow, Green, Cyan, Blue,
-  Violet, and Pink.
-- Enemy Soulblaze opacity presets: 0%, 25%, 50%, 75%, and 100%.
-- Enemy presets affect newly created, locally rendered persistent Soulblaze only.
-  Existing effects keep their current appearance, and gameplay damage, buffs,
-  impacts, and network state are unchanged.
+- Separate Original, custom Color/Brightness and animated Rainbow settings for
+  Inferno staves and Zealot flamers, including locally rendered teammate flames.
+- Independent Rainbow speed and flame Opacity controls for each weapon. The
+  flames render additively, so Opacity changes their visible intensity;
+  impacts and Soulblaze are unaffected by the weapon Opacity controls.
+- Eight fixed impact color presets per weapon in custom Color mode.
+- Enemy Soulblaze: Original, Red, Orange, Yellow, Green, Cyan, Blue, Violet
+  or Pink; independent 0%, 25%, 50%, 75% or 100% opacity presets.
 
-The weapon flames use additive rendering, so Opacity scales their final visible
-intensity rather than conventional alpha blending. `0` hides a stream and `1`
-keeps its full visibility. Impacts and enemy Soulblaze are unaffected.
+Changes affect new effects; existing burns keep their appearance. Gameplay
+damage, buffs, audio and networking remain unchanged.
 
 ## Requirements
 
-- Darktide Mod Loader (DML)
-- Darktide Mod Framework (DMF)
-- Microsoft [.NET 10 Desktop Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/10.0),
-  Windows x64
-- Supported Darktide build: build ID `24735202`, executable
-  `1.3.770.210`
-
-Later Darktide builds are unsupported until a RainbowFlame release explicitly
-lists them. Game updates can change the assets this mod depends on even when the
-Lua mod still loads.
+- Darktide Mod Loader (DML) and Darktide Mod Framework (DMF), Windows x64.
+- The original game resources must match the stock SHA-256 hashes for Steam
+  build `24735202` / Darktide executable `1.3.770.210`. Later builds may need
+  a RainbowFlame update before all custom effects work again.
 
 ## Installation
 
-1. Install DML and DMF and confirm that DMF loads successfully in Darktide.
-2. Install the Microsoft .NET 10 Desktop Runtime for Windows x64 if it is not
-   already present.
-3. Download the official, unmodified `RainbowFlame.zip` release and extract the
-   entire archive to one folder. Keep the installer DLLs and `payload/` directory
-   beside `RainbowFlame.Installer.exe`.
-4. Close Darktide completely. The installer refuses to continue while the game
-   is running.
-5. Run `RainbowFlame.Installer.exe`. Select the
-   `Warhammer 40,000 DARKTIDE` game folder if it is not detected automatically,
-   then choose **Install**.
-6. Wait for the installer to verify the game build, original resource hashes,
-   generated files and backups. An unknown game build or conflicting resource
-   replacement is rejected rather than overwritten.
-7. Start Darktide and open **Mod Options > RainbowFlame**. A changed enemy
-   Soulblaze preset applies to newly created burns; existing burns retain their
-   previous color.
+1. Download **RainbowFlame.zip** from the latest
+   [GitHub release](https://github.com/Vansinnet/RainbowFlame/releases).
+   Remove an earlier `RainbowFlame` mod folder so no old files remain, then
+   extract the ZIP into the game's `mods` directory. The entry file should be
+   `mods/RainbowFlame/RainbowFlame.mod`. Keep `bin/`, `payload/` and `scripts/`
+   inside that folder. You can instead install the ZIP with a mod manager.
+2. Add `RainbowFlame` to `mods/mod_load_order.txt`, or enable it through your
+   mod manager. Start Darktide and open **Mod Options > RainbowFlame**.
 
-The installer is the primary installation method. Copying the `RainbowFlame`
-folder into Darktide's `/mods` directory alone is insufficient because the mod
-also requires game-resource files installed outside that folder. Do not combine
-files from different RainbowFlame releases. The installer is framework-dependent
-and does not access the network or download the required .NET runtime.
+There is no separate installer or .NET runtime requirement. The complete mod
+folder includes Asset Redirect v2 from Polychromatic 1.0.1; **Polychromatic
+itself is not required**. At startup, RainbowFlame registers 168 custom
+resource files from its own folder. Original resources are SHA-256 checked;
+the game files under `bundle/` are not modified. All redirects must be active
+or shared before custom effects are enabled. If a resource is missing, was
+changed by a game update, or is displaced by another mod, RainbowFlame leaves
+its effects stock and reports the incomplete status in the log/chat. Restart
+Darktide if it reports `restart_required`.
 
-The installer is currently unsigned. Windows SmartScreen may
-therefore identify it as coming from an unknown publisher. Download RainbowFlame
-only from this repository's official Releases page and verify the included
-`RainbowFlame.zip.sha256` value before running it. Do not disable antivirus
-protection to install the mod.
+### Upgrading from the installer-based 1.2.0 or earlier
 
-The repository versions the installer payload together with the Lua mod. The
-`payload/` directory contains a manifest and compact authenticated delta data,
-not complete extracted Darktide bundles. Every release must update and validate
-the mod files and payload as one matching set.
+With Darktide **closed**, run **Uninstall** using your old RainbowFlame
+installer before using this ZIP. This restores the stock resources and
+removes that installer's material additions. The redirect cannot adopt
+previously modified game files: its original-file hash checks would fail.
+If you deployed a separate local development trial, use its own rollback
+receipts to restore only its owned files first.
 
-### Update Or Repair
+For future direct-install updates, replace the entire `mods/RainbowFlame`
+folder. To uninstall a direct-install release, remove that folder and its
+load-order entry; there are no game-resource files to restore.
 
-Close Darktide and run the installer from the new release. Choose **Install** to
-install a supported update, or **Repair** to reconstruct missing files from the
-same installed release. Repair requires an ownership receipt created by the
-installer. Never combine the installer, DLLs or payload from different releases.
+## Compatibility and testing
 
-If a Darktide update overwrites RainbowFlame, run the same installed release and
-choose **Repair after update**. This action permits a changed Steam build and
-executable version only after every managed file passes a complete hash preflight.
-It restores files when all replacements still match their known stock inputs and
-all additions are absent or exact. If Fatshark changed a required resource, it
-stops before writing anything; wait for a RainbowFlame release that supports the
-new build. Passing this repair verifies file compatibility, not general game or
-mod-framework compatibility on the new build.
+Asset Redirect resolves overlapping registrations by priority and load
+order. Polychromatic also replaces several flame and Soulblaze resources;
+the two mods' different resource edits are **not automatically combined**.
+When another mod owns a required redirect, RainbowFlame reports incomplete
+resources and leaves its custom effects stock instead of mixing incompatible
+files. Other resource-replacement mods may likewise conflict.
 
-### Uninstall
+The prior resource effects were user-tested on the supported build in the
+Psykanium: staff Original, Color and Rainbow, enemy presets, Zealot flamer
+bursts and streams, impacts and Opacity. Regular dedicated-server missions,
+the new direct-install path and interaction with Polychromatic have **not**
+been independently verified in game for this release. The packaged resource
+bytes, Lua syntax and archive contents are validated offline.
 
-Close Darktide, run the same release's installer and choose **Uninstall**. The
-installer verifies the installed files, restores its same-build backups, removes
-only files it owns and removes RainbowFlame from `mod_load_order.txt`. Do not
-delete replaced files manually. If Darktide has updated since installation, use a
-RainbowFlame release that explicitly supports the new build; the installer will
-not restore obsolete game files over a newer build.
+## Privacy and license
 
-### Vortex And Manual Installation
-
-Vortex installation is not currently supported. Copying only the included
-`RainbowFlame/` folder into `/mods` installs the Lua files but not the required
-compiled resources, so the complete feature set will not work. Use the bundled
-installer for installation, repair and removal.
-
-## Compatibility
-
-RainbowFlame can conflict with mods or manual asset replacements that alter the
-same Inferno staff, Zealot flamer, impact, or enemy Soulblaze resources. Remove
-those changes before installing RainbowFlame. Recheck compatibility after every
-Darktide update and wait for a release that names the new build.
-
-## Troubleshooting
-
-- Confirm Darktide was closed during installation.
-- Confirm the game build is exactly `24735202` / `1.3.770.210`.
-- Confirm DML and DMF load correctly before troubleshooting RainbowFlame.
-- Remove other flame, Soulblaze, particle, shader, or asset replacement mods.
-- Reinstall the same official release with its installer; do not repair it by
-  copying only the `/mods` folder.
-- Include the Darktide build, RainbowFlame release, selected settings, conflicting
-  mods, and relevant console-log excerpt in a bug report.
-
-## Runtime Coverage
-
-User testing on the supported build covered the Psykanium with the staff's
-Original, Custom, and Rainbow modes and the enemy preset feature. The installed
-local build was reported working ("perfekt"). Enemy presets were confirmed
-collectively; no individual per-color test matrix has been recorded. Psykanium
-testing also covered the Zealot flamer's primary burst, braced stream and
-Rainbow, fixed-color impact, Opacity, and independent staff controls. Teammate
-third-person flamer rendering, regular missions, and dedicated-server behavior
-are not claimed as user-tested here.
-
-## Privacy
-
-RainbowFlame does not add telemetry, analytics, account access, or network
-communication. Darktide, its platform services, DML, and DMF have their own
-behavior and policies.
-
-## License
-
-The source is visible for inspection, but RainbowFlame is not open source. It is
-proprietary and may be used only under the restrictive terms in [LICENSE](LICENSE).
-Personal use is limited to an official, unmodified release. See [NOTICE](NOTICE)
-for third-party ownership and affiliation information.
+RainbowFlame adds no telemetry or network communication. The mod is
+source-visible but proprietary; see [LICENSE](LICENSE), [NOTICE](NOTICE)
+and [CHANGELOG.md](CHANGELOG.md).

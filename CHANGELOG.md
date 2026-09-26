@@ -2,6 +2,17 @@
 
 All notable release-facing changes to RainbowFlame are documented here.
 
+## [1.3.0] - 2026-09-26
+
+### Changed
+
+- Install the complete mod folder directly in `mods` or via a mod manager;
+  a separate installer and .NET runtime are no longer required.
+- Serve 168 verified resources from the mod folder through Asset Redirect v2
+  from Polychromatic 1.0.1. The game's files remain unchanged on disk.
+- Keep stock effects if any required redirect is unavailable. Weapon colors,
+  impact presets and Soulblaze options retain their previous behavior.
+
 ## [1.2.0] - 2026-09-22
 
 ### Added
