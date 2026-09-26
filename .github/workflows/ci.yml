@@ -33,7 +33,7 @@ jobs:
             }
           }
           $resources = @(Get-ChildItem -LiteralPath payload/direct -Recurse -File)
-          if ($resources.Count -ne 168 -or
+          if ($resources.Count -ne 166 -or
               -not (Test-Path -LiteralPath bin/reforge.dll -PathType Leaf) -or
               -not (Test-Path -LiteralPath bin/REFORGE_NOTICES.txt -PathType Leaf)) {
             throw 'Incomplete direct resource payload.'

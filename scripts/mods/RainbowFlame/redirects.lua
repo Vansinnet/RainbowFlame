@@ -6,11 +6,27 @@ if not reforge then
     return nil
 end
 
--- 16 stock resources are replaced (pinned by SHA-256) and 152 material
--- streams are served at new bundle/data/rf/ paths. Edit reforge.json and run
--- `reforge build` to change this list.
+-- Edit reforge.json and run `reforge build` to change the replaced files.
+--
+-- Darktide reads its weapon effect bundles before any mod runs, so a
+-- replacement for those must fit the stock size. The colour presets that
+-- RainbowFlame adds (impact and enemy Soulblaze variants) therefore live in
+-- the unused debug package below, which the game never loads on its own.
+-- RainbowFlame loads it after Reforge is serving the files.
+local PRESET_PACKAGE = "content/fx/particles/debug/flame_thrower_test"
 local manifest = "RainbowFlame/scripts/mods/RainbowFlame/reforge_manifest"
 local handles = reforge.register_manifest(mod, manifest)
+
+local function load_presets()
+    local status = mod.package_status and mod:package_status(PRESET_PACKAGE)
+    if status == "loaded" or status == "queued" then
+        return
+    end
+    local ok, err = pcall(mod.load_package, mod, PRESET_PACKAGE, nil, true)
+    if not ok then
+        mod:info("colour presets unavailable: %s", tostring(err))
+    end
+end
 
 return {
     commit = function()
@@ -43,7 +59,11 @@ return {
         elseif #handles == 0 or served ~= #handles then
             mod:echo("RainbowFlame: resource redirects incomplete (%d/%d); stock effects remain active. Check the log or /reforge.", served, #handles)
         end
-        return #handles > 0 and served == #handles
+        local ready = #handles > 0 and served == #handles
+        if ready then
+            load_presets()
+        end
+        return ready
     end,
     clear = function()
         reforge.clear(mod)
