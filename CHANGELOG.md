@@ -6,19 +6,24 @@ All notable release-facing changes to RainbowFlame are documented here.
 
 ### Changed
 
-- Serve the same 168 verified resources through Reforge, an open-source asset
-  redirect (https://github.com/Vansinnet/Reforge), instead of
-  Polychromatic's closed-source Asset Redirect v2 DLL.
+- Serve the resources through Reforge, an open-source asset redirect
+  (https://github.com/Vansinnet/Reforge), instead of Polychromatic's
+  closed-source Asset Redirect v2 DLL.
+- The colour presets (8 staff impact, 8 flamer impact and the enemy Soulblaze
+  variants) moved to an unused debug package that RainbowFlame loads itself.
+  The stock weapon impact and Soulblaze bundles are no longer replaced.
 - When Polychromatic is installed, RainbowFlame now says that Polychromatic
   replaces the same flame resources and keeps its own effects off.
 - `/reforge` lists every replaced file and its state.
 
 ### Fixed
 
-- The eight replacement effect bundles are now Oodle-compressed like the
-  game's own bundles. Their uncompressed chunks made Darktide's DirectStorage
-  reader crash with "Failed to decompress ... from package" as soon as a
-  flamer effect loaded. The effect contents are unchanged.
+- Fixed a crash in 1.3.0 that affected players whose menu character carried a
+  flamer or Inferno staff. Darktide reads those weapon effect bundles before
+  mods start, and 1.3.0's replacements had uncompressed chunks and a
+  different size. The error was "Failed to decompress ... from package".
+  Replacements are now Oodle-compressed with exactly the original layout.
+  The effect contents are unchanged.
 
 ## [1.3.0] - 2026-09-26
 

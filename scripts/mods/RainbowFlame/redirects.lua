@@ -13,18 +13,26 @@ end
 -- RainbowFlame adds (impact and enemy Soulblaze variants) therefore live in
 -- the unused debug package below, which the game never loads on its own.
 -- RainbowFlame loads it after Reforge is serving the files.
-local PRESET_PACKAGE = "content/fx/particles/debug/flame_thrower_test"
+-- The presets use textures from the stock Soulblaze package, which must be
+-- loaded first or they bind to the engine's default texture.
+local PRESET_PACKAGES = {
+    "content/fx/particles/enemies/buff_warpfire",
+    "content/fx/particles/debug/flame_thrower_test",
+}
 local manifest = "RainbowFlame/scripts/mods/RainbowFlame/reforge_manifest"
 local handles = reforge.register_manifest(mod, manifest)
 
 local function load_presets()
-    local status = mod.package_status and mod:package_status(PRESET_PACKAGE)
-    if status == "loaded" or status == "queued" then
-        return
-    end
-    local ok, err = pcall(mod.load_package, mod, PRESET_PACKAGE, nil, true)
-    if not ok then
-        mod:info("colour presets unavailable: %s", tostring(err))
+    for i = 1, #PRESET_PACKAGES do
+        local package = PRESET_PACKAGES[i]
+        local status = mod.package_status and mod:package_status(package)
+        if status ~= "loaded" and status ~= "queued" then
+            local ok, err = pcall(mod.load_package, mod, package, nil, true)
+            if not ok then
+                mod:info("colour presets unavailable (%s): %s", package, tostring(err))
+                return
+            end
+        end
     end
 end
 

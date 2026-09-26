@@ -39,8 +39,13 @@ There is no separate installer or .NET runtime requirement. The mod folder
 includes [Reforge](https://github.com/Vansinnet/Reforge) (`reforge.lua` and
 `bin/reforge.dll`), an open-source library that serves the mod's files in
 place of the game's while Darktide runs. At startup, RainbowFlame registers
-168 custom resource files from its own folder. Original resources are
-SHA-256 checked; the game files under `bundle/` are not modified. All
+166 custom resource files from its own folder. Original resources are
+SHA-256 checked; the game files under `bundle/` are not modified.
+
+The replaced weapon effect bundles keep the exact size and layout of the
+originals, because Darktide reads them before mods start. The colour presets
+RainbowFlame adds (impact and enemy Soulblaze variants) live in an unused
+debug package, which RainbowFlame loads itself once Reforge is running. All
 resources must be served before custom effects are enabled. If a resource is
 missing, was changed by a game update, or is displaced by another mod,
 RainbowFlame leaves its effects stock and reports why in the log/chat. Type
@@ -62,7 +67,7 @@ load-order entry; there are no game-resource files to restore.
 
 ## Compatibility and testing
 
-Polychromatic also replaces 12 of the same flame and Soulblaze resources, and
+Polychromatic also replaces 9 of the same flame resources, and
 the two mods' edits cannot be combined. When Polychromatic is installed,
 Reforge leaves those files to it: RainbowFlame reports that Polychromatic
 replaces the same resources, withdraws all of its own files and keeps its
@@ -70,14 +75,12 @@ custom effects off instead of mixing incompatible files. Use one of the two mods
 resource-replacement mods may conflict in the same way; RainbowBarrels and
 BurningTertium do not.
 
-The prior resource effects were user-tested on the supported build in the
-Psykanium: staff Original, Color and Rainbow, enemy presets, Zealot flamer
-bursts and streams, impacts and Opacity. Version 1.4.0 serves the same
-resource bytes through Reforge; that path was confirmed in game with
-RainbowBarrels, but RainbowFlame 1.4.0 itself, regular dedicated-server
-missions and interaction with Polychromatic have **not** been independently
-verified in game. The packaged resource
-bytes, Lua syntax and archive contents are validated offline.
+Version 1.4.0 was tested in game on the supported build together with
+RainbowBarrels and BurningTertium. `/reforge` reported all files active, and
+staff and flamer colours, impact presets and enemy Soulblaze colours worked
+with no errors. Regular dedicated-server missions and running alongside
+Polychromatic have not been tested in game. The packaged resource bytes, Lua
+syntax and archive contents are validated offline.
 
 ## Privacy and license
 
