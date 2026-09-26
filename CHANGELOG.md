@@ -13,6 +13,13 @@ All notable release-facing changes to RainbowFlame are documented here.
   replaces the same flame resources and keeps its own effects off.
 - `/reforge` lists every replaced file and its state.
 
+### Fixed
+
+- The eight replacement effect bundles are now Oodle-compressed like the
+  game's own bundles. Their uncompressed chunks made Darktide's DirectStorage
+  reader crash with "Failed to decompress ... from package" as soon as a
+  flamer effect loaded. The effect contents are unchanged.
+
 ## [1.3.0] - 2026-09-26
 
 ### Changed
