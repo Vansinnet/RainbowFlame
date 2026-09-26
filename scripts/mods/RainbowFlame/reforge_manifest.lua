@@ -3,10 +3,8 @@ return {
 	schema = 1,
 	redirects = {
 		{ stock = "bundle/299f23117d653583", file = "payload/direct/299f23117d653583", sha256 = "debb237ed0d16f6fed4adb2640bbf8ac398e9f8ec93f11f7a1cb432c01a114b8" },
-		{ stock = "bundle/30ebeee18093c079", file = "payload/direct/30ebeee18093c079", sha256 = "53fd3e19870d70e18377151233f3aa3a141ead0339c55ad4dd83b4625fa5e531" },
-		{ stock = "bundle/3d487cca8bd5c544", file = "payload/direct/3d487cca8bd5c544", sha256 = "c04e6a56e333d5bd3e437e36b45bf39cb1588db5504776319f9f53d936195afa" },
 		{ stock = "bundle/4e6163c275b96d00", file = "payload/direct/4e6163c275b96d00", sha256 = "1bdf1a5b90e324da137b98a9d971902ad206cd7d55b59b5d218ba6edd67b6d51" },
-		{ stock = "bundle/97498862fb42b0d6", file = "payload/direct/97498862fb42b0d6", sha256 = "7d48b146e33c023586c37e427c3e941063f86801ce8b0047f962f193bd746dad" },
+		{ stock = "bundle/ac7ddd2788c1ef1f", file = "payload/direct/ac7ddd2788c1ef1f", sha256 = "d9f63448042b6dccaf67e32314751926aeb84e11f588edc6bf440f4a0a73e761" },
 		{ stock = "bundle/bf83ff6f40d45fc8", file = "payload/direct/bf83ff6f40d45fc8", sha256 = "65fcde9a26dd0eb18c5d1dcab9e910908bb6d32b3802bea5bb7286c47849e153" },
 		{ stock = "bundle/data/03/03f68803faf03b51", file = "payload/direct/data/03/03f68803faf03b51", sha256 = "73943bfb02628b95f6e822cddfea241e87feaa7849080f157952a012cb7efce3" },
 		{ stock = "bundle/data/45/455db6cbdf8e1dcf", file = "payload/direct/data/45/455db6cbdf8e1dcf", sha256 = "22ddeb2a2cfc1855634a35a9066ed79fd992bab1314ebbcc3ae6f257e7577c4d" },

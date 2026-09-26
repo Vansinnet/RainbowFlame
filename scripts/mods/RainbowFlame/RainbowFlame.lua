@@ -113,6 +113,10 @@ local function enemy_effect_for_settings(color, opacity)
     return preset .. "_opacity_" .. opacity
 end
 
+local function preset_available(effect)
+    return effect ~= nil and Application.can_get_resource("particles", effect)
+end
+
 local function impact_effect_for_hue(hue, presets)
     local selected = presets[1]
     local selected_distance = math.huge
@@ -149,9 +153,15 @@ local function cache_settings()
         flamer_profiles[i].hsv_box = flamer_hsv_box
         flamer_profiles[i].cycle_box = flamer_cycle_box
     end
-    selected_enemy_effect = enemy_effect_for_settings(enemy_color, enemy_opacity)
-    selected_impact_effect = not original and not rainbow and impact_effect_for_hue(hue, impact_presets) or impact_effect
-    selected_flamer_impact_effect = not flamer_original and not flamer_rainbow and impact_effect_for_hue(flamer_hue, flamer_impact_presets) or flamer_impact_effect
+    -- Presets come from a package loaded after Reforge starts; use the stock
+    -- effect whenever a preset is not loaded, since spawning an unloaded
+    -- particle resource would crash.
+    local enemy = enemy_effect_for_settings(enemy_color, enemy_opacity)
+    local impact = not original and not rainbow and impact_effect_for_hue(hue, impact_presets)
+    local flamer_impact = not flamer_original and not flamer_rainbow and impact_effect_for_hue(flamer_hue, flamer_impact_presets)
+    selected_enemy_effect = preset_available(enemy) and enemy or enemy_effect
+    selected_impact_effect = impact and preset_available(impact) and impact or impact_effect
+    selected_flamer_impact_effect = flamer_impact and preset_available(flamer_impact) and flamer_impact or flamer_impact_effect
     revision = revision + 1
 end
 
