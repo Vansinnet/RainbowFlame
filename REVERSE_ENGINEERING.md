@@ -21,14 +21,18 @@ and tested. It is a report on the profiles used by RainbowFlame, not an official
 specification for every Stingray or Darktide file. The tooling deliberately rejects
 inputs that differ from the layouts established during the investigation.
 
-The work did not involve patching process memory, hooking `Darktide.exe`, modifying
-native game code, or bypassing a protection mechanism. The game files were studied
-offline. Resource mutations were performed through installed files. Later
-investigations also used bounded, read-only LuaExec probes to inspect runtime state;
-they did not patch functions or mutate game state.
+The original authoring research did not patch process memory, hook
+`Darktide.exe`, modify native game code, or bypass a protection mechanism.
+The game files were studied offline, and the installer-based versions changed
+resources on disk. Later investigations used bounded, read-only LuaExec probes
+to inspect runtime state without patching functions or mutating game state.
 
-No extracted Darktide resources are included here. The released mod contains
-authenticated delta data rather than complete original bundles.
+Releases through 1.2.0 distributed authenticated delta data rather than
+complete original bundles. Version 1.3.0 instead ships the same verified,
+fully authored resource outputs in `payload/direct/` and serves them from the
+mod folder through Asset Redirect v2. It leaves the installed game files on
+disk untouched. The old resource tests establish those bytes' game behavior,
+not the new redirect-based installation or coexistence with Polychromatic.
 
 ## Why Lua was not enough
 
