@@ -2,6 +2,17 @@
 
 All notable release-facing changes to RainbowFlame are documented here.
 
+## [1.4.0] - 2026-09-26
+
+### Changed
+
+- Serve the same 168 verified resources through Reforge, an open-source asset
+  redirect (https://github.com/Vansinnet/Reforge), instead of
+  Polychromatic's closed-source Asset Redirect v2 DLL.
+- When Polychromatic is installed, RainbowFlame now says that Polychromatic
+  replaces the same flame resources and keeps its own effects off.
+- `/reforge` lists every replaced file and its state.
+
 ## [1.3.0] - 2026-09-26
 
 ### Changed

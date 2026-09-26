@@ -30,9 +30,11 @@ to inspect runtime state without patching functions or mutating game state.
 Releases through 1.2.0 distributed authenticated delta data rather than
 complete original bundles. Version 1.3.0 instead ships the same verified,
 fully authored resource outputs in `payload/direct/` and serves them from the
-mod folder through Asset Redirect v2. It leaves the installed game files on
-disk untouched. The old resource tests establish those bytes' game behavior,
-not the new redirect-based installation or coexistence with Polychromatic.
+mod folder through Asset Redirect v2; version 1.4.0 serves the same bytes
+through the open-source [Reforge](https://github.com/Vansinnet/Reforge)
+library. Both leave the installed game files on disk untouched. The old
+resource tests establish those bytes' game behavior, not the redirect-based
+installation or coexistence with Polychromatic.
 
 ## Why Lua was not enough
 

@@ -35,14 +35,16 @@ damage, buffs, audio and networking remain unchanged.
 2. Add `RainbowFlame` to `mods/mod_load_order.txt`, or enable it through your
    mod manager. Start Darktide and open **Mod Options > RainbowFlame**.
 
-There is no separate installer or .NET runtime requirement. The complete mod
-folder includes Asset Redirect v2 from Polychromatic 1.0.1; **Polychromatic
-itself is not required**. At startup, RainbowFlame registers 168 custom
-resource files from its own folder. Original resources are SHA-256 checked;
-the game files under `bundle/` are not modified. All redirects must be active
-or shared before custom effects are enabled. If a resource is missing, was
-changed by a game update, or is displaced by another mod, RainbowFlame leaves
-its effects stock and reports the incomplete status in the log/chat. Restart
+There is no separate installer or .NET runtime requirement. The mod folder
+includes [Reforge](https://github.com/Vansinnet/Reforge) (`reforge.lua` and
+`bin/reforge.dll`), an open-source library that serves the mod's files in
+place of the game's while Darktide runs. At startup, RainbowFlame registers
+168 custom resource files from its own folder. Original resources are
+SHA-256 checked; the game files under `bundle/` are not modified. All
+resources must be served before custom effects are enabled. If a resource is
+missing, was changed by a game update, or is displaced by another mod,
+RainbowFlame leaves its effects stock and reports why in the log/chat. Type
+`/reforge` in chat to list every replaced file and its state. Restart
 Darktide if it reports `restart_required`.
 
 ### Upgrading from the installer-based 1.2.0 or earlier
@@ -60,18 +62,21 @@ load-order entry; there are no game-resource files to restore.
 
 ## Compatibility and testing
 
-Asset Redirect resolves overlapping registrations by priority and load
-order. Polychromatic also replaces several flame and Soulblaze resources;
-the two mods' different resource edits are **not automatically combined**.
-When another mod owns a required redirect, RainbowFlame reports incomplete
-resources and leaves its custom effects stock instead of mixing incompatible
-files. Other resource-replacement mods may likewise conflict.
+Polychromatic also replaces 12 of the same flame and Soulblaze resources, and
+the two mods' edits cannot be combined. When Polychromatic is installed,
+Reforge leaves those files to it: RainbowFlame reports that Polychromatic
+replaces the same resources, withdraws all of its own files and keeps its
+custom effects off instead of mixing incompatible files. Use one of the two mods for flame effects. Other
+resource-replacement mods may conflict in the same way; RainbowBarrels and
+BurningTertium do not.
 
 The prior resource effects were user-tested on the supported build in the
 Psykanium: staff Original, Color and Rainbow, enemy presets, Zealot flamer
-bursts and streams, impacts and Opacity. Regular dedicated-server missions,
-the new direct-install path and interaction with Polychromatic have **not**
-been independently verified in game for this release. The packaged resource
+bursts and streams, impacts and Opacity. Version 1.4.0 serves the same
+resource bytes through Reforge; that path was confirmed in game with
+RainbowBarrels, but RainbowFlame 1.4.0 itself, regular dedicated-server
+missions and interaction with Polychromatic have **not** been independently
+verified in game. The packaged resource
 bytes, Lua syntax and archive contents are validated offline.
 
 ## Privacy and license

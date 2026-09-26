@@ -10,11 +10,12 @@ licenses and terms apply separately.
 
 The standalone release contains complete modified Darktide resource files,
 including compiled effect bundles and material streams, served without
-modifying the installed game's files on disk. Asset Redirect v2
-(`asset_redirect.lua` and `asset-redirect.dll`) is sourced from Wobin's
-Polychromatic 1.0.1 project: https://github.com/Wobin/Polychromatic .
-These third-party components remain the work of their respective authors and
-are not covered by RainbowFlame's license.
+modifying the installed game's files on disk. Reforge
+(`scripts/mods/RainbowFlame/reforge.lua` and `bin/reforge.dll`) is
+MIT-licensed, https://github.com/Vansinnet/Reforge ; `bin/reforge.dll`
+includes MinHook (BSD-2-Clause). Their licences are in
+`bin/REFORGE_NOTICES.txt`, which must be distributed with the DLL. Reforge is
+not covered by RainbowFlame's license.
 
 Vansinnet and RainbowFlame are not affiliated with, endorsed by, sponsored by,
 or approved by Fatshark, Games Workshop, DMF, or DML.

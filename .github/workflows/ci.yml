@@ -18,7 +18,7 @@ jobs:
         run: |
           $layout = Get-Content -LiteralPath release-layout.json -Raw | ConvertFrom-Json
           $info = Get-Content -LiteralPath info.json -Raw | ConvertFrom-Json
-          if ($layout.schemaVersion -ne 1 -or $layout.profile -ne 'direct' -or $info.version -ne '1.3.0') {
+          if ($layout.schemaVersion -ne 1 -or $layout.profile -ne 'direct' -or $info.version -ne '1.4.0') {
             throw 'Unexpected standalone release metadata.'
           }
           foreach ($group in @('payload', 'documentation', 'licenses')) {
@@ -34,7 +34,8 @@ jobs:
           }
           $resources = @(Get-ChildItem -LiteralPath payload/direct -Recurse -File)
           if ($resources.Count -ne 168 -or
-              -not (Test-Path -LiteralPath bin/asset-redirect.dll -PathType Leaf)) {
+              -not (Test-Path -LiteralPath bin/reforge.dll -PathType Leaf) -or
+              -not (Test-Path -LiteralPath bin/REFORGE_NOTICES.txt -PathType Leaf)) {
             throw 'Incomplete direct resource payload.'
           }
           foreach ($file in $resources) {
