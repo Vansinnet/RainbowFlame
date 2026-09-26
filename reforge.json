@@ -14,7 +14,8 @@
     {
       "stock": "bundle/ac7ddd2788c1ef1f",
       "file": "payload/direct/ac7ddd2788c1ef1f",
-      "sha256": "d9f63448042b6dccaf67e32314751926aeb84e11f588edc6bf440f4a0a73e761"
+      "sha256": "d9f63448042b6dccaf67e32314751926aeb84e11f588edc6bf440f4a0a73e761",
+      "late_load": true
     },
     {
       "stock": "bundle/bf83ff6f40d45fc8",
