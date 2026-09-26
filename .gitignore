@@ -1,9 +1,13 @@
 # Local research and resource-generation evidence (preserved outside Git/release)
 /analysis/
 /resource/
+/installer/
+/release-manifest.template.json
+/payload/inserts/
+/payload/manifest.json
 
 # Build and release outputs
-**/bin/
+/installer/**/bin/
 **/obj/
 /artifacts/
 /releases/
