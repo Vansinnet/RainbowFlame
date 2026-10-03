@@ -21,7 +21,7 @@ damage, buffs, audio and networking remain unchanged.
 
 - Darktide Mod Loader (DML) and Darktide Mod Framework (DMF), Windows x64.
 - The original game resources must match the stock SHA-256 hashes for Steam
-  build `24735202` / Darktide executable `1.3.770.210`. Later builds may need
+  build `25606770` (October 2026 update). Later builds may need
   a RainbowFlame update before all custom effects work again.
 
 ## Installation
@@ -75,7 +75,12 @@ custom effects off instead of mixing incompatible files. Use one of the two mods
 resource-replacement mods may conflict in the same way; RainbowBarrels and
 BurningTertium do not.
 
-Version 1.4.0 was tested in game on the supported build together with
+Version 1.4.1 rebuilds the material streams for the October 2026 update.
+All 166 resource registrations match Steam build `25606770` in offline
+Reforge verification. The rebuilt shader programs were validated offline;
+this version has not been tested in game.
+
+Version 1.4.0 was tested in game on Steam build `24735202` together with
 RainbowBarrels and BurningTertium. `/reforge` reported all files active, and
 staff and flamer colours, impact presets and enemy Soulblaze colours worked
 with no errors. Regular dedicated-server missions and running alongside

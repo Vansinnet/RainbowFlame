@@ -2,6 +2,15 @@
 
 All notable release-facing changes to RainbowFlame are documented here.
 
+## [1.4.1] - 2026-10-03
+
+### Fixed
+
+- Rebuilt all 160 custom material streams for the October 2026 Darktide
+  update, which moved materials to format version 62 and recompiled their
+  shaders. Before this, Reforge refused 8 changed files and RainbowFlame kept
+  stock effects.
+
 ## [1.4.0] - 2026-09-26
 
 ### Changed
