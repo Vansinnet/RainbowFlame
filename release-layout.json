@@ -17,7 +17,6 @@
     ],
     "documentation": [
       { "source": "README.md", "destination": "RainbowFlame/README.md" },
-      { "source": "CHANGELOG.md", "destination": "RainbowFlame/CHANGELOG.md" },
       { "source": "NOTICE", "destination": "RainbowFlame/NOTICE" }
     ],
     "licenses": [

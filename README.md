@@ -91,6 +91,6 @@ syntax and archive contents are validated offline.
 
 RainbowFlame adds no telemetry or network communication. The mod is
 source-visible but proprietary; see [LICENSE](LICENSE), [NOTICE](NOTICE)
-and [CHANGELOG.md](CHANGELOG.md). The
+and [the release notes](https://github.com/Vansinnet/RainbowFlame/releases). The
 [reverse-engineering diary](https://github.com/Vansinnet/RainbowFlame/blob/main/REVERSE_ENGINEERING.md)
 documents the resource research and earlier installer releases.
