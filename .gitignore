@@ -1,30 +1,33 @@
-# Local research and resource-generation evidence (preserved outside Git/release)
+# Standard .gitignore for every mod repository (template: tools/templates/mod.gitignore).
+# Tracked: runtime files, README/LICENSE/NOTICE, DESIGN.md, TESTING.md, RESEARCH.md, tests/, tools/,
+# resource/ (build scripts) and, for Reforge mods, reforge.json, release-layout.json, payload/ and bin/.
+# Never tracked: research output and extracted game files, build intermediates, generated files,
+# release archives and release-note files (GitHub releases are the history).
+
+# Research output and extracted stock game files
 /analysis/
-/resource/
-/installer/
-/release-manifest.template.json
+
+# Reforge build intermediates derived from game files
 /payload/inserts/
 /payload/manifest.json
 
-# Build and release outputs
-/installer/**/bin/
-**/obj/
-/artifacts/
-/releases/
-*.zip
-*.7z
-*.luac
+# Generated files
+__pycache__/
+*.pyc
 *.log
 *.tmp
 *.bak
+*.luac
+*.zip
+*.7z
 
-# Local configuration and tooling
+# Local settings and editors
 .source-path.local
 .vs/
 .idea/
 .vscode/
-
-# Operating-system files
 .DS_Store
 Thumbs.db
 Desktop.ini
+
+# Mod-specific (keep below this line)
