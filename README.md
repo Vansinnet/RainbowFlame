@@ -75,6 +75,10 @@ custom effects off instead of mixing incompatible files. Use one of the two mods
 resource-replacement mods may conflict in the same way; RainbowBarrels and
 BurningTertium do not.
 
+Version 1.4.2 fixes custom-colour wall impacts that could render as flat
+colour squares, depending on load order. This fix has not been tested in
+game.
+
 Version 1.4.1 rebuilds the material streams for the October 2026 update.
 All 166 resource registrations match Steam build `25606770` in offline
 Reforge verification. The rebuilt shader programs were validated offline;
