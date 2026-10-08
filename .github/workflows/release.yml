@@ -2,12 +2,16 @@
 # Template: tools/github/release.yml -> <mod repo>/.github/workflows/release.yml
 # Generated for this mod; edit the template and regenerate rather than this copy.
 #
-# Push an annotated tag vX.Y.Z (normal release) or vX.Y.Z-suffix (prerelease,
-# GitHub only) on a commit of main. The tag message is the release notes and must
-# contain a non-empty "## Changes" section; create it with
-#   git tag -a vX.Y.Z --cleanup=verbatim -F <notes file> <commit>
-# A release that already exists (published by tools/publish-github-release.ps1)
-# is left alone; its own release event runs the Nexus workflow.
+# Two triggers, same checks (darktide-release skill):
+# - workflow_dispatch on main with inputs version and notes (agents: REST
+#   POST .../actions/workflows/release.yml/dispatches). Releases main's head and
+#   creates tag vVERSION.
+# - Push of an annotated tag vX.Y.Z on a commit of main; the tag message is the
+#   notes. Create it with git tag -a vX.Y.Z --cleanup=verbatim -F <notes> <commit>.
+# vX.Y.Z-suffix is a prerelease (GitHub only). The notes need a non-empty
+# "## Changes" section. A release that already exists (published by
+# tools/publish-github-release.ps1) is left alone; its own release event runs
+# the Nexus workflow.
 
 name: Release
 
@@ -15,12 +19,22 @@ on:
   push:
     tags:
       - "v*"
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Version to release, e.g. 1.2.0 (1.2.0-beta.1 for a prerelease)
+        required: true
+        type: string
+      notes:
+        description: Release notes in Markdown with a "## Changes" section
+        required: true
+        type: string
 
 permissions:
   contents: read
 
 concurrency:
-  group: release-${{ github.ref_name }}
+  group: release-${{ github.event_name == 'workflow_dispatch' && format('v{0}', inputs.version) || github.ref_name }}
   cancel-in-progress: false
 
 env:
@@ -34,8 +48,9 @@ jobs:
       contents: write
     env:
       GH_TOKEN: ${{ github.token }}
-      TAG: ${{ github.ref_name }}
+      TAG: ${{ github.event_name == 'workflow_dispatch' && format('v{0}', inputs.version) || github.ref_name }}
     outputs:
+      tag: ${{ steps.check.outputs.tag }}
       created: ${{ steps.publish.outputs.created }}
       prerelease: ${{ steps.check.outputs.prerelease }}
     steps:
@@ -45,6 +60,8 @@ jobs:
 
       - name: Check tag, notes and metadata
         id: check
+        env:
+          DISPATCH_NOTES: ${{ inputs.notes }}
         run: |
           set -euo pipefail
           [[ "$TAG" =~ ^v([0-9]+\.[0-9]+\.[0-9]+)(-[0-9A-Za-z.-]+)?$ ]] \
@@ -53,16 +70,26 @@ jobs:
           prerelease=false
           [ -z "${BASH_REMATCH[2]}" ] || prerelease=true
 
-          # actions/checkout can store the tag as a lightweight ref; fetch the tag object itself.
-          git fetch --force --no-tags origin "refs/tags/$TAG:refs/tags/$TAG"
-          [ "$(git cat-file -t "refs/tags/$TAG")" = tag ] \
-            || { echo "$TAG must be an annotated tag; its message is the release notes." >&2; exit 1; }
-          commit="$(git rev-list -n 1 "$TAG")"
           git fetch --no-tags origin main
-          git merge-base --is-ancestor "$commit" origin/main \
-            || { echo "$TAG must point at a commit on main." >&2; exit 1; }
-
-          git tag -l --format='%(contents)' "$TAG" | sed '/^-----BEGIN PGP SIGNATURE-----/,$d' > notes.md
+          if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ]; then
+            [ "$GITHUB_REF" = refs/heads/main ] || { echo "Dispatch the release on main." >&2; exit 1; }
+            commit="$GITHUB_SHA"
+            [ "$commit" = "$(git rev-parse origin/main)" ] || { echo "main moved after the dispatch; dispatch again." >&2; exit 1; }
+            if git ls-remote --exit-code --tags origin "refs/tags/$TAG" > /dev/null; then
+              gh release view "$TAG" --repo "$GITHUB_REPOSITORY" > /dev/null 2>&1 \
+                || { echo "Tag $TAG exists without a release; release it by tag or choose another version." >&2; exit 1; }
+            fi
+            printf '%s\n' "$DISPATCH_NOTES" > notes.md
+          else
+            # actions/checkout can store the tag as a lightweight ref; fetch the tag object itself.
+            git fetch --force --no-tags origin "refs/tags/$TAG:refs/tags/$TAG"
+            [ "$(git cat-file -t "refs/tags/$TAG")" = tag ] \
+              || { echo "$TAG must be an annotated tag; its message is the release notes." >&2; exit 1; }
+            commit="$(git rev-list -n 1 "$TAG")"
+            git merge-base --is-ancestor "$commit" origin/main \
+              || { echo "$TAG must point at a commit on main." >&2; exit 1; }
+            git tag -l --format='%(contents)' "$TAG" | sed '/^-----BEGIN PGP SIGNATURE-----/,$d' > notes.md
+          fi
           awk '/^## /{ p = ($0 ~ /^## Changes[[:space:]]*$/); next } p' notes.md | sed '/^[[:space:]]*$/d' > changes.md
           [ -s changes.md ] || { echo 'The tag message needs a non-empty "## Changes" section.' >&2; exit 1; }
           ! grep -qiE '\b[0-9a-f]{64}\b' notes.md || { echo "Do not write a SHA-256 in the notes; the workflow appends it." >&2; exit 1; }
@@ -74,6 +101,7 @@ jobs:
           fi
 
           {
+            echo "tag=$TAG"
             echo "version=$version"
             echo "prerelease=$prerelease"
             echo "commit=$commit"
@@ -218,7 +246,9 @@ jobs:
           { cat notes.md; printf '\n\nSHA-256 (%s.zip): %s\n\nSource commit: %s\n' "$MOD_NAME" "$hash" "$COMMIT"; } > body.md
           flag=--latest
           [ "$PRERELEASE" = false ] || flag=--prerelease
-          gh release create "$TAG" "dist/$MOD_NAME.zip#$MOD_NAME.zip" --repo "$GITHUB_REPOSITORY" --verify-tag \
+          verify=--verify-tag
+          [ "$GITHUB_EVENT_NAME" != workflow_dispatch ] || verify="--target=$COMMIT"
+          gh release create "$TAG" "dist/$MOD_NAME.zip#$MOD_NAME.zip" --repo "$GITHUB_REPOSITORY" "$verify" \
             --title "$MOD_NAME $VERSION" --notes-file body.md --generate-notes "$flag"
           echo "created=true" >> "$GITHUB_OUTPUT"
           echo "Published $TAG with $MOD_NAME.zip SHA-256 $hash"
@@ -230,5 +260,5 @@ jobs:
     if: ${{ needs.release.outputs.created == 'true' && needs.release.outputs.prerelease == 'false' }}
     uses: ./.github/workflows/nexus-release.yml
     with:
-      tag: ${{ github.ref_name }}
+      tag: ${{ needs.release.outputs.tag }}
     secrets: inherit
