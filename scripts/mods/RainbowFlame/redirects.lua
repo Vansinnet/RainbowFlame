@@ -13,10 +13,14 @@ end
 -- RainbowFlame adds (impact and enemy Soulblaze variants) therefore live in
 -- the unused debug package below, which the game never loads on its own.
 -- RainbowFlame loads it after Reforge is serving the files.
--- The presets use textures from the stock Soulblaze package, which must be
--- loaded first or they bind to the engine's default texture.
+-- The presets use textures from the stock Soulblaze and impact packages, which
+-- must be loaded first or they bind to the engine's default texture (impacts
+-- then render as flat colour squares). The impact packages are otherwise only
+-- loaded with the weapon, usually after this runs.
 local PRESET_PACKAGES = {
     "content/fx/particles/enemies/buff_warpfire",
+    "content/fx/particles/weapons/flame_staff/psyker_flame_staff_impact_delay",
+    "content/fx/particles/weapons/rifles/zealot_flamer/zealot_flamer_impact_delay",
     "content/fx/particles/debug/flame_thrower_test",
 }
 local manifest = "RainbowFlame/scripts/mods/RainbowFlame/reforge_manifest"
