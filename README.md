@@ -75,9 +75,15 @@ custom effects off instead of mixing incompatible files. Use one of the two mods
 resource-replacement mods may conflict in the same way; RainbowBarrels and
 BurningTertium do not.
 
+Version 1.4.3 ships the official, attested Reforge 0.1.0 release DLL; the
+mod's resources and Lua are unchanged. It was tested in game on Darktide
+1.13.0 in the Psykanium: `/reforge` reported all 166 files active, and the
+original, custom Color with impact preset, Rainbow and enemy Soulblaze
+colours worked with no errors. Online missions, teammate flames, the Opacity
+and Rainbow speed settings and the other impact presets were not retested.
+
 Version 1.4.2 fixes custom-colour wall impacts that could render as flat
-colour squares, depending on load order. This fix has not been tested in
-game.
+colour squares, depending on load order (confirmed in game with 1.4.3).
 
 Version 1.4.1 rebuilds the material streams for the October 2026 update.
 All 166 resource registrations match Steam build `25606770` in offline
