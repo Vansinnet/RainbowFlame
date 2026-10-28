@@ -75,6 +75,10 @@ custom effects off instead of mixing incompatible files. Use one of the two mods
 resource-replacement mods may conflict in the same way; RainbowBarrels and
 BurningTertium do not.
 
+Version 1.4.4 fixes the "restart Darktide to apply resource redirects" message
+that could appear at startup together with other Reforge mods: Reforge
+library 2 activates the replaced weapon bundles before any added files.
+
 Version 1.4.3 ships the official, attested Reforge 0.1.0 release DLL; the
 mod's resources and Lua are unchanged. It was tested in game on Darktide
 1.13.0 in the Psykanium: `/reforge` reported all 166 files active, and the

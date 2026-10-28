@@ -11,7 +11,7 @@
 --
 -- MIT licence. https://github.com/Vansinnet/Reforge
 
-local LIB_VERSION = 1
+local LIB_VERSION = 2
 local INSTANCE_KEY = "__reforge_instance"
 local DLL_NAME = "reforge.dll"
 local ABI = 1
@@ -504,6 +504,16 @@ function core.register_manifest(mod, path_or_table)
 	return handles
 end
 
+local function is_virtual(file)
+	for _, reg in ipairs(file.regs) do
+		if type(reg.spec) ~= "table" or reg.spec.virtual ~= true then
+			return false
+		end
+	end
+
+	return true
+end
+
 function core.commit()
 	if instance.committed then
 		return
@@ -523,7 +533,21 @@ function core.commit()
 		for _, reg in ipairs(instance.files[stock].regs) do
 			validate(reg)
 		end
+	end
 
+	-- The game may open existing files (weapons in the menu) while this loop
+	-- runs, so they go first; it never opens a virtual file on its own.
+	local virtual = {}
+
+	for _, stock in ipairs(instance.order) do
+		if is_virtual(instance.files[stock]) then
+			virtual[#virtual + 1] = stock
+		else
+			resolve(stock)
+		end
+	end
+
+	for _, stock in ipairs(virtual) do
 		resolve(stock)
 	end
 end
