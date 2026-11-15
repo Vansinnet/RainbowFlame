@@ -12,7 +12,9 @@ Swapper loads that particle package in its `on_all_mods_loaded`, and DMF runs th
 reverse load order (`_mods_unloading_order`), so it ran before RainbowFlame's `reforge.commit()`.
 Measured with Auspex on Darktide 1.13.0-b819406: the bundle had 2 opens before the commit,
 `loaded = false`. Reforge library 3 serves replacements of existing files from registration
-(script load), so this order no longer matters. In-game result pending.
+(script load), so this order no longer matters. In game after a restart (same build, VFX Swapper
+on): no restart message, RainbowFlame 166 of 166 and RainbowBarrels 1100 of 1100 served, the
+flamer stream bundle opened twice and served (`loaded = nil`, state `active`).
 
 ## Rebuilding the payload after a game update — 2026-10-27
 
