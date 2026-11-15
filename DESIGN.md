@@ -3,6 +3,17 @@
 The resource research and the history of every edit are in
 [REVERSE_ENGINEERING.md](REVERSE_ENGINEERING.md). This file holds how the payload is kept working.
 
+## Restart message with VFX Swapper — 2026-11-15
+
+With VFX Swapper installed, every start echoed "restart Darktide to apply resource redirects":
+165 of 166 files were served, and `bundle/e605c5550cf3088b`
+(`player_flamer/flamer_code_control`, the braced flamer stream) was `restart_required`. VFX
+Swapper loads that particle package in its `on_all_mods_loaded`, and DMF runs that event in
+reverse load order (`_mods_unloading_order`), so it ran before RainbowFlame's `reforge.commit()`.
+Measured with Auspex on Darktide 1.13.0-b819406: the bundle had 2 opens before the commit,
+`loaded = false`. Reforge library 3 serves replacements of existing files from registration
+(script load), so this order no longer matters. In-game result pending.
+
 ## Rebuilding the payload after a game update — 2026-10-27
 
 RainbowFlame's 166 Reforge files are edits of stock resources: 8 replaced material streams, 152

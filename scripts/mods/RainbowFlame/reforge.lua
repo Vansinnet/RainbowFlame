@@ -11,7 +11,7 @@
 --
 -- MIT licence. https://github.com/Vansinnet/Reforge
 
-local LIB_VERSION = 2
+local LIB_VERSION = 3
 local INSTANCE_KEY = "__reforge_instance"
 local DLL_NAME = "reforge.dll"
 local ABI = 1
@@ -180,7 +180,9 @@ local function load_from(ffi, path)
 	return lib
 end
 
-local function load_native()
+-- `quiet` (before the commit): a failure leaves the state pending, so the
+-- commit retries with every carrier known and reports the error.
+local function load_native(quiet)
 	local ffi = ffi_lib()
 	local first = instance.carriers[1] and instance.carriers[1].mod
 
@@ -236,6 +238,12 @@ local function load_native()
 
 		instance.native_state = "unavailable"
 		instance.native_error = #errors > 0 and table_concat(errors, "; ") or "no mod ships bin/" .. DLL_NAME
+	end
+
+	if quiet then
+		instance.native_state = "pending"
+
+		return
 	end
 
 	if first then
@@ -440,6 +448,39 @@ local function validate(reg)
 	end
 end
 
+local function is_virtual(file)
+	for _, reg in ipairs(file.regs) do
+		if type(reg.spec) ~= "table" or reg.spec.virtual ~= true then
+			return false
+		end
+	end
+
+	return true
+end
+
+-- Before the commit, a replacement of an existing game file is served as soon
+-- as it is registered: DMF runs on_all_mods_loaded in reverse load order, so
+-- mods loaded later may load packages with these files before any commit.
+-- The commit still decides the final winner of every file.
+local function serve_early(stock)
+	if instance.native_state == "pending" and instance.early_tried ~= #instance.carriers then
+		instance.early_tried = #instance.carriers
+		load_native(true)
+	end
+
+	local file = instance.files[stock]
+
+	if instance.native_state ~= "ready" or is_virtual(file) then
+		return
+	end
+
+	for _, reg in ipairs(file.regs) do
+		validate(reg)
+	end
+
+	resolve(stock)
+end
+
 function core.register(mod, spec)
 	local owner = mod:get_name()
 	local stock = type(spec) == "table" and type(spec.stock) == "string" and spec.stock or "?"
@@ -477,6 +518,14 @@ function core.register(mod, spec)
 			validate(reg)
 			resolve(stock)
 		end
+	elseif instance.catch_up then
+		instance.catch_up = nil
+
+		for _, each in ipairs(instance.order) do
+			serve_early(each)
+		end
+	else
+		serve_early(stock)
 	end
 
 	return reg
@@ -502,16 +551,6 @@ function core.register_manifest(mod, path_or_table)
 	end
 
 	return handles
-end
-
-local function is_virtual(file)
-	for _, reg in ipairs(file.regs) do
-		if type(reg.spec) ~= "table" or reg.spec.virtual ~= true then
-			return false
-		end
-	end
-
-	return true
 end
 
 function core.commit()
@@ -777,5 +816,11 @@ end
 
 instance.core = core
 instance.core_version = LIB_VERSION
+
+-- Taking over from an older library: what it registered is served with this
+-- mod's first registration, once this mod's DLL is a candidate too.
+if not instance.committed and #instance.order > 0 then
+	instance.catch_up = true
+end
 
 return facade
