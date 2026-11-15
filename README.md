@@ -75,6 +75,12 @@ custom effects off instead of mixing incompatible files. Use one of the two mods
 resource-replacement mods may conflict in the same way; RainbowBarrels and
 BurningTertium do not.
 
+Version 1.4.5 fixes the same message appearing on every start when another
+mod loads flamer effects at startup (for example VFX Swapper): Reforge library
+3 serves replaced game files as soon as the mod loads. Tested in game on
+Darktide 1.13.0 with VFX Swapper: all 166 files active after one restart, no
+message. Online missions were not retested.
+
 Version 1.4.4 fixes the "restart Darktide to apply resource redirects" message
 that could appear at startup together with other Reforge mods: Reforge
 library 2 activates the replaced weapon bundles before any added files.
